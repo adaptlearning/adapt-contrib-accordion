@@ -1,0 +1,15 @@
+{
+  "name": "adapt-contrib-accordion",
+  "version": "0.0.1",
+  "homepage": "https://github.com/adaptlearning/adapt-contrib-accordion",
+  "authors": [
+    "Kevin Corry <kevinc@learningpool.com>"
+  ],
+  "description": "An accordion component that displays clickable titles, which reveal display text",
+  "main": "/js/adapt-contrib-accordion.js",
+  "keywords": [
+    "adapt-plugin",
+    "adapt-component"
+  ],
+  "license": "GPLv3"
+}
