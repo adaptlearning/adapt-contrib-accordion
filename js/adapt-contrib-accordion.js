@@ -10,23 +10,23 @@ define(function(require) {
     },
 
     events: {
-      'click .item .title' : 'toggleItem'
+      'click .accordion-item-title' : 'toggleItem'
     },
 
     toggleItem: function (event) {
       event.preventDefault();
-      this.$('.item .body').stop(true,true).slideUp();
+      this.$('.accordion-item-body').stop(true,true).slideUp();
       if (!$(event.currentTarget).hasClass('selected')) {
-        this.$('.item .title').removeClass('selected');
-        $(event.currentTarget).addClass('selected visited').siblings('.body').slideToggle();
+        this.$('.accordion-item-title').removeClass('selected');
+        $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle();
         this.$('.icon').removeClass('minus').addClass('plus');
         $('.icon', event.currentTarget).removeClass('plus').addClass('minus');
       } else {
-        this.$('.item .title').removeClass('selected');
+        this.$('.accordion-item-title').removeClass('selected');
         $(event.currentTarget).removeClass('selected');
         $('.icon', event.currentTarget).removeClass('minus').addClass('plus');
       }
-      if (this.$('.item .visited').length==this.$('.item').length && this.model.get('complete')==false) {
+      if (this.$('.accordion-item .visited').length==this.$('.accordion-item').length && this.model.get('complete')==false) {
         this.model.set('complete',true);
       }
     }
