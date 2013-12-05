@@ -8,7 +8,7 @@
     {{/if}}
     {{#if body}}
     <div class="accordion-body">
-        <p class="inner">
+        <p class="accordion-body-inner">
             {{{body}}}
         </p>
     </div>
@@ -17,15 +17,15 @@
         {{#each items}}
         <div class="accordion-item">
             <a href="#" class="accordion-item-title" title="{{alt}}">
-                <div class="icon plus"></div>
-                <h5 class="inner">
+                <div class="accordion-item-title-icon plus"></div>
+                <h5 class="accordion-item-title-inner">
                     {{{title}}} 
                 </h5>
             </a>
-            <div class="accordion-item-body clearfix">
-                <p class="inner">
+            <div class="accordion-item-body">
+                <div class="accordion-item-body-inner">
                     {{{body}}}
-                </p>
+                </div>
             </div>
         </div>
         {{/each}}

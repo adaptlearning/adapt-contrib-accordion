@@ -19,12 +19,12 @@ define(function(require) {
       if (!$(event.currentTarget).hasClass('selected')) {
         this.$('.accordion-item-title').removeClass('selected');
         $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle();
-        this.$('.icon').removeClass('minus').addClass('plus');
-        $('.icon', event.currentTarget).removeClass('plus').addClass('minus');
+        this.$('.accordion-item-icon').removeClass('minus').addClass('plus');
+        $('.accordion-item-icon', event.currentTarget).removeClass('plus').addClass('minus');
       } else {
         this.$('.accordion-item-title').removeClass('selected');
         $(event.currentTarget).removeClass('selected');
-        $('.icon', event.currentTarget).removeClass('minus').addClass('plus');
+        $('.accordion-item-icon', event.currentTarget).removeClass('minus').addClass('plus');
       }
       if (this.$('.accordion-item .visited').length==this.$('.accordion-item').length && this.model.get('complete')==false) {
         this.model.set('complete',true);
