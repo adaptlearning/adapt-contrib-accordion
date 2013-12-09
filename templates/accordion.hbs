@@ -1,19 +1,19 @@
-<div class="inner">
+<div class="accordion-inner component-inner">
     {{#if title}}
-    <div class="accordion-title">
-        <h4 class="inner">
+    <div class="accordion-title component-title">
+        <h4 class="accordion-title-inner">
             {{{title}}}
         </h4>
     </div>
     {{/if}}
     {{#if body}}
-    <div class="accordion-body">
+    <div class="accordion-body component-body">
         <p class="accordion-body-inner">
             {{{body}}}
         </p>
     </div>
     {{/if}}
-    <div class="accordion-widget">
+    <div class="accordion-widget component-widget">
         {{#each items}}
         <div class="accordion-item">
             <a href="#" class="accordion-item-title" title="{{alt}}">
