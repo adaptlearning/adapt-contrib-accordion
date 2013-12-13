@@ -7,7 +7,7 @@
   .accordion-item-title-icon {
     position: absolute;
     top: 50%;
-    left: (@icon-size/4);
+    left: @item-padding-left;
     margin-top: -(@icon-size/2);
     color:@item-text-color;
   }
@@ -16,7 +16,7 @@
     display: block;
     position: relative;
     padding: @item-padding;
-    padding-left:(@icon-size+10px);
+    padding-left:(@icon-size+(@item-padding-left*2));
     color: @item-text-color;
     background-color: @item-color;
     text-decoration: none;
