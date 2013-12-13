@@ -1,37 +1,41 @@
 .accordion-component {
 
   .accordion-item {
-    border: 1px solid @tertiary-color;
-    margin-bottom: 2px;
+    margin-bottom: @item-spacing;
   }
 
   .accordion-item-title-icon {
     position: absolute;
     top: 50%;
-    left: 5px;
-    margin-top: -16px;
+    left: (@icon-size/4);
+    margin-top: -(@icon-size/2);
+    color:@item-text-color;
   }
 
   .accordion-item-title {
     display: block;
     position: relative;
-    padding: 12px 12px 12px 42px;
-    color: @light-color;
-    background-color: @primary-color;
+    padding: @item-padding;
+    padding-left:(@icon-size+10px);
+    color: @item-text-color;
+    background-color: @item-color;
     text-decoration: none;
 
     &.visited {
-      background-color: @tertiary-color;
+      color:@item-text-visited-color;
+      background-color: @item-visited-color;
     }
 
     &.selected {
-      background-color: @secondary-color;
+      color:@item-text-visited-color;
+      background-color: @item-visited-color;
     }
   }
   
   .accordion-item-body {
+    color:@foreground-color;
+    background-color:@background-color;
     display: none;
-    border-top: 1px solid @tertiary-color;
   }
 
   .accordion-item-body-inner {
@@ -44,10 +48,12 @@
   .accordion-component {
     .accordion-item-title {
       &:hover {
-        background-color: @secondary-color;
+        color:@item-text-hover-color;
+        background-color: @item-hover-color;
       }
       &.visited:hover {
-        background-color: @secondary-color;
+        color:@item-text-disabled-color;
+        background-color: @item-disabled-color;
       }
     }
   }
