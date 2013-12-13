@@ -6,7 +6,6 @@ define(function(require) {
 
     postRender: function() {
       this.setReadyStatus();
-      this.setCompletionStatus();
     },
 
     events: {
@@ -19,15 +18,15 @@ define(function(require) {
       if (!$(event.currentTarget).hasClass('selected')) {
         this.$('.accordion-item-title').removeClass('selected');
         $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle();
-        this.$('.accordion-item-icon').removeClass('minus').addClass('plus');
-        $('.accordion-item-icon', event.currentTarget).removeClass('plus').addClass('minus');
+        this.$('.accordion-item-title-icon').removeClass('icon-minus').addClass('icon-plus');
+        $('.accordion-item-title-icon', event.currentTarget).removeClass('icon-plus').addClass('icon-minus');
       } else {
         this.$('.accordion-item-title').removeClass('selected');
         $(event.currentTarget).removeClass('selected');
-        $('.accordion-item-icon', event.currentTarget).removeClass('minus').addClass('plus');
+        $('.accordion-item-title-icon', event.currentTarget).removeClass('icon-minus').addClass('icon-plus');
       }
-      if (this.$('.accordion-item .visited').length==this.$('.accordion-item').length && this.model.get('complete')==false) {
-        this.model.set('complete',true);
+      if (this.$('.accordion-item-title.visited').length==this.$('.accordion-item-title').length && this.model.get('_isComplete')==false) {
+        this.setCompletionStatus();
       }
     }
 

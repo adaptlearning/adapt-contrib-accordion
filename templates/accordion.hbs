@@ -1,14 +1,14 @@
 <div class="accordion-inner component-inner">
     {{#if title}}
     <div class="accordion-title component-title">
-        <h4 class="accordion-title-inner">
+        <h4 class="accordion-title-inner component-title-inner">
             {{{title}}}
         </h4>
     </div>
     {{/if}}
     {{#if body}}
     <div class="accordion-body component-body">
-        <p class="accordion-body-inner">
+        <p class="accordion-body-inner component-body-inner">
             {{{body}}}
         </p>
     </div>
@@ -17,10 +17,12 @@
         {{#each items}}
         <div class="accordion-item">
             <a href="#" class="accordion-item-title" title="{{alt}}">
-                <div class="accordion-item-title-icon plus"></div>
-                <h5 class="accordion-item-title-inner">
-                    {{{title}}} 
-                </h5>
+              <div class="accordion-item-title-inner">
+                <div class="accordion-item-title-icon icon icon-plus"></div>
+                  <h5>
+                      {{{title}}}
+                  </h5>
+              </div>
             </a>
             <div class="accordion-item-body">
                 <div class="accordion-item-body-inner">
