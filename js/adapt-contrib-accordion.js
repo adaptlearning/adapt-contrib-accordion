@@ -14,10 +14,10 @@ define(function(require) {
 
     toggleItem: function (event) {
       event.preventDefault();
-      this.$('.accordion-item-body').stop(true,true).slideUp();
+      this.$('.accordion-item-body').stop(true,true).slideUp(200);
       if (!$(event.currentTarget).hasClass('selected')) {
         this.$('.accordion-item-title').removeClass('selected');
-        $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle();
+        $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle(200);
         this.$('.accordion-item-title-icon').removeClass('icon-minus').addClass('icon-plus');
         $('.accordion-item-title-icon', event.currentTarget).removeClass('icon-plus').addClass('icon-minus');
       } else {
