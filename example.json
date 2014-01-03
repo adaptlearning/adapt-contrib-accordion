@@ -4,6 +4,7 @@
   "_type":"component",
   "_component":"accordion",
   "_classes":"",
+  "_layout":"left",
   "title": "Accordion",
   "body": "This is optional body text. Select the headings below to reveal the text.",
   "items": [
