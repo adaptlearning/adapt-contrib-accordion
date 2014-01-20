@@ -16,7 +16,7 @@
     <div class="accordion-widget component-widget">
         {{#each items}}
         <div class="accordion-item">
-            <a href="#" class="accordion-item-title" title="{{alt}}">
+            <a href="#" class="accordion-item-title {{#if _isVisited}}visited{{/if}}" title="{{alt}}">
               <div class="accordion-item-title-inner">
                 <div class="accordion-item-title-icon icon icon-plus"></div>
                   <h5>
