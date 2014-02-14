@@ -1,18 +1,5 @@
 <div class="accordion-inner component-inner">
-    {{#if title}}
-    <div class="accordion-title component-title">
-        <h4 class="accordion-title-inner component-title-inner">
-            {{{title}}}
-        </h4>
-    </div>
-    {{/if}}
-    {{#if body}}
-    <div class="accordion-body component-body">
-        <div class="accordion-body-inner component-body-inner">
-            {{{body}}}
-        </div>
-    </div>
-    {{/if}}
+    {{> component this}}
     <div class="accordion-widget component-widget">
         {{#each items}}
         <div class="accordion-item">
