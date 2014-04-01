@@ -11,17 +11,17 @@
         "type":"object",
         "required":true,
         "properties":{
-          "alt": {
+          "title": {
             "type":"string",
-            "required":false
+            "required":true
           },
           "body": {
             "type":"string",
             "required":true
           },
-          "title": {
+          "alt": {
             "type":"string",
-            "required":true
+            "required":false
           }
         }
       }
