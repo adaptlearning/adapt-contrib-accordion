@@ -1,6 +1,6 @@
 {
   "name": "adapt-contrib-accordion",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An accordion component that displays clickable titles, which reveal display text",
   "main": "",
   "scripts": {
@@ -16,7 +16,7 @@
     "url": "https://github.com/adaptlearning/adapt-contrib-accordion/issues"
   },
   "devDependencies": {
-    "karma": "~0.9",
+    "karma": "~0.10",
     "karma-mocha": "*",
     "karma-expect": "*"
   }
