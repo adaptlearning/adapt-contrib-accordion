@@ -7,6 +7,8 @@
   ],
   "description": "An accordion component that displays clickable titles, which reveal display text",
   "main": "/js/adapt-contrib-accordion.js",
+  "displayName" : "Accordion",
+  "component" : "accordion",
   "keywords": [
     "adapt-plugin",
     "adapt-component"
