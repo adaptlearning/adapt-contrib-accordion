@@ -33,6 +33,19 @@
       background-color: @item-visited-color;
       border-color:@item-border-selected-color;
     }
+    .no-touch & {
+      &:hover {
+        color:@item-text-hover-color;
+        background-color: @item-hover-color;
+        border-color:@item-border-hover-color;
+      }
+      &.visited:hover {
+        color:@item-text-visited-color;
+        background-color: @item-visited-color;
+        border-color:@item-border-visited-color;
+      }
+    }
+    
   }
   
   .accordion-item-body {
@@ -48,21 +61,4 @@
     padding: @item-padding;
   }
 
-}
-
-.no-touch {
-  .accordion-component {
-    .accordion-item-title {
-      &:hover {
-        color:@item-text-hover-color;
-        background-color: @item-hover-color;
-        border-color:@item-border-hover-color;
-      }
-      &.visited:hover {
-        color:@item-text-visited-color;
-        background-color: @item-visited-color;
-        border-color:@item-border-visited-color;
-      }
-    }
-  }
 }
