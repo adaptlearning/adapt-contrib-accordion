@@ -20,44 +20,45 @@
     color: @item-text-color;
     background-color: @item-color;
     text-decoration: none;
+    border:@item-border;
 
     &.visited {
       color:@item-text-visited-color;
       background-color: @item-visited-color;
+      border-color:@item-border-visited-color;
     }
 
     &.selected {
       color:@item-text-visited-color;
       background-color: @item-visited-color;
+      border-color:@item-border-selected-color;
     }
+    .no-touch & {
+      &:hover {
+        color:@item-text-hover-color;
+        background-color: @item-hover-color;
+        border-color:@item-border-hover-color;
+      }
+      &.visited:hover {
+        color:@item-text-visited-color;
+        background-color: @item-visited-color;
+        border-color:@item-border-visited-color;
+      }
+    }
+    
   }
   
   .accordion-item-body {
     color:@foreground-color;
     background-color:@background-color;
     display: none;
-    border-right: @border;
-    border-left: @border;
-    border-bottom: @border;
+    border-right: @item-border;
+    border-left: @item-border;
+    border-bottom: @item-border;
   }
 
   .accordion-item-body-inner {
     padding: @item-padding;
   }
 
-}
-
-.no-touch {
-  .accordion-component {
-    .accordion-item-title {
-      &:hover {
-        color:@item-text-hover-color;
-        background-color: @item-hover-color;
-      }
-      &.visited:hover {
-        color:@item-text-disabled-color;
-        background-color: @item-disabled-color;
-      }
-    }
-  }
 }

@@ -33,20 +33,20 @@ define(function(require) {
     },
 
     setVisited: function(index) {
-      var item = this.model.get('items')[index];
+      var item = this.model.get('_items')[index];
       item._isVisited = true;
       this.checkCompletionStatus();
     },
 
     getVisitedItems: function() {
-      return _.filter(this.model.get('items'), function(item) {
+      return _.filter(this.model.get('_items'), function(item) {
         return item._isVisited;
       });
     },
 
     checkCompletionStatus: function() {
       if (!this.model.get('_isComplete')) {
-        if (this.getVisitedItems().length == this.model.get('items').length) {
+        if (this.getVisitedItems().length == this.model.get('_items').length) {
           this.setCompletionStatus();
         }
       }
@@ -55,5 +55,7 @@ define(function(require) {
   });
 
   Adapt.register("accordion", Accordion);
+
+  return Accordion;
 
 });

@@ -7,7 +7,7 @@
   "_layout":"left",
   "title": "Accordion",
   "body": "This is optional body text. Select the headings below to reveal the text.",
-  "items": [
+  "_items": [
     {
       "alt": "Heading 1",
       "title": "Heading 1",
