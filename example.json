@@ -25,5 +25,8 @@
       "title": "Heading 3",
       "body": "This is display text 3."
     }
-  ]
+  ],
+  "_pageLevelProgress": {
+    "_isEnabled": true
+  }
 }
