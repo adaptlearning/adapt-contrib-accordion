@@ -6,7 +6,9 @@
   "_classes":"",
   "_layout":"left",
   "title": "Accordion",
+  "displayTitle": "Accordion",
   "body": "This is optional body text. Select the headings below to reveal the text.",
+  "instruction": "",
   "_items": [
     {
       "alt": "Heading 1",
