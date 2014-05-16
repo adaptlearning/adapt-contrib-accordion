@@ -4,7 +4,7 @@
   "id": "http://jsonschema.net",
   "$ref": "http://localhost/plugins/content/component/model.schema",
   "properties":{
-    "items": {
+    "_items": {
       "type":"array",
       "required":true,
       "items": {
