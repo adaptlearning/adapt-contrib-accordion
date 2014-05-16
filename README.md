@@ -52,7 +52,7 @@ Enter a title value for this accordion element. This text is displayed at all ti
 
 ####body
 
-The text entered for the body will be shown when the reader opens this accorion element.
+The text entered for the body will be shown when the reader opens this accordion element.
 
 ##Limitations
  
