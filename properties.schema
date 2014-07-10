@@ -7,21 +7,27 @@
     "_items": {
       "type":"array",
       "required":true,
+      "title": "ITEMS",
       "items": {
         "type":"object",
         "required":true,
         "properties":{
           "title": {
             "type":"string",
-            "required":true
+            "required":true,
+            "title": "TITLE",
+            "minLength": 1
           },
           "body": {
             "type":"string",
-            "required":true
+            "required":true,
+            "title": "BODY",
+            "minLength": 1
           },
           "alt": {
             "type":"string",
-            "required":false
+            "required":false,
+            "title": "ALT"
           }
         }
       }
