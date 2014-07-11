@@ -15,19 +15,19 @@
           "title": {
             "type":"string",
             "required":true,
-            "title": "TITLE",
+            "title": "Title",
             "minLength": 1
           },
           "body": {
             "type":"string",
             "required":true,
-            "title": "BODY",
+            "title": "Body",
             "minLength": 1
           },
           "alt": {
             "type":"string",
             "required":false,
-            "title": "ALT"
+            "title": "Alt"
           }
         }
       }
