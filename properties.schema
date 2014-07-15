@@ -7,6 +7,7 @@
     "_items": {
       "type":"array",
       "required":true,
+      "minItems": 1, 
       "title": "Items",
       "items": {
         "type":"object",
