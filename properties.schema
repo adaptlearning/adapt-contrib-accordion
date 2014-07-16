@@ -7,7 +7,7 @@
     "_items": {
       "type":"array",
       "required":true,
-      "minItems": 1, 
+      "minItems": 1,
       "title": "Items",
       "items": {
         "type":"object",
@@ -17,18 +17,25 @@
             "type":"string",
             "required":true,
             "title": "Title",
-            "minLength": 1
+            "minLength": 1,
+            "propertyOrder": 1
           },
           "body": {
             "type":"string",
             "required":true,
             "title": "Body",
-            "minLength": 1
+            "minLength": 1,
+            "propertyOrder": 2,
+            "format": "html",
+            "options": {
+              "wysiwyg": true
+            }
           },
           "alt": {
             "type":"string",
             "required":false,
-            "title": "Alt"
+            "title": "Alt",
+            "propertyOrder": 3
           }
         }
       }
