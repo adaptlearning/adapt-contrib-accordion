@@ -4,6 +4,12 @@ define(function(require) {
 
   var Accordion = ComponentView.extend({
 
+    preRender: function() {
+      _.each(this.model.get('_items'), function(item) {
+        item._isVisited = false;
+      });
+    },
+
     postRender: function() {
       this.setReadyStatus();
     },
@@ -45,11 +51,9 @@ define(function(require) {
     },
 
     checkCompletionStatus: function() {
-      if (!this.model.get('_isComplete')) {
         if (this.getVisitedItems().length == this.model.get('_items').length) {
           this.setCompletionStatus();
         }
-      }
     }
 
   });
