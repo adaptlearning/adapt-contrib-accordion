@@ -4,11 +4,18 @@
   "id": "http://jsonschema.net",
   "$ref": "http://localhost/plugins/content/component/model.schema",
   "properties":{
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "help": "This is the instruction text"
+    },
     "_items": {
       "type":"array",
       "required":true,
-      "minItems": 1,
-      "title": "Items",
+      "title":"Items",
       "items": {
         "type":"object",
         "required":true,
@@ -16,19 +23,27 @@
           "title": {
             "type":"string",
             "required":true,
-            "title": "Title",
-            "minLength": 1
+            "inputType": "Text",
+            "title": "Item Title",
+            "default": "",
+            "validators": ["required"],
+            "help": "This is the item title"
           },
           "body": {
             "type":"string",
             "required":true,
-            "title": "Content text",
-            "minLength": 1
+            "inputType": "TextArea",
+            "title": "Item Body",
+            "default": "",
+            "validators": ["required"],
+            "help": "This is the item body text that is hidden until the item title is clicked on"
           },
           "alt": {
             "type":"string",
             "required":false,
-            "title": "Alternative text"
+            "inputType": "Text",
+            "default": "",
+            "validators": []
           }
         }
       }
