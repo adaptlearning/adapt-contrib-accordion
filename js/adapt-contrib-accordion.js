@@ -46,7 +46,7 @@ define(function(require) {
 
             if (!$(event.currentTarget).hasClass('selected')) {
                 this.$('.accordion-item-title').removeClass('selected');
-                $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle(200, function() {
+                var body = $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle(200, function() {
                   $(body).a11y_focus();
                 });
                 this.$('.accordion-item-title-icon').removeClass('icon-minus').addClass('icon-plus');
