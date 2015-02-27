@@ -8,6 +8,10 @@
         position:absolute;
         top:50%;
         left:@item-padding-left;
+        .dir-rtl & {
+	        left:inherit;
+	        right:@item-padding-left; 
+        }
         margin-top:-(@icon-size/2);
         color:@item-text-color;
     }
@@ -17,6 +21,10 @@
         position:relative;
         padding:@item-padding;
         padding-left:(@icon-size+(@item-padding-left*2));
+        .dir-rtl & {
+            padding-left:inherit;
+            padding-right:(@icon-size+(@item-padding-left*2));
+        }
         color:@item-text-color;
         background-color:@item-color;
         text-decoration:none;
