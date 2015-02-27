@@ -46,7 +46,9 @@ define(function(require) {
 
             if (!$(event.currentTarget).hasClass('selected')) {
                 this.$('.accordion-item-title').removeClass('selected');
-                $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle(200);
+                var body = $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle(200, function() {
+                  $(body).a11y_focus();
+                });
                 this.$('.accordion-item-title-icon').removeClass('icon-minus').addClass('icon-plus');
                 $('.accordion-item-title-icon', event.currentTarget).removeClass('icon-plus').addClass('icon-minus');
 
@@ -59,6 +61,13 @@ define(function(require) {
                 this.$('.accordion-item-title').removeClass('selected');
                 $(event.currentTarget).removeClass('selected');
                 $('.accordion-item-title-icon', event.currentTarget).removeClass('icon-minus').addClass('icon-plus');
+            }
+            // set aria-expanded value
+            if ($(event.currentTarget).hasClass('selected')) {
+                $('.accordion-item-title').attr('aria-expanded', false);
+                $(event.currentTarget).attr('aria-expanded', true);
+            } else {
+                $(event.currentTarget).attr('aria-expanded', false);
             }
         },
 
