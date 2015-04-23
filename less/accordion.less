@@ -28,11 +28,10 @@
         color:@item-text-color;
         background-color:@item-color;
         text-decoration:none;
-        border:@item-border;
 
         &.visited {
             color:@item-text-visited-color;
-            background-color:@item-visited-color;
+            background-color: lighten(@item-visited-color, 10%);
             border-color:@item-border-visited-color;
 
             .accordion-item-title-icon {
@@ -68,17 +67,17 @@
                     color:@item-text-visited-color;
                 }
             }
+            &.selected:hover {
+				background-color: lighten(@item-visited-color, 10%);
+			}
         }
 
     }
 
     .accordion-item-body {
-        color:@foreground-color;
-        background-color:@background-color;
+        color: @item-text-color;
+        background-color: @item-hover-color;
         display:none;
-        border-right:@item-border;
-        border-left:@item-border;
-        border-bottom:@item-border;
     }
 
     .accordion-item-body-inner {
