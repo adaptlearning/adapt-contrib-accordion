@@ -12,6 +12,11 @@
             <div class="accordion-item-body">
                 <div class="accordion-item-body-inner">
                     {{{a11y_text body}}}
+                    {{#if _graphic}}
+                    <div class="accordion-item-graphic">
+                        <img src="{{_graphic.src}}" alt="{{_graphic.alt}}" tabindex="0">     
+                    </div>
+                    {{/if}}
                 </div>
             </div>
         </div>
