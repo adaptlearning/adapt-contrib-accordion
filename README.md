@@ -54,6 +54,10 @@ Enter a title value for this accordion element. This text is displayed at all ti
 
 The text entered for the body will be shown when the reader opens this accordion element.
 
+####_graphic
+
+This renders a graphic inside of the item body which is shown when the reader opens this accordion element. Both a `src` and `alt` value are required.
+
 ##Limitations
  
 To be completed.
