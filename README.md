@@ -52,7 +52,9 @@ guide the learner’s interaction with the component.
 
 >>**alt** (string): This text becomes the image’s `alt` attribute. 
 
-<div float align=right><a href="#top">Back to Top</a></div>
+### Accessibility
+**Accordion** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within the **globals** object in [*properties.schema*](https://github.com/adaptlearning/adapt-contrib-accordion/blob/master/properties.schema).   
+<div float align=right><a href="#top">Back to Top</a></div> 
 
 
 ## Limitations
