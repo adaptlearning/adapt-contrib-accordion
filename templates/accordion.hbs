@@ -2,7 +2,7 @@
     {{> component this}}
     <div class="accordion-widget component-widget">
         {{#each _items}}
-        <div class="accordion-item">
+        <div class="accordion-item {{_classes}}">
             <button role="button" class="base accordion-item-title {{#if _isVisited}}visited{{/if}}" aria-expanded="false" aria-label="{{{title}}}">
               <div class="accordion-item-title-inner">
                 <div class="accordion-item-title-icon icon icon-plus h5"></div>
