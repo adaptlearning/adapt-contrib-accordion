@@ -1,90 +1,113 @@
 define(function(require) {
 
-    var ComponentView = require('coreViews/componentView');
-    var Adapt = require('coreJS/adapt');
+  var ComponentView = require('coreViews/componentView');
+  var Adapt = require('coreJS/adapt');
 
-    var Accordion = ComponentView.extend({
+  var Accordion = ComponentView.extend({
 
-        events: {
-            'click .accordion-item-title': 'toggleItem'
-        },
+    toggleSpeed: 200,
 
-        preRender: function() {
-            // Checks to see if the accordion should be reset on revisit
-            this.checkIfResetOnRevisit();
-        },
+    events: {
+      'click .accordion-item-title': 'toggleItem'
+    },
 
-        postRender: function() {
-            this.setReadyStatus();
-        },
+    preRender: function() {
+      // Checks to see if the accordion should be reset on revisit
+      this.checkIfResetOnRevisit();
+    },
 
-        // Used to check if the accordion should reset on revisit
-        checkIfResetOnRevisit: function() {
-            var isResetOnRevisit = this.model.get('_isResetOnRevisit');
+    postRender: function() {
+      this.setReadyStatus();
+    },
 
-            // If reset is enabled set defaults
-            if (isResetOnRevisit) {
-                this.model.reset(isResetOnRevisit);
+    // Used to check if the accordion should reset on revisit
+    checkIfResetOnRevisit: function() {
+      var isResetOnRevisit = this.model.get('_isResetOnRevisit');
 
-                _.each(this.model.get('_items'), function(item) {
-                    item._isVisited = false;
-                });
-            }
-        },
+      // If reset is enabled set defaults
+      if (isResetOnRevisit) {
+        this.model.reset(isResetOnRevisit);
 
-        toggleItem: function(event) {
-            event.preventDefault();
-            this.$('.accordion-item-body').stop(true, true).slideUp(200);
+        _.each(this.model.get('_items'), function(item) {
+          item._isVisited = false;
+        });
+      }
+    },
 
-            if (!$(event.currentTarget).hasClass('selected')) {
-                this.$('.accordion-item-title').removeClass('selected');
-                var body = $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle(200, function() {
-                  $(body).a11y_focus();
-                });
-                this.$('.accordion-item-title-icon').removeClass('icon-minus').addClass('icon-plus');
-                $('.accordion-item-title-icon', event.currentTarget).removeClass('icon-plus').addClass('icon-minus');
+    toggleItem: function(event) {
+      event.preventDefault();
 
-                if ($(event.currentTarget).hasClass('accordion-item')) {
-                    this.setVisited($(event.currentTarget).index());
-                } else {
-                    this.setVisited($(event.currentTarget).parent('.accordion-item').index());
-                }
-            } else {
-                this.$('.accordion-item-title').removeClass('selected');
-                $(event.currentTarget).removeClass('selected');
-                $('.accordion-item-title-icon', event.currentTarget).removeClass('icon-minus').addClass('icon-plus');
-            }
-            // set aria-expanded value
-            if ($(event.currentTarget).hasClass('selected')) {
-                $('.accordion-item-title').attr('aria-expanded', false);
-                $(event.currentTarget).attr('aria-expanded', true);
-            } else {
-                $(event.currentTarget).attr('aria-expanded', false);
-            }
-        },
+      var toggleButton = $(event.currentTarget);
+      var accordionItem = toggleButton.parent('.accordion-item');
+      var isCurrentlyExpanded = toggleButton.hasClass('selected');
 
-        setVisited: function(index) {
-            var item = this.model.get('_items')[index];
-            item._isVisited = true;
-            this.checkCompletionStatus();
-        },
+      if (!this.model.get('_persistExpansion')) {
+        // Close and reset all Accordion items
+        this.$('.accordion-item').each(_.bind(function(index, element) {
+          this.closeItem($(element));
+        }, this));
+      } else {
+        // Close and reset the selected Accordion items
+        this.closeItem(accordionItem);
+      }
 
-        getVisitedItems: function() {
-            return _.filter(this.model.get('_items'), function(item) {
-                return item._isVisited;
-            });
-        },
+      if (!isCurrentlyExpanded) {
+        this.openItem(accordionItem);
+      }
+    },
 
-        checkCompletionStatus: function() {
-            if (this.getVisitedItems().length == this.model.get('_items').length) {
-                this.setCompletionStatus();
-            }
-        }
+    closeItem: function(itemEl) {
+      if (!itemEl) {
+        return false;
+      }
 
-    });
+      $(itemEl).find('.accordion-item-body').first().stop(true, true).slideUp(this.toggleSpeed);
+      $(itemEl).find('button').first().removeClass('selected');
+      $(itemEl).find('button').first().attr('aria-expanded', false);
+      $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-plus');
+      $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-minus');
+    },
 
-    Adapt.register('accordion', Accordion);
+    openItem: function(itemEl) {
+      if (!itemEl) {
+        return false;
+      }
 
-    return Accordion;
+      var body = $(itemEl).find('.accordion-item-body').first().stop(true, true).slideDown(this.toggleSpeed, function() {
+        body.a11y_focus();
+      });
+
+      $(itemEl).find('button').first().addClass('selected');
+      $(itemEl).find('button').first().attr('aria-expanded', true);
+      $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-plus');
+      $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-minus');
+
+      this.setVisited(itemEl.index());
+      $(itemEl).find('button').first().addClass('visited');
+    },
+
+    setVisited: function(index) {
+      var item = this.model.get('_items')[index];
+      item._isVisited = true;
+      this.checkCompletionStatus();
+    },
+
+    getVisitedItems: function() {
+      return _.filter(this.model.get('_items'), function(item) {
+        return item._isVisited;
+      });
+    },
+
+    checkCompletionStatus: function() {
+      if (this.getVisitedItems().length == this.model.get('_items').length) {
+        this.setCompletionStatus();
+      }
+    }
+
+  });
+
+  Adapt.register('accordion', Accordion);
+
+  return Accordion;
 
 });

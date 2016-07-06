@@ -93,6 +93,15 @@
           }
         }
       }
+    },
+    "_persistExpansion": {
+      "type":"boolean",
+      "required": false,
+      "default": false,
+      "title": "Persist expansion of items",
+      "inputType": {"type": "Boolean", "options": [true, false]},
+      "validators": [],
+      "help": "If set to 'true', upon expansion of an accordion item, any previously expanded items will not be collapsed"
     }
   }
 }
