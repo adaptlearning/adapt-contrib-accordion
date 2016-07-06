@@ -52,9 +52,9 @@ define(function(require) {
             if (!isCurrentlyExpanded) {
                 this.openItem(accordionItem);
             }
-          },
+        },
 
-          closeItem: function(itemEl) {
+        closeItem: function(itemEl) {
             if (!itemEl) {
                 return false;
             }
@@ -64,25 +64,25 @@ define(function(require) {
             $(itemEl).find('button').first().attr('aria-expanded', false);
             $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-plus');
             $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-minus');
-          },
+        },
 
-      openItem: function(itemEl) {
-        if (!itemEl) {
-          return false;
-        }
+        openItem: function(itemEl) {
+            if (!itemEl) {
+                return false;
+            }
 
-        var body = $(itemEl).find('.accordion-item-body').first().stop(true, true).slideDown(this.toggleSpeed, function() {
-          body.a11y_focus();
-        });
+            var body = $(itemEl).find('.accordion-item-body').first().stop(true, true).slideDown(this.toggleSpeed, function() {
+                body.a11y_focus();
+            });
 
-        $(itemEl).find('button').first().addClass('selected');
-        $(itemEl).find('button').first().attr('aria-expanded', true);
-        $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-plus');
-        $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-minus');
+            $(itemEl).find('button').first().addClass('selected');
+            $(itemEl).find('button').first().attr('aria-expanded', true);
+            $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-plus');
+            $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-minus');
 
-        this.setVisited(itemEl.index());
-        $(itemEl).find('button').first().addClass('visited');
-      },
+            this.setVisited(itemEl.index());
+            $(itemEl).find('button').first().addClass('visited');
+        },
 
         setVisited: function(index) {
             var item = this.model.get('_items')[index];
