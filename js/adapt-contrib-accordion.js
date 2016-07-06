@@ -41,11 +41,12 @@ define(function(require) {
 
             if (!this.model.get('_persistExpansion')) {
                 // Close and reset all Accordion items
-                this.$('.accordion-item').each(_.bind(function(index, element) {
-                    this.closeItem($(element));
-                }, this));
+                var allAccordionItems = this.$('.accordion-item');
+                for (var i = 0; i < allAccordionItems.length; i++) {
+                    this.closeItem($(allAccordionItems[i]));
+                }
             } else {
-                // Close and reset the selected Accordion items
+                // Close and reset the selected Accordion item
                 this.closeItem(accordionItem);
             }
 
