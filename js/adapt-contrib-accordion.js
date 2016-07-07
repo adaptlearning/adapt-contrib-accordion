@@ -39,10 +39,11 @@ define(function(require) {
             var accordionItem = toggleButton.parent('.accordion-item');
             var isCurrentlyExpanded = toggleButton.hasClass('selected');
 
-            if (!this.model.get('_persistExpansion')) {
+            if (!this.model.get('_preventItemAutoCollapse')) {
                 // Close and reset all Accordion items
                 var allAccordionItems = this.$('.accordion-item');
-                for (var i = 0; i < allAccordionItems.length; i++) {
+                var count = allAccordionItems.length;
+                for (var i = 0; i < count; i++) {
                     this.closeItem($(allAccordionItems[i]));
                 }
             } else {
@@ -63,8 +64,8 @@ define(function(require) {
             $(itemEl).find('.accordion-item-body').first().stop(true, true).slideUp(this.toggleSpeed);
             $(itemEl).find('button').first().removeClass('selected');
             $(itemEl).find('button').first().attr('aria-expanded', false);
-            $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-plus');
-            $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-minus');
+            $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-plus');
+            $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-minus');
         },
 
         openItem: function(itemEl) {
@@ -78,11 +79,11 @@ define(function(require) {
 
             $(itemEl).find('button').first().addClass('selected');
             $(itemEl).find('button').first().attr('aria-expanded', true);
-            $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-plus');
-            $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-minus');
 
             this.setVisited(itemEl.index());
             $(itemEl).find('button').first().addClass('visited');
+            $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-plus');
+            $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-minus');
         },
 
         setVisited: function(index) {
