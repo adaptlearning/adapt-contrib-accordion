@@ -54,7 +54,7 @@ guide the learner’s interaction with the component.
 
 >**_classes** (string): An optional class that will be applied to the Accordion Item.
 
-**_preventItemAutoCollapse** (boolean): Used to prevent the auto-collapse of other expanded Accordion items whenever an item is clicked/expanded. Defaulted to 'false'
+**_shouldCollapseItems** (boolean): Used to control the auto-collapse of other expanded Accordion items whenever an item is clicked/expanded. Defaulted to 'true'
 
 ### Accessibility
 **Accordion** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within the **globals** object in [*properties.schema*](https://github.com/adaptlearning/adapt-contrib-accordion/blob/master/properties.schema).

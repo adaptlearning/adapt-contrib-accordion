@@ -9,6 +9,8 @@ define(function(require) {
             'click .accordion-item-title': 'toggleItem'
         },
 
+        toggleSpeed: 200,
+
         preRender: function() {
             // Checks to see if the accordion should be reset on revisit
             this.checkIfResetOnRevisit();
@@ -39,7 +41,7 @@ define(function(require) {
             var accordionItem = toggleButton.parent('.accordion-item');
             var isCurrentlyExpanded = toggleButton.hasClass('selected');
 
-            if (!this.model.get('_preventItemAutoCollapse')) {
+            if (this.model.get('_shouldCollapseItems')) {
                 // Close and reset all Accordion items
                 var allAccordionItems = this.$('.accordion-item');
                 var count = allAccordionItems.length;
@@ -61,11 +63,15 @@ define(function(require) {
                 return false;
             }
 
-            $(itemEl).find('.accordion-item-body').first().stop(true, true).slideUp(this.toggleSpeed);
-            $(itemEl).find('button').first().removeClass('selected');
-            $(itemEl).find('button').first().attr('aria-expanded', false);
-            $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-plus');
-            $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-minus');
+            var body = $('.accordion-item-body', $(itemEl)).first();
+            var button = $('button', $(itemEl)).first();
+            var icon = $('.accordion-item-title-icon', $(itemEl)).first();
+
+            body.stop(true, true).slideUp(this.toggleSpeed);
+            button.removeClass('selected');
+            button.attr('aria-expanded', false);
+            icon.addClass('icon-plus');
+            icon.removeClass('icon-minus');
         },
 
         openItem: function(itemEl) {
@@ -73,17 +79,22 @@ define(function(require) {
                 return false;
             }
 
-            var body = $(itemEl).find('.accordion-item-body').first().stop(true, true).slideDown(this.toggleSpeed, function() {
+            var body = $('.accordion-item-body', $(itemEl)).first();
+            var button = $('button', $(itemEl)).first();
+            var icon = $('.accordion-item-title-icon', $(itemEl)).first();
+
+            body = body.stop(true, true).slideDown(this.toggleSpeed, function() {
                 body.a11y_focus();
             });
 
-            $(itemEl).find('button').first().addClass('selected');
-            $(itemEl).find('button').first().attr('aria-expanded', true);
+            button.first().addClass('selected');
+            button.first().attr('aria-expanded', true);
 
             this.setVisited(itemEl.index());
-            $(itemEl).find('button').first().addClass('visited');
-            $(itemEl).find('.accordion-item-title-icon').first().removeClass('icon-plus');
-            $(itemEl).find('.accordion-item-title-icon').first().addClass('icon-minus');
+            button.addClass('visited');
+
+            icon.removeClass('icon-plus');
+            icon.first().addClass('icon-minus');
         },
 
         setVisited: function(index) {
