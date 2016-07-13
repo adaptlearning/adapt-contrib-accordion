@@ -37,64 +37,64 @@ define(function(require) {
         toggleItem: function(event) {
             event.preventDefault();
 
-            var toggleButton = $(event.currentTarget);
-            var accordionItem = toggleButton.parent('.accordion-item');
-            var isCurrentlyExpanded = toggleButton.hasClass('selected');
+            var $toggleButton = $(event.currentTarget);
+            var $accordionItem = $toggleButton.parent('.accordion-item');
+            var isCurrentlyExpanded = $toggleButton.hasClass('selected');
 
-            if (this.model.get('_shouldCollapseItems')) {
+            if (this.model.get('_shouldCollapseItems') === false) {
+                // Close and reset the selected Accordion item only
+                this.closeItem($accordionItem);
+            } else {
                 // Close and reset all Accordion items
                 var allAccordionItems = this.$('.accordion-item');
                 var count = allAccordionItems.length;
                 for (var i = 0; i < count; i++) {
                     this.closeItem($(allAccordionItems[i]));
                 }
-            } else {
-                // Close and reset the selected Accordion item
-                this.closeItem(accordionItem);
             }
 
             if (!isCurrentlyExpanded) {
-                this.openItem(accordionItem);
+                this.openItem($accordionItem);
             }
         },
 
-        closeItem: function(itemEl) {
-            if (!itemEl) {
+        closeItem: function($itemEl) {
+            if (!$itemEl) {
                 return false;
             }
 
-            var body = $('.accordion-item-body', $(itemEl)).first();
-            var button = $('button', $(itemEl)).first();
-            var icon = $('.accordion-item-title-icon', $(itemEl)).first();
+            var $body = $('.accordion-item-body', $itemEl).first();
+            var $button = $('button', $itemEl).first();
+            var $icon = $('.accordion-item-title-icon', $itemEl).first();
 
-            body.stop(true, true).slideUp(this.toggleSpeed);
-            button.removeClass('selected');
-            button.attr('aria-expanded', false);
-            icon.addClass('icon-plus');
-            icon.removeClass('icon-minus');
+            $body.stop(true, true).slideUp(this.toggleSpeed);
+            $button.removeClass('selected');
+            $button.attr('aria-expanded', false);
+            $icon.addClass('icon-plus');
+            $icon.removeClass('icon-minus');
         },
 
-        openItem: function(itemEl) {
-            if (!itemEl) {
+        openItem: function($itemEl) {
+            if (!$itemEl) {
                 return false;
             }
 
-            var body = $('.accordion-item-body', $(itemEl)).first();
-            var button = $('button', $(itemEl)).first();
-            var icon = $('.accordion-item-title-icon', $(itemEl)).first();
+            var $body = $('.accordion-item-body', $itemEl).first();
+            var $button = $('button', $itemEl).first();
+            var $icon = $('.accordion-item-title-icon', $itemEl).first();
 
-            body = body.stop(true, true).slideDown(this.toggleSpeed, function() {
-                body.a11y_focus();
+            $body = $body.stop(true, true).slideDown(this.toggleSpeed, function() {
+                $body.a11y_focus();
             });
 
-            button.first().addClass('selected');
-            button.first().attr('aria-expanded', true);
+            $button.addClass('selected');
+            $button.attr('aria-expanded', true);
 
-            this.setVisited(itemEl.index());
-            button.addClass('visited');
+            this.setVisited($itemEl.index());
+            $button.addClass('visited');
 
-            icon.removeClass('icon-plus');
-            icon.first().addClass('icon-minus');
+            $icon.removeClass('icon-plus');
+            $icon.addClass('icon-minus');
         },
 
         setVisited: function(index) {
