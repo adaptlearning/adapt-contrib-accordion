@@ -9,6 +9,8 @@ define(function(require) {
             'click .accordion-item-title': 'toggleItem'
         },
 
+        toggleSpeed: 200,
+
         preRender: function() {
             // Checks to see if the accordion should be reset on revisit
             this.checkIfResetOnRevisit();
@@ -34,33 +36,65 @@ define(function(require) {
 
         toggleItem: function(event) {
             event.preventDefault();
-            this.$('.accordion-item-body').stop(true, true).slideUp(200);
 
-            if (!$(event.currentTarget).hasClass('selected')) {
-                this.$('.accordion-item-title').removeClass('selected');
-                var body = $(event.currentTarget).addClass('selected visited').siblings('.accordion-item-body').slideToggle(200, function() {
-                  $(body).a11y_focus();
-                });
-                this.$('.accordion-item-title-icon').removeClass('icon-minus').addClass('icon-plus');
-                $('.accordion-item-title-icon', event.currentTarget).removeClass('icon-plus').addClass('icon-minus');
+            var $toggleButton = $(event.currentTarget);
+            var $accordionItem = $toggleButton.parent('.accordion-item');
+            var isCurrentlyExpanded = $toggleButton.hasClass('selected');
 
-                if ($(event.currentTarget).hasClass('accordion-item')) {
-                    this.setVisited($(event.currentTarget).index());
-                } else {
-                    this.setVisited($(event.currentTarget).parent('.accordion-item').index());
+            if (this.model.get('_shouldCollapseItems') === false) {
+                // Close and reset the selected Accordion item only
+                this.closeItem($accordionItem);
+            } else {
+                // Close and reset all Accordion items
+                var allAccordionItems = this.$('.accordion-item');
+                var count = allAccordionItems.length;
+                for (var i = 0; i < count; i++) {
+                    this.closeItem($(allAccordionItems[i]));
                 }
-            } else {
-                this.$('.accordion-item-title').removeClass('selected');
-                $(event.currentTarget).removeClass('selected');
-                $('.accordion-item-title-icon', event.currentTarget).removeClass('icon-minus').addClass('icon-plus');
             }
-            // set aria-expanded value
-            if ($(event.currentTarget).hasClass('selected')) {
-                $('.accordion-item-title').attr('aria-expanded', false);
-                $(event.currentTarget).attr('aria-expanded', true);
-            } else {
-                $(event.currentTarget).attr('aria-expanded', false);
+
+            if (!isCurrentlyExpanded) {
+                this.openItem($accordionItem);
             }
+        },
+
+        closeItem: function($itemEl) {
+            if (!$itemEl) {
+                return false;
+            }
+
+            var $body = $('.accordion-item-body', $itemEl).first();
+            var $button = $('button', $itemEl).first();
+            var $icon = $('.accordion-item-title-icon', $itemEl).first();
+
+            $body.stop(true, true).slideUp(this.toggleSpeed);
+            $button.removeClass('selected');
+            $button.attr('aria-expanded', false);
+            $icon.addClass('icon-plus');
+            $icon.removeClass('icon-minus');
+        },
+
+        openItem: function($itemEl) {
+            if (!$itemEl) {
+                return false;
+            }
+
+            var $body = $('.accordion-item-body', $itemEl).first();
+            var $button = $('button', $itemEl).first();
+            var $icon = $('.accordion-item-title-icon', $itemEl).first();
+
+            $body = $body.stop(true, true).slideDown(this.toggleSpeed, function() {
+                $body.a11y_focus();
+            });
+
+            $button.addClass('selected');
+            $button.attr('aria-expanded', true);
+
+            this.setVisited($itemEl.index());
+            $button.addClass('visited');
+
+            $icon.removeClass('icon-plus');
+            $icon.addClass('icon-minus');
         },
 
         setVisited: function(index) {

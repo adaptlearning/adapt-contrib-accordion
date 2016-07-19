@@ -93,6 +93,18 @@
           }
         }
       }
-    }
+    },
+		"_shouldCollapseItems": {
+			"type": "boolean",
+			"required": false,
+			"default": true,
+			"title": "Items should auto-collapse",
+			"inputType": {
+				"type": "Boolean",
+				"options": [true, false]
+			},
+			"validators": [],
+			"help": "If set to 'false', upon expansion of an accordion item, any previously expanded items will not be collapsed"
+		}
   }
 }
