@@ -9,6 +9,7 @@
   "displayTitle": "Accordion",
   "body": "This is optional body text. Select the headings below to reveal the text.",
   "instruction": "",
+  "_persistExpansion":false,
   "_items": [
     {
       "title": "Heading 1",
