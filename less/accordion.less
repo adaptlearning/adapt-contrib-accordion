@@ -12,7 +12,7 @@
         color: @item-text-color;
         .dir-rtl & {
             left: inherit;
-            right: @item-padding-left; 
+            right: @item-padding-left;
         }
     }
 
@@ -25,6 +25,8 @@
         background-color: @item-color;
         text-decoration: none;
         width: 100%;
+        .item-title;
+
         .dir-rtl & {
             padding-left:inherit;
             padding-right:(@icon-size+(@item-padding-left*2));
@@ -49,7 +51,7 @@
                 color: @item-text-color-selected;
             }
         }
-        
+
         .no-touch & {
             &:hover {
                 color: @item-text-color-hover;
@@ -79,6 +81,9 @@
         color: @item-body-text-color;
         background-color: @item-body-color;
         display:none;
+        border: @item-border;
+        border-color: @item-border-color-selected;
+        border-top: 0;
     }
 
     .accordion-item-body-inner {
