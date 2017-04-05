@@ -24,12 +24,6 @@ define([
             ItemsModel.prototype.initialize.apply(this, arguments);
         },
 
-        checkCompletionStatus: function() {
-            if (this.getVisitedItems().length == this.get('_items').length) {
-                this.setCompletionStatus();
-            }
-        },
-
         toggleActiveItems: function(itemIndex) {
             var activeItems = this.get('_activeItems');
             var index = _.indexOf(activeItems, itemIndex);
