@@ -12,8 +12,7 @@ define([
         preRender: function() {
             // Checks to see if the accordion should be reset on revisit
             this.checkIfResetOnRevisit();
-            this.listenTo(this.model, 'change:_activeItems', this.onActiveItemChanged);
-            this.listenTo(this.model, 'change:_items', this.onItemsChanged);
+            this.listenTo(this.model, 'change:_items:_isActive', this.onItemsChanged);
         },
 
         postRender: function() {
@@ -39,11 +38,7 @@ define([
             this.model.toggleActiveItems(parseInt(itemIndex));
         },
 
-        onActiveItemChanged: function(model, activeItems, options) {
-            this.model.setItemState(activeItems);
-        },
-
-        onItemsChanged: function(model, items, options) {
+        onItemsChanged: function(model, items) {
             var $accordionItems = this.$('.accordion-item');
             for (var i = 0; i < items.length; i++) {                
                 if (items[i]._isActive) {
@@ -82,7 +77,7 @@ define([
             $button.addClass('selected');
             $button.attr('aria-expanded', true);
 
-            this.model.setItemAsVisited(itemIndex);
+            this.model.setItemAtIndexAsVisited(itemIndex);
             this.model.checkCompletionStatus();
             $button.addClass('visited');
 

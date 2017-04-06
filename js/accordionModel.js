@@ -7,59 +7,40 @@ define([
         defaults: function() {
             return _.extend({
                 _shouldCollapseItems: true,
-                _toggleSpeed: 200,
-                _activeItems: []
+                _toggleSpeed: 200
             }, ItemsModel.prototype.defaults);
         },
 
         initialize: function() {
-            if (this.get('_shouldCollapseItems') === false) {
-                this.set('_activeItems', []);
-            }
-
-            _.each(this.get('_items'), function(item) {
-                item._isActive = false;
-            });
+            this.resetActiveItems(false);
 
             ItemsModel.prototype.initialize.apply(this, arguments);
         },
 
         toggleActiveItems: function(itemIndex) {
-            var activeItems = this.get('_activeItems');
-            var index = _.indexOf(activeItems, itemIndex);
+            var activeItemsIndexes = this.getActiveItemsIndexes();
 
-            if (this.get('_shouldCollapseItems')) {
-                activeItems = (index >= 0) ? [] : [itemIndex];
+            if (activeItemsIndexes.length === 0) {
+                this.setItemAtIndexAsActive(itemIndex, false);
             } else {
-                // multiple active items possible
-                if (index >= 0) {
-                    // item is active remove it from the acite items list 
-                    activeItems.splice(index, 1);
+                if (this.get('_shouldCollapseItems')) {
+                    if (activeItemsIndexes[0] === itemIndex) {
+                        this.setItemAtIndexAsInactive(itemIndex, false);
+                    } else {
+                        this.setItemAtIndexAsActive(itemIndex, false);
+                        this.setItemAtIndexAsInactive(activeItemsIndexes[0], false);
+                    }
                 } else {
-                    // items is not active 
-                    activeItems.push(itemIndex);
+                    if (_.indexOf(activeItemsIndexes, itemIndex) >= 0) {
+                        this.setItemAtIndexAsInactive(itemIndex, false);
+                    } else {
+                        this.setItemAtIndexAsActive(itemIndex, false);
+                    }
                 }
             }
 
-            this.set('_activeItems', activeItems, {silent: true});
-            this.trigger('change:_activeItems', this, activeItems);
-        },
-
-        setItemState: function() {
-            var items = this.get('_items');
-            var activeItems = this.get('_activeItems');
-            // make sure there is only one item open 
-            if (this.get('_shouldCollapseItems'))
-                activeItems = activeItems.slice(0,1);
-            
-            for (var i = 0; i < items.length; i++) {
-                items[i]._isActive = (_.indexOf(activeItems, i) >= 0);
-            }
-
-            this.set('_items', items);
-            this.trigger('change:_items', this, items);
+            this.trigger('change:_items:_isActive', this, this.get('_items'));
         }
-
 
     });
 
