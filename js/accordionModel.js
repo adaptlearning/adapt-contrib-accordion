@@ -21,25 +21,23 @@ define([
             var activeItemsIndexes = this.getActiveItemsIndexes();
 
             if (activeItemsIndexes.length === 0) {
-                this.setItemAtIndexAsActive(itemIndex, false);
+                this.setItemAtIndexAsActive(itemIndex);
             } else {
                 if (this.get('_shouldCollapseItems')) {
                     if (activeItemsIndexes[0] === itemIndex) {
-                        this.setItemAtIndexAsInactive(itemIndex, false);
+                        this.setItemAtIndexAsInactive(itemIndex);
                     } else {
-                        this.setItemAtIndexAsActive(itemIndex, false);
                         this.setItemAtIndexAsInactive(activeItemsIndexes[0], false);
+                        this.setItemAtIndexAsActive(itemIndex);
                     }
                 } else {
                     if (_.indexOf(activeItemsIndexes, itemIndex) >= 0) {
-                        this.setItemAtIndexAsInactive(itemIndex, false);
+                        this.setItemAtIndexAsInactive(itemIndex);
                     } else {
-                        this.setItemAtIndexAsActive(itemIndex, false);
+                        this.setItemAtIndexAsActive(itemIndex);
                     }
                 }
             }
-
-            this.trigger('change:_items:_isActive', this, this.get('_items'));
         }
 
     });
