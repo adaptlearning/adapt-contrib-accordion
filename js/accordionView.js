@@ -34,8 +34,7 @@ define([
             event.preventDefault();
 
             var $accordionItem = $(event.currentTarget).parent('.accordion-item');
-            var itemIndex = $accordionItem.index();
-            this.model.toggleActiveItems(parseInt(itemIndex));
+            this.model.toggleActiveItems($accordionItem.index());
         },
 
         onItemsChanged: function(model, items) {
