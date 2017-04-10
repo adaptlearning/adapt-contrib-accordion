@@ -5,10 +5,10 @@ define([
     var AccordionModel = ItemsModel.extend({
 
         defaults: function() {
-            return _.extend({
+            return _.extend({}, _.results(ItemsModel.prototype, "defaults"), {
                 _shouldCollapseItems: true,
                 _toggleSpeed: 200
-            }, ItemsModel.prototype.defaults);
+            });
         },
 
         initialize: function() {
