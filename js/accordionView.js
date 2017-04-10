@@ -26,7 +26,6 @@ define([
             // If reset is enabled set defaults
             if (isResetOnRevisit) {
                 this.model.reset(isResetOnRevisit);
-                this.model.resetItems();
             }
         },
 
