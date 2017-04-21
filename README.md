@@ -52,6 +52,8 @@ guide the learner’s interaction with the component.
 
 >>**alt** (string): This text becomes the image’s `alt` attribute.
 
+>>**attribution** (string): Optional text to be displayed as an [attribution](https://wiki.creativecommons.org/Best_practices_for_attribution). By default it is displayed below the image. Adjust positioning by modifying CSS. Text can contain HTML tags, e.g., `Copyright © 2015 by <b>Lukasz 'Severiaan' Grela</b>`.
+
 >**_classes** (string): An optional class that will be applied to the Accordion Item.
 
 **_shouldCollapseItems** (boolean): Used to control the auto-collapse of other expanded Accordion items whenever an item is clicked/expanded. Defaulted to 'true'
