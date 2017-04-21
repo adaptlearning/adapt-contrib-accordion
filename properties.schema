@@ -79,6 +79,15 @@
                 "inputType": "Asset:image",
                 "validators": [],
                 "help": "Optional image which will be rendered with the item body text"
+              },
+              "attribution": {
+                "type":"string",
+                "required":false,
+                "default": "",
+                "inputType": "Text",
+                "validators": [],
+                "help": "Text to be displayed as an attribution",
+                "translatable": true
               }
             }
         },
