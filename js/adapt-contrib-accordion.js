@@ -46,10 +46,14 @@ define(function(require) {
                 this.closeItem($accordionItem);
             } else {
                 // Close and reset all Accordion items
-                var allAccordionItems = this.$('.accordion-item');
-                var count = allAccordionItems.length;
-                for (var i = 0; i < count; i++) {
-                    this.closeItem($(allAccordionItems[i]));
+                if(!this.model.get('_persistExpansion')) {
+                    var allAccordionItems = this.$('.accordion-item');
+                    var count = allAccordionItems.length;
+                    for (var i = 0; i < count; i++) {
+                        this.closeItem($(allAccordionItems[i]));
+                    }
+                } else {
+                    this.closeItem($accordionItem);
                 }
             }
 
