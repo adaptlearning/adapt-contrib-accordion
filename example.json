@@ -15,7 +15,8 @@
       "body": "This is display text 1.",
       "_graphic": {
         "src": "course/en/images/example.jpg",
-        "alt": "accordion item 1 graphic alt text here."
+        "alt": "accordion item 1 graphic alt text here.",
+        "attribution":"Copyright © 2015"
       },
       "_classes": "image-left"
     },
@@ -24,7 +25,8 @@
       "body": "This is display text 2.",
       "_graphic": {
         "src": "course/en/images/example.jpg",
-        "alt": "accordion item 2 graphic alt text here."
+        "alt": "accordion item 2 graphic alt text here.",
+        "attribution":"Copyright © 2015"
       },
       "_classes": ""
     },
@@ -33,7 +35,8 @@
       "body": "This is display text 3.",
       "_graphic": {
         "src": "course/en/images/example.jpg",
-        "alt": "accordion item 3 graphic alt text here."
+        "alt": "accordion item 3 graphic alt text here.",
+        "attribution":"Copyright © 2015"
       },
       "_classes": "image-right"
     }

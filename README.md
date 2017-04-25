@@ -6,7 +6,7 @@ The component displays a vertically stacked list of headings. Each heading is as
 
 [Visit the **Accordion** wiki](https://github.com/adaptlearning/adapt-contrib-accordion/wiki) for more information about its functionality and for explanations of key properties.
 
-##Installation
+## Installation
 
 As one of Adapt's *[core components](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#components),* **Accordion** is included with the [installation of the Adapt framework](https://github.com/adaptlearning/adapt_framework/wiki/Manual-installation-of-the-Adapt-framework#installation) and the [installation of the Adapt authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-Adapt-Origin).
 
@@ -52,6 +52,8 @@ guide the learner’s interaction with the component.
 
 >>**alt** (string): This text becomes the image’s `alt` attribute.
 
+>>**attribution** (string): Optional text to be displayed as an [attribution](https://wiki.creativecommons.org/Best_practices_for_attribution). By default it is displayed below the image. Adjust positioning by modifying CSS. Text can contain HTML tags, e.g., `Copyright © 2015 by <b>Lukasz 'Severiaan' Grela</b>`.
+
 >**_classes** (string): An optional class that will be applied to the Accordion Item.
 
 **_shouldCollapseItems** (boolean): Used to control the auto-collapse of other expanded Accordion items whenever an item is clicked/expanded. Defaulted to 'true'
@@ -74,3 +76,4 @@ Body graphics are displayed only when `"layout": "full"`. On a mobile device, a 
 **Accessibility support:** WAI AA
 **RTL support:** yes
 **Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge 12, IE 11, IE10, IE9, IE8, IE Mobile 11, Safari iOS 9+10, Safari OS X 9+10, Opera
+
