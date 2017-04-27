@@ -82,7 +82,7 @@
               },
               "attribution": {
                 "type":"string",
-                "required":false,
+                "required": false,
                 "default": "",
                 "inputType": "Text",
                 "validators": [],
