@@ -15,20 +15,20 @@ define([
             var activeItemsIndexes = this.getActiveItemsIndexes();
 
             if (activeItemsIndexes.length === 0) {
-                this.setItemAtIndexAsActive(itemIndex);
+                this.setItemActive(itemIndex);
             } else {
                 if (this.get('_shouldCollapseItems')) {
                     if (activeItemsIndexes[0] === itemIndex) {
-                        this.setItemAtIndexAsInactive(itemIndex);
+                        this.setItemInactive(itemIndex);
                     } else {
-                        this.setItemAtIndexAsInactive(activeItemsIndexes[0], false);
-                        this.setItemAtIndexAsActive(itemIndex);
+                        this.setItemInactive(activeItemsIndexes[0], false);
+                        this.setItemActive(itemIndex);
                     }
                 } else {
                     if (_.indexOf(activeItemsIndexes, itemIndex) >= 0) {
-                        this.setItemAtIndexAsInactive(itemIndex);
+                        this.setItemInactive(itemIndex);
                     } else {
-                        this.setItemAtIndexAsActive(itemIndex);
+                        this.setItemActive(itemIndex);
                     }
                 }
             }

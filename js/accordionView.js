@@ -76,7 +76,7 @@ define([
             $button.addClass('selected');
             $button.attr('aria-expanded', true);
 
-            this.model.setItemAtIndexAsVisited(itemIndex);
+            this.model.setItemVisited(itemIndex);
             this.model.checkCompletionStatus();
             $button.addClass('visited');
 
