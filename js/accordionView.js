@@ -2,8 +2,6 @@ define([ 'core/js/views/componentView' ], function(ComponentView) {
 
     var AccordionView = ComponentView.extend({
 
-        queuedItems: 0,
-
         events: {
             'click .accordion-item-title': 'onClick'
         },
@@ -21,7 +19,7 @@ define([ 'core/js/views/componentView' ], function(ComponentView) {
         },
 
         postRender: function() {
-            this.setUpItems();
+            this.setReadyStatus();
         },
 
         checkIfResetOnRevisit: function() {
@@ -33,35 +31,10 @@ define([ 'core/js/views/componentView' ], function(ComponentView) {
             }
         },
 
-        setUpItems: function() {
-            var items = this.model.get('_items');
-
-            this.queuedItems = items ? items.length : 0;
-            this.checkReadyStatus();
-
-            if (!items) return;
-
-            var $container = this.$('.accordion-widget');
-            var template = Handlebars.templates.accordionItem;
-
-            items.each(_.bind(function(item) {
-                $container.append($(template(item.toJSON())));
-                this.queuedItems--;
-                this.checkReadyStatus();
-            }, this));
-        },
-
-        checkReadyStatus: function() {
-            if (!this.queuedItems) {
-                this.setReadyStatus();
-            }
-        },
-
         onClick: function(event) {
             event.preventDefault();
 
-            var $accordionItem = $(event.currentTarget).parent('.accordion-item');
-            this.model.toggleItemsState($accordionItem.index());
+            this.model.toggleItemsState($(event.currentTarget).parent().data('index'));
         },
 
         onItemsActiveChange: function(item, isActive) {
@@ -71,13 +44,13 @@ define([ 'core/js/views/componentView' ], function(ComponentView) {
         onItemsVisitedChange: function(item, isVisited) {
             if (!isVisited) return;
 
-            var $item = this.$('.accordion-item').eq(item.get('_index'));
+            var $item = this.getItemElement(item);
 
             $item.children('.accordion-item-title').addClass('visited');
         },
 
         toggleItem: function(item, shouldExpand) {
-            var $item = this.$('.accordion-item').eq(item.get('_index'));
+            var $item = this.getItemElement(item);
             var $body = $item.children('.accordion-item-body').stop(true, true);
 
             $item.children('.accordion-item-title')
@@ -95,6 +68,12 @@ define([ 'core/js/views/componentView' ], function(ComponentView) {
             $body.slideDown(this.model.get('_toggleSpeed'), function() {
                 $body.a11y_focus();
             });
+        },
+
+        getItemElement: function(item) {
+            var index = item.get('_index');
+
+            return this.$('.accordion-item').filter('[data-index="' + index +'"]');
         }
 
     });
