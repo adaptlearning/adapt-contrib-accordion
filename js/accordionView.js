@@ -1,4 +1,6 @@
-define([ 'core/js/views/componentView' ], function(ComponentView) {
+define([
+    'core/js/views/componentView'
+], function(ComponentView) {
 
     var AccordionView = ComponentView.extend({
 

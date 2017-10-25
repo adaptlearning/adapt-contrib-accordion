@@ -4,6 +4,9 @@ define([
     './accordionView'
 ], function(Adapt, AccordionModel, AccordionView) {
 
-    return Adapt.register('accordion', { model: AccordionModel, view: AccordionView });
+    return Adapt.register('accordion', {
+        model: AccordionModel,
+        view: AccordionView
+    });
 
 });

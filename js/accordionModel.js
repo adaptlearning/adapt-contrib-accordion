@@ -1,4 +1,6 @@
-define([ 'core/js/models/itemsComponentModel' ], function(ItemsComponentModel) {
+define([
+    'core/js/models/itemsComponentModel'
+], function(ItemsComponentModel) {
 
     var AccordionModel = ItemsComponentModel.extend({
 
