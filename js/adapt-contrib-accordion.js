@@ -84,7 +84,12 @@ define(function(require) {
             var $icon = $('.accordion-item-title-icon', $itemEl).first();
 
             $body = $body.stop(true, true).slideDown(this.toggleSpeed, function() {
-                $body.a11y_focus();
+                if (Adapt.config.has('_accessibility') && Adapt.config.get('_accessibility')._isActive) {
+                    _.delay(function() {
+                        // Allow animation to complete before focusing
+                        $body.a11y_focus();
+                   }, 500);
+                }
             });
 
             $button.addClass('selected');
