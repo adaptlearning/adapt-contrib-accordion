@@ -84,12 +84,12 @@ define(function(require) {
             var $icon = $('.accordion-item-title-icon', $itemEl).first();
 
             $body = $body.stop(true, true).slideDown(this.toggleSpeed, function() {
-                if (Adapt.config.has('_accessibility') && Adapt.config.get('_accessibility')._isActive) {
-                    _.delay(function() {
-                        // Allow animation to complete before focusing
-                        $body.a11y_focus();
-                   }, 500);
-                }
+                var a11y = Adapt.config.get('_accessibility');
+                if (!a11y || !a11y._isActive) return;
+                _.delay(function() {
+                    // Allow animation to complete before focusing
+                    $body.a11y_focus();
+                }, 500);
             });
 
             $button.addClass('selected');
