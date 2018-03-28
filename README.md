@@ -70,8 +70,8 @@ Body graphics are displayed only when `"layout": "full"`. On a mobile device, a 
 
 ----------------------------
 
-**Version number:**  2.1.0   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
-**Framework versions:** 2.0  
+**Version number:**  2.1.2   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
+**Framework versions:** 2+  
 **Author / maintainer:** Adapt Core Team  
 **Accessibility support:** WAI AA  
 **RTL support:** yes  
