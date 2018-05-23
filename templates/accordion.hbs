@@ -1,4 +1,4 @@
-<div class="accordion-inner component-inner" role="region" aria-label="{{_globals._components._accordion.ariaRegion}}">
+<div class="accordion-inner component-inner">
     {{> component this}}
     <div class="accordion-widget component-widget">
         {{#each _items}}
@@ -17,7 +17,7 @@
                     {{#if _graphic}}
                     {{#if _graphic.src}}
                     <div class="accordion-item-graphic">
-                        <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}" tabindex="0">
+                        <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}">
                     </div>
                     {{#if _graphic.attribution}}
                         <div class="graphic-attribution">{{{_graphic.attribution}}}</div>
