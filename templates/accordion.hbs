@@ -3,13 +3,13 @@
     <div class="accordion-widget component-widget">
         {{#each _items}}
         <div class="accordion-item{{#if _classes}} {{_classes}}{{/if}}" data-index="{{_index}}">
-            <button id="{{../_id}}-{{@index}}-accordion-button" class="base accordion-item-title {{#if _isVisited}}visited{{/if}}" aria-expanded="false" aria-label="{{a11y_normalize title}}">
+            <button id="{{../_id}}-{{@index}}-accordion-button" class="base accordion-item-title {{#if _isVisited}}visited{{/if}}" aria-pressed="false" aria-label="{{a11y_normalize title}}">
                 <div class="accordion-item-title-inner">
                     <div class="accordion-item-title-icon icon icon-plus h5"></div>
                     {{{title}}}
                 </div>
             </button>
-            <div tabindex="-1" role="region" class="accordion-item-body" aria-labelledby="{{../_id}}-{{@index}}-accordion-button">
+            <div role="region" class="accordion-item-body" aria-labelledby="{{../_id}}-{{@index}}-accordion-button">
                 <div class="accordion-item-body-inner">
                     <div class="accordion-item-text">
                         {{{compile body}}}
