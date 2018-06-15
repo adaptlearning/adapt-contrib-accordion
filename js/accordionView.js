@@ -57,7 +57,7 @@ define([
 
             $item.children('.accordion-item-title')
                 .toggleClass('selected', shouldExpand)
-                .attr('aria-expanded', shouldExpand);
+                .attr('aria-pressed', shouldExpand);
             $item.find('.accordion-item-title-icon')
                 .toggleClass('icon-plus', !shouldExpand)
                 .toggleClass('icon-minus', shouldExpand);
