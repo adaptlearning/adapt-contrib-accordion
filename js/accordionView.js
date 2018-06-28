@@ -9,7 +9,6 @@ define([
         },
 
         preRender: function() {
-            // Checks to see if the accordion should be reset on revisit
             this.checkIfResetOnRevisit();
 
             this.model.resetActiveItems();
