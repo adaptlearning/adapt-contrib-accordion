@@ -1,7 +1,7 @@
 {
   "name": "adapt-contrib-accordion",
-  "version": "3.0.0",
-  "framework": ">=3",
+  "version": "3.0.1",
+  "framework": ">=3.2",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-accordion",
   "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
   "description": "An accordion component that displays clickable titles, which reveal display text",
