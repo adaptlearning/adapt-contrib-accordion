@@ -1,23 +1,23 @@
-<div class="accordion-inner component-inner" role="region" aria-label="{{_globals._components._accordion.ariaRegion}}">
+<div class="accordion-inner component-inner">
     {{> component this}}
     <div class="accordion-widget component-widget">
         {{#each _items}}
         <div class="accordion-item{{#if _classes}} {{_classes}}{{/if}}" data-index="{{_index}}">
-            <button class="base accordion-item-title{{#if _isVisited}} visited{{/if}}" aria-expanded="false" aria-label="{{{a11y_normalize title}}}">
+            <button id="{{../_id}}-{{@index}}-accordion-button" class="base accordion-item-title {{#if _isVisited}}visited{{/if}}" aria-expanded="false">
                 <div class="accordion-item-title-inner">
-                    <div class="accordion-item-title-icon icon icon-plus h5"></div>
+                    <div class="accordion-item-title-icon icon icon-plus h5" aria-hidden="true"></div>
                     {{{title}}}
                 </div>
             </button>
-            <div class="accordion-item-body">
+            <div role="region" class="accordion-item-body" aria-labelledby="{{../_id}}-{{@index}}-accordion-button">
                 <div class="accordion-item-body-inner">
                     <div class="accordion-item-text">
-                        {{{a11y_text body}}}
+                        {{{compile body}}}
                     </div>
                     {{#if _graphic}}
                     {{#if _graphic.src}}
                     <div class="accordion-item-graphic">
-                        <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}" tabindex="0">
+                        <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}">
                     </div>
                     {{#if _graphic.attribution}}
                         <div class="graphic-attribution">{{{_graphic.attribution}}}</div>

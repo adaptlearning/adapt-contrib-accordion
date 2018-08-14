@@ -66,9 +66,7 @@ define([
                 return;
             }
 
-            $body.slideDown(this.model.get('_toggleSpeed'), function() {
-                $body.a11y_focus();
-            });
+            $body.slideDown(this.model.get('_toggleSpeed'));
         },
 
         getItemElement: function(item) {
