@@ -111,7 +111,7 @@
             "title": "Classes",
             "inputType": "Text",
             "validators": [],
-            "help": "Classes that are applied to the Accordion Item"
+            "help": "Classes that are applied to the accordion item"
           }
         }
       }
