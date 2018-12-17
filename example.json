@@ -10,14 +10,15 @@
         "body": "This is optional body text. Select the headings below to reveal the text.",
         "instruction": "",
         "_shouldCollapseItems": true,
+        "_setCompletionOn": "allItems",
         "_items": [
             {
               "title": "Heading 1",
               "body": "This is display text 1.",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
-                  "alt": "accordion item 1 graphic alt text here.",
-                  "attribution":"Copyright © 2015"
+                  "alt": "Accordion item 1 graphic alt text here.",
+                  "attribution": "Copyright © 2015"
               },
               "_classes": "align-image-left"
             },
@@ -26,8 +27,8 @@
               "body": "This is display text 2.",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
-                  "alt": "accordion item 2 graphic alt text here.",
-                  "attribution":"Copyright © 2015"
+                  "alt": "Accordion item 2 graphic alt text here.",
+                  "attribution": "Copyright © 2015"
               },
               "_classes": "align-image-right"
             },
@@ -36,8 +37,8 @@
               "body": "This is display text 3.",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
-                  "alt": "accordion item 3 graphic alt text here.",
-                  "attribution":"Copyright © 2015"
+                  "alt": "Accordion item 3 graphic alt text here.",
+                  "attribution": "Copyright © 2015"
               },
               "_classes": ""
             }

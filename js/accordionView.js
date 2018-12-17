@@ -21,6 +21,10 @@ define([
 
     postRender: function() {
       this.setReadyStatus();
+
+      if (this.model.get('_setCompletionOn') === 'inview') {
+        this.setupInviewCompletion();
+      }
     },
 
     checkIfResetOnRevisit: function() {
