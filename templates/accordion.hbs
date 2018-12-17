@@ -1,34 +1,46 @@
-<div class="accordion-inner component-inner">
+<div class="component__inner accordion__inner">
+
   {{> component this}}
-  <div class="accordion-widget component-widget">
+
+  <div class="component__widget accordion__widget">
 
     {{#each _items}}
-    <div class="accordion-item{{#if _classes}} {{_classes}}{{/if}}" data-index="{{_index}}">
+    <div class="accordion__item{{#if _classes}} {{_classes}}{{/if}}" data-index="{{_index}}">
 
-      <button id="{{../_id}}-{{@index}}-accordion-button" class="base accordion-item-title {{#if _isVisited}}visited{{/if}}" aria-expanded="false">
-        <div class="accordion-item-title-inner">
-          <div class="accordion-item-title-icon icon icon-plus h5" aria-hidden="true"></div>
-          {{{title}}}
+      <button id="{{../_id}}-{{@index}}-accordion-button" class="accordion__item-btn js-toggle-item is-closed accordion-item-title {{#if _isVisited}} is-visited{{/if}}" aria-expanded="false">
+        <div class="accordion__item-btn-inner">
+
+          <div class="accordion__item-icon">
+            <div class="icon"></div>
+          </div>
+
+          <div class="accordion__item-title">
+            <div class="accordion__item-title-inner">
+              {{{title}}}
+            </div>
+          </div>
+
         </div>
       </button>
 
-      <div role="region" class="accordion-item-body" aria-labelledby="{{../_id}}-{{@index}}-accordion-button">
-        <div class="accordion-item-body-inner">
+      <div class="accordion__item-content" role="region" aria-labelledby="{{../_id}}-{{@index}}-accordion-button">
+        <div class="accordion__item-content-inner">
 
-          <div class="accordion-item-text">
-            {{{compile body}}}
+          <div class="accordion__item-body">
+            <div class="accordion__item-body-inner">
+              {{{compile body}}}
+            </div>
           </div>
 
-          {{#if _graphic}}
-          {{#if _graphic.src}}
-          <div class="accordion-item-graphic">
-            <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}">
+          <div class="accordion__item-image-container">
+            <img class="accordion__item-image" src="{{_graphic.src}}" {{#if _graphic.alt}}aria-label="{{_graphic.alt}}"{{else}}aria-hidden="true"{{/if}}>
+
+            <div class="accordion__attribution attribution">
+              <div class="accordion__attribution-inner">
+                {{{_graphic.attribution}}}
+              </div>
+            </div>
           </div>
-          {{#if _graphic.attribution}}
-          <div class="graphic-attribution">{{{_graphic.attribution}}}</div>
-          {{/if}}
-          {{/if}}
-          {{/if}}
 
         </div>
       </div>

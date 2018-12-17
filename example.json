@@ -4,7 +4,7 @@
         "_type": "component",
         "_component": "accordion",
         "_classes": "",
-        "_layout": "left",
+        "_layout": "full",
         "title": "Accordion",
         "displayTitle": "Accordion",
         "body": "This is optional body text. Select the headings below to reveal the text.",
@@ -19,7 +19,7 @@
                   "alt": "accordion item 1 graphic alt text here.",
                   "attribution":"Copyright © 2015"
               },
-              "_classes": "image-left"
+              "_classes": "align-image-left"
             },
             {
               "title": "Heading 2",
@@ -29,7 +29,7 @@
                   "alt": "accordion item 2 graphic alt text here.",
                   "attribution":"Copyright © 2015"
               },
-              "_classes": ""
+              "_classes": "align-image-right"
             },
             {
               "title": "Heading 3",
@@ -39,7 +39,7 @@
                   "alt": "accordion item 3 graphic alt text here.",
                   "attribution":"Copyright © 2015"
               },
-              "_classes": "image-right"
+              "_classes": ""
             }
         ]
     }

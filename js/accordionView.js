@@ -5,7 +5,7 @@ define([
   var AccordionView = ComponentView.extend({
 
     events: {
-      'click .accordion-item-title': 'onClick'
+      'click .js-toggle-item': 'onClick'
     },
 
     preRender: function() {
@@ -47,19 +47,19 @@ define([
 
       var $item = this.getItemElement(item);
 
-      $item.children('.accordion-item-title').addClass('visited');
+      $item.children('.accordion__item-btn').addClass('is-visited');
     },
 
     toggleItem: function(item, shouldExpand) {
       var $item = this.getItemElement(item);
-      var $body = $item.children('.accordion-item-body').stop(true, true);
+      var $body = $item.children('.accordion__item-content').stop(true, true);
 
-      $item.children('.accordion-item-title')
-          .toggleClass('selected', shouldExpand)
+      $item.children('.accordion__item-btn')
+          .toggleClass('is-selected', shouldExpand)
           .attr('aria-expanded', shouldExpand);
-      $item.find('.accordion-item-title-icon')
-          .toggleClass('icon-plus', !shouldExpand)
-          .toggleClass('icon-minus', shouldExpand);
+      $item.children('.accordion__item-btn')
+          .toggleClass('is-closed', !shouldExpand)
+          .toggleClass('is-open', shouldExpand);
 
       if (!shouldExpand) {
         $body.slideUp(this.model.get('_toggleSpeed'));
@@ -72,7 +72,7 @@ define([
     getItemElement: function(item) {
       var index = item.get('_index');
 
-      return this.$('.accordion-item').filter('[data-index="' + index +'"]');
+      return this.$('.accordion__item').filter('[data-index="' + index +'"]');
     }
 
   });
