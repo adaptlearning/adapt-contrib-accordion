@@ -1,28 +1,6 @@
 .accordion {
   &__item-btn {
-    position: relative;
-    padding: @item-padding;
-    padding-left: @icon-size + (@item-padding * 2);
     width: 100%;
-    text-align: left;
-
-    .dir-rtl & {
-      padding-left: @item-padding;
-      padding-right: @icon-size + (@item-padding * 2);
-      text-align: right;
-    }
-  }
-
-  &__item-icon {
-    position: absolute;
-    top: 50%;
-    left: @item-padding;
-    .transform(translateY(-50%));
-
-    .dir-rtl & {
-      left: inherit;
-      right: @item-padding;
-    }
   }
 
   // --------------------------------------------------
@@ -50,7 +28,7 @@
   // Aligns image either left or right on desktop
   // Defaults to underneath on smaller screens
   // --------------------------------------------------
-  @media (min-width: (@device-width-medium + 1)) {
+  @media (min-width: @device-width-medium) {
     &__item.align-image-left {
       .accordion__item-content-inner {
         display: flex;
