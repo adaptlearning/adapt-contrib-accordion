@@ -103,7 +103,7 @@
                 "translatable": true
               }
             }
-        },
+          },
           "_classes": {
             "type":"string",
             "required": false,
@@ -111,7 +111,7 @@
             "title": "Classes",
             "inputType": "Text",
             "validators": [],
-            "help": "Classes that are applied to the accordion item"
+            "help": "Custom classes that are applied to the accordion item. Classes 'align-image-left' and 'align-image-right' are available to align item image in desktop view."
           }
         }
       }
