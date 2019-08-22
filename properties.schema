@@ -1,5 +1,5 @@
 {
-  "type":"object",
+  "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "id": "http://jsonschema.net",
   "$ref": "http://localhost/plugins/content/component/model.schema",
@@ -13,12 +13,12 @@
       "translatable": true
     }
   },
-  "properties":{
+  "properties": {
     "_supportedLayout": {
       "type": "string",
       "required": true,
       "enum": ["full-width", "half-width", "both"],
-      "default": "half-width",
+      "default": "full-width",
       "editorOnly": true
     },
     "instruction": {
@@ -75,7 +75,7 @@
             "type": "object",
             "required": false,
             "title": "Graphic",
-            "properties":{
+            "properties": {
               "alt": {
                 "type": "string",
                 "required": false,
@@ -105,13 +105,13 @@
             }
           },
           "_classes": {
-            "type":"string",
+            "type": "string",
             "required": false,
             "default": "",
             "title": "Classes",
             "inputType": "Text",
             "validators": [],
-            "help": "Custom classes that are applied to the accordion item. Classes 'align-image-left' and 'align-image-right' are available to align item image in desktop view."
+            "help": "Custom classes that are applied to the accordion item. Supported classes 'align-image-left' and 'align-image-right' are available to align item image to the left or right in desktop view. On smaller screens the item image defaults underneath the item body text. Additional classes can be used but they must be predefined in one of the Less files. Separate multiple classes with a space."
           }
         }
       }

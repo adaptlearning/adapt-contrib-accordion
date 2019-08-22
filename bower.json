@@ -1,13 +1,13 @@
 {
   "name": "adapt-contrib-accordion",
-  "version": "4.0.0",
-  "framework": ">=3.3",
+  "version": "5.0.0",
+  "framework": ">=5",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-accordion",
   "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
+  "component" : "accordion",
+  "displayName" : "Accordion",
   "description": "An accordion component that displays clickable titles, which reveal display text",
   "main": "/js/adapt-contrib-accordion.js",
-  "displayName" : "Accordion",
-  "component" : "accordion",
   "keywords": [
     "adapt-plugin",
     "adapt-component"
