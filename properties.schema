@@ -7,7 +7,7 @@
     "ariaRegion": {
       "type": "string",
       "required": true,
-      "default": "Accordion. Select each button to expand the content.",
+      "default": "List of expandable sections. Select each button to expand the content.",
       "inputType": "Text",
       "validators": [],
       "translatable": true
