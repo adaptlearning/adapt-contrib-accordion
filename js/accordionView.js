@@ -59,11 +59,9 @@ define([
       var $body = $item.children('.accordion__item-content').stop(true, true);
 
       $item.children('.accordion__item-btn')
-          .toggleClass('is-selected', shouldExpand)
-          .attr('aria-expanded', shouldExpand);
-      $item.children('.accordion__item-btn')
-          .toggleClass('is-closed', !shouldExpand)
-          .toggleClass('is-open', shouldExpand);
+        .toggleClass('is-selected is-open', shouldExpand)
+        .toggleClass('is-closed', !shouldExpand)
+        .attr('aria-expanded', shouldExpand);
 
       if (!shouldExpand) {
         $body.slideUp(this.model.get('_toggleSpeed'));
