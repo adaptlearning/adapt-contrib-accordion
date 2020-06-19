@@ -2,18 +2,18 @@ define([
   'core/js/models/itemsComponentModel'
 ], function(ItemsComponentModel) {
 
-  var AccordionModel = ItemsComponentModel.extend({
+  class AccordionModel extends ItemsComponentModel {
 
-    defaults: function() {
+    defaults() {
       return _.extend({}, _.result(ItemsComponentModel.prototype, 'defaults'), {
         _shouldCollapseItems: true,
         _toggleSpeed: 200
       });
-    },
+    }
 
-    toggleItemsState: function(index) {
-      var item = this.getItem(index);
-      var previousActiveItem = this.getActiveItem();
+    toggleItemsState(index) {
+      const item = this.getItem(index);
+      const previousActiveItem = this.getActiveItem();
 
       item.toggleActive();
       item.toggleVisited(true);
@@ -23,7 +23,7 @@ define([
       }
     }
 
-  });
+  }
 
   return AccordionModel;
 
