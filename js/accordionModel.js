@@ -5,10 +5,10 @@ define([
   class AccordionModel extends ItemsComponentModel {
 
     defaults() {
-      return _.extend({}, _.result(ItemsComponentModel.prototype, 'defaults'), {
+      return ItemsComponentModel.resultExtend('defaults', {
         _shouldCollapseItems: true,
         _toggleSpeed: 200
-      });
+      }, this);
     }
 
     toggleItemsState(index) {
