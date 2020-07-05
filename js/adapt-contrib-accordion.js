@@ -1,12 +1,8 @@
-define([
-  'core/js/adapt',
-  './accordionModel',
-  './accordionView'
-], function(Adapt, AccordionModel, AccordionView) {
+import Adapt from 'core/js/adapt';
+import AccordionModel from './accordionModel';
+import AccordionView from './accordionView';
 
-  return Adapt.register('accordion', {
-    model: AccordionModel,
-    view: AccordionView
-  });
-
+export default Adapt.register('accordion', {
+  model: AccordionModel,
+  view: AccordionView
 });
