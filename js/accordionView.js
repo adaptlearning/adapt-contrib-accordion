@@ -20,7 +20,7 @@ class AccordionView extends ComponentView {
   }
 
   checkIfResetOnRevisit() {
-    var isResetOnRevisit = this.model.get('_isResetOnRevisit');
+    const isResetOnRevisit = this.model.get('_isResetOnRevisit');
     // If reset is enabled set defaults
     if (isResetOnRevisit) {
       this.model.reset(isResetOnRevisit);
@@ -37,8 +37,8 @@ class AccordionView extends ComponentView {
   }
 
   toggleItem(item, shouldExpand) {
-    var $item = this.getItemElement(item);
-    var $body = $item.children('.accordion__item-content').stop(true, true);
+    const $item = this.getItemElement(item);
+    const $body = $item.children('.accordion__item-content').stop(true, true);
     if (!shouldExpand) {
       $body.slideUp(this.model.get('_toggleSpeed'));
       return;
@@ -47,7 +47,7 @@ class AccordionView extends ComponentView {
   }
 
   getItemElement(item) {
-    var index = item.get('_index');
+    const index = item.get('_index');
     return this.$('.accordion__item').filter('[data-index="' + index +'"]');
   }
 
