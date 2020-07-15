@@ -1,30 +1,24 @@
-define([
-  'core/js/models/itemsComponentModel'
-], function(ItemsComponentModel) {
+import ItemsComponentModel from 'core/js/models/itemsComponentModel';
 
-  var AccordionModel = ItemsComponentModel.extend({
+export default class AccordionModel extends ItemsComponentModel {
 
-    defaults: function() {
-      return _.extend({}, _.result(ItemsComponentModel.prototype, 'defaults'), {
-        _shouldCollapseItems: true,
-        _toggleSpeed: 200
-      });
-    },
+  defaults() {
+    return ItemsComponentModel.resultExtend('defaults', {
+      _shouldCollapseItems: true,
+      _toggleSpeed: 200
+    });
+  }
 
-    toggleItemsState: function(index) {
-      var item = this.getItem(index);
-      var previousActiveItem = this.getActiveItem();
+  toggleItemsState(index) {
+    const item = this.getItem(index);
+    const previousActiveItem = this.getActiveItem();
 
-      item.toggleActive();
-      item.toggleVisited(true);
+    item.toggleActive();
+    item.toggleVisited(true);
 
-      if (previousActiveItem && this.get('_shouldCollapseItems')) {
-        previousActiveItem.toggleActive(false);
-      }
+    if (previousActiveItem && this.get('_shouldCollapseItems')) {
+      previousActiveItem.toggleActive(false);
     }
+  }
 
-  });
-
-  return AccordionModel;
-
-});
+}
