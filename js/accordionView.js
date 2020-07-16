@@ -28,7 +28,6 @@ class AccordionView extends ComponentView {
   }
 
   onClick(event) {
-    event.preventDefault();
     this.model.toggleItemsState($(event.currentTarget).parent().data('index'));
   }
 
