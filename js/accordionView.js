@@ -49,7 +49,7 @@ class AccordionView extends ComponentView {
     const index = item.get('_index');
     return this.$('.accordion__item').filter(`[data-index="${index}"]`);
   }
-
+  
 }
 
 AccordionView.template = 'accordion.jsx';
