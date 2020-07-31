@@ -4,7 +4,7 @@ export default function (view, data) {
   return <div className="component__inner accordion__inner">
     {templates.component(view, data)}
     <div className="component__widget accordion__widget">
-      {data._items.map(({ _id, _graphic, _classes, title, body, _index, _isVisited, _isActive }, index) => {
+      {data._items.map(({ _graphic, _classes, title, body, _index, _isVisited, _isActive }, index) => {
         return <div key={_index} className={classes([
               "accordion__item",
               _graphic.src && 'has-image',
