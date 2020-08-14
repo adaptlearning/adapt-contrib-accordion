@@ -1,8 +1,11 @@
+import Adapt from 'core/js/adapt';
 import { compile, classes, templates, html } from 'core/js/reactHelpers';
 
-export default function (view, data) {
+export default function (model, view) {
+  const data = model.toJSON();
+  data._globals = Adapt.course.get('_globals');
   return <div className="component__inner accordion__inner">
-    {templates.component(view, data)}
+    {templates.component(model, view)}
     <div className="component__widget accordion__widget">
       {data._items.map(({ _graphic, _classes, title, body, _index, _isVisited, _isActive }, index) => {
         return <div key={_index} className={classes([
