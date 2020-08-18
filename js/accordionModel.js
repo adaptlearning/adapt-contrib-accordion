@@ -16,9 +16,8 @@ export default class AccordionModel extends ItemsComponentModel {
     item.toggleActive();
     item.toggleVisited(true);
 
-    if (previousActiveItem && this.get('_shouldCollapseItems')) {
-      previousActiveItem.toggleActive(false);
-    }
+    if (!previousActiveItem || !this.get('_shouldCollapseItems')) return;
+    previousActiveItem.toggleActive(false);
   }
 
 }

@@ -14,17 +14,15 @@ class AccordionView extends ComponentView {
 
   postRender() {
     this.setReadyStatus();
-    if (this.model.get('_setCompletionOn') === 'inview') {
-      this.setupInviewCompletion();
-    }
+    if (this.model.get('_setCompletionOn') !== 'inview') return;
+    this.setupInviewCompletion();
   }
 
   checkIfResetOnRevisit() {
     const isResetOnRevisit = this.model.get('_isResetOnRevisit');
     // If reset is enabled set defaults
-    if (isResetOnRevisit) {
-      this.model.reset(isResetOnRevisit);
-    }
+    if (!isResetOnRevisit) return;
+    this.model.reset(isResetOnRevisit);
   }
 
   onClick(event) {
@@ -49,7 +47,7 @@ class AccordionView extends ComponentView {
     const index = item.get('_index');
     return this.$('.accordion__item').filter(`[data-index="${index}"]`);
   }
-  
+
 }
 
 AccordionView.template = 'accordion.jsx';

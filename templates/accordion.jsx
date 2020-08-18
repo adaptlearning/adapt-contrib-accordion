@@ -76,8 +76,8 @@ export default function (model, view) {
                   <img
                     className="accordion__item-image"
                     src={_graphic.src}
-                    aria-label={_graphic.alt}
-                    aria-hidden={_graphic.alt ? 'true' : 'false'}
+                    aria-label={_graphic.alt ? Adapt.a11y.normalize(_graphic.alt) : ''}
+                    aria-hidden={!_graphic.alt}
                   />
 
                   {_graphic.attribution &&
