@@ -13,11 +13,15 @@ export default function (model, view) {
 
         {data._items.map(({ _graphic, _classes, title, body, _index, _isVisited, _isActive }, index) =>
 
-          <div key={_index} className={classes([
-            'accordion__item',
-            _graphic.src && 'has-image',
-            _classes && _classes
-          ])} data-index={_index}>
+          <div
+            className={classes([
+              'accordion__item',
+              _graphic.src && 'has-image',
+              _classes && _classes
+            ])}
+            key={_index}
+            data-index={_index}
+          >
 
             <button
               id={`${data._id}-${index}-accordion-button`}
