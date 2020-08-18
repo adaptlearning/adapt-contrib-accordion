@@ -12,18 +12,24 @@ export default function (model, view) {
       <div className="component__widget accordion__widget">
 
         {data._items.map(({ _graphic, _classes, title, body, _index, _isVisited, _isActive }, index) =>
+
           <div key={_index} className={classes([
             'accordion__item',
             _graphic.src && 'has-image',
             _classes && _classes
           ])} data-index={_index}>
 
-            <button onClick={view.onClick.bind(view)} id={`${data._id}-${index}-accordion-button`} className={classes([
-              'accordion__item-btn',
-              'js-toggle-item',
-              _isVisited && 'is-visited',
-              _isActive ? 'is-open is-selected' : 'is-closed'
-            ])} aria-expanded={_isActive ? 'true' : 'false'}>
+            <button
+              id={`${data._id}-${index}-accordion-button`}
+              className={classes([
+                'accordion__item-btn',
+                'js-toggle-item',
+                _isVisited && 'is-visited',
+                _isActive ? 'is-open is-selected' : 'is-closed'
+              ])}
+              onClick={view.onClick.bind(view)}
+              aria-expanded={_isActive ? 'true' : 'false'}
+            >
 
               <div className="accordion__item-btn-inner">
 
@@ -41,7 +47,12 @@ export default function (model, view) {
 
             </button>
 
-            <div className="accordion__item-content" role="region" aria-labelledby={`${data._id}-${index}-accordion-button`}>
+            <div
+              className="accordion__item-content"
+              role="region"
+              aria-labelledby={`${data._id}-${index}-accordion-button`}
+            >
+
               <div className="accordion__item-content-inner">
 
                 {body &&
@@ -58,7 +69,12 @@ export default function (model, view) {
                   _graphic.attribution && 'has-attribution'
                 ])}>
 
-                  <img className="accordion__item-image" src={_graphic.src} aria-label={_graphic.alt} aria-hidden={_graphic.alt ? 'true' : 'false'} />
+                  <img
+                    className="accordion__item-image"
+                    src={_graphic.src}
+                    aria-label={_graphic.alt}
+                    aria-hidden={_graphic.alt ? 'true' : 'false'}
+                  />
 
                   {_graphic.attribution &&
                   <div className="component__attribution accordion__attribution">
