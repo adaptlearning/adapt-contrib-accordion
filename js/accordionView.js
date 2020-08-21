@@ -5,7 +5,7 @@ class AccordionView extends ComponentView {
   preRender() {
     this.checkIfResetOnRevisit();
     this.model.resetActiveItems();
-    this.listenTo(this.model.get('_children'), {
+    this.listenTo(this.model.getChildren(), {
       'change:_isActive': this.onItemsActiveChange,
       'change:_isVisited': this.onItemsVisitedChange,
       'all': this.changed
