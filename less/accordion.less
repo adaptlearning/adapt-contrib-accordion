@@ -1,6 +1,6 @@
 .accordion {
   overflow-anchor: none;
-  
+
   &__item-btn {
     width: 100%;
   }
@@ -9,7 +9,6 @@
     display: none;
   }
 
-  // --------------------------------------------------
   // Item icon states
   // --------------------------------------------------
   &__item-btn.is-closed .icon {
@@ -19,76 +18,63 @@
   &__item-btn.is-open .icon {
     .icon-minus;
   }
-  // --------------------------------------------------
 
-  // --------------------------------------------------
   // Set up margin between body and image elements
   // Turn off margin when image is left / right aligned on desktop
   // --------------------------------------------------
-  &__item.has-image {
-    .accordion__item-body {
-      margin-bottom: @item-padding / 2;
-    }
+  &__item.has-image &__item-body {
+    margin-bottom: @item-padding / 2;
+  }
 
-    @media (min-width: @device-width-medium) {
-      &.align-image-left,
-      &.align-image-right {
-        .accordion__item-body {
-          margin-bottom: 0;
-        }
-      }
+  @media (min-width: @device-width-medium) {
+    &__item.has-image.align-image-left &__item-body,
+    &__item.has-image.align-image-right &__item-body {
+      margin-bottom: 0;
     }
   }
-  // --------------------------------------------------
 
-  // --------------------------------------------------
   // Predefined image alignment classes
   // Aligns image either left or right on desktop
   // Defaults to underneath on smaller screens
   // --------------------------------------------------
   @media (min-width: @device-width-medium) {
-    &__item.align-image-left,
-    &__item.align-image-right {
-      .accordion__item-content-inner {
-        display: flex;
-        align-items: flex-start;
-      }
-
-      .accordion__item-body,
-      .accordion__item-image-container {
-        width: 50%;
-      }
+    &__item.align-image-left &__item-content-inner,
+    &__item.align-image-right &__item-content-inner {
+      display: flex;
+      align-items: flex-start;
     }
 
-    &__item.align-image-left {
-      .accordion__item-content-inner {
-        flex-direction: row-reverse;
-      }
+    &__item.align-image-left &__item-body,
+    &__item.align-image-right &__item-body,
+    &__item.align-image-left &__item-image-container,
+    &__item.align-image-right &__item-image-container {
+        width: 50%;
+    }
 
-      .accordion__item-image-container {
-        margin-right: @item-padding / 2;
-      }
+    &__item.align-image-left &__item-content-inner {
+      flex-direction: row-reverse;
+    }
 
-      .dir-rtl & .accordion__item-image-container {
+    &__item.align-image-left &__item-image-container {
+      margin-right: @item-padding / 2;
+
+      .dir-rtl & {
         margin-right: inherit;
         margin-left: @item-padding / 2;
       }
     }
 
-    &__item.align-image-right {
-      .accordion__item-content-inner {
-        flex-direction: row;
-      }
+    &__item.align-image-right &__item-content-inner {
+      flex-direction: row;
+    }
 
-      .accordion__item-image-container {
-        margin-left: @item-padding / 2;
-      }
+    &__item.align-image-right &__item-image-container {
+      margin-left: @item-padding / 2;
 
-      .dir-rtl & .accordion__item-image-container {
+      .dir-rtl & {
         margin-left: inherit;
         margin-right: @item-padding / 2;
       }
     }
   }
-  // --------------------------------------------------
 }
