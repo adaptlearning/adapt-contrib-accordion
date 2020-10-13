@@ -54,14 +54,20 @@ guide the learner’s interaction with the component.
 
 >>**src** (string): File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/c-45-1.jpg*).
 
->>**alt** (string): This text becomes the image’s `alt` attribute.
+>>**alt** (string): The alternative text for this image. 
 
 >>**attribution** (string): Optional text to be displayed as an [attribution](https://wiki.creativecommons.org/Best_practices_for_attribution). By default it is displayed over the bottom of the image. Adjust positioning by modifying CSS. Text can contain HTML tags, e.g., `Copyright © 2015 by <b>Lukasz 'Severiaan' Grela</b>`.
 
 >**\_classes** (string): An optional class that will be applied to the Accordion Item. Supported classes are `"align-image-left"` and `"align-image-right"` which aligns the item image to the left or right in desktop view. On smaller screens the item image defaults underneath the item body text. Additional classes can be used but they must be predefined in one of the Less files. Separate multiple classes with a space.
 
 ### Accessibility
-**Accordion** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within the **globals** object in [*properties.schema*](https://github.com/adaptlearning/adapt-contrib-accordion/blob/master/properties.schema).
++ **Accordion** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within the **globals** object in [*properties.schema*](https://github.com/adaptlearning/adapt-contrib-accordion/blob/master/properties.schema).
++ Alternative text, the text equivalent for an image. It is read by screen readers allowing the content of the image to be accessible to those with visual or certain cognitive disabilities. Leave the alt text empty (`"alt": ""`) if the image does not contribute significant course content.
+
+### Providing good alt text
++ Be specific and succinct. Describe what you see. A few words will usually be enough, but charts and diagrams will likely require more thought. Bear in mind that screen readers may cut-off alt text at around 125 characters.
++ *Don’t* be redundant. If an image doesn't add value and is just there for design purposes, or the context is already covered in the supporting text, leave the alt text empty.
++ *Don’t* use phrases “image of…” or “graphic of…” etc. It's already assumed your alt text is referring to an image, so there's no need to specify it.
 <div float align=right><a href="#top">Back to Top</a></div>
 
 ## Limitations
