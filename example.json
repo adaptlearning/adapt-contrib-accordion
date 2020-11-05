@@ -18,7 +18,7 @@
               "body": "This is display text 1.",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
-                  "alt": "Placeholder graphic",
+                  "alt": "",
                   "attribution": "Copyright © 2019"
               },
               "_comment": "Supported classes = 'align-image-left' | 'align-image-right'. Additional classes can be used but they must be predefined in one of the Less files",
