@@ -17,7 +17,7 @@ export default function (model, view) {
             className={classes([
               'accordion__item',
               _graphic.src && 'has-image',
-              _classes && _classes
+              _classes
             ])}
             key={_index}
             data-index={_index}
