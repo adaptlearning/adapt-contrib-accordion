@@ -43,7 +43,7 @@ export default function (model, view) {
 
                 <div className="accordion__item-title">
                   <div className="accordion__item-title-inner">
-                    {html(title)}
+                    {html(compile(title))}
                   </div>
                 </div>
 
