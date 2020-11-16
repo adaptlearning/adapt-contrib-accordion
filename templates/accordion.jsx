@@ -32,7 +32,7 @@ export default function (model, view) {
                 _isActive ? 'is-open is-selected' : 'is-closed'
               ])}
               onClick={view.onClick.bind(view)}
-              aria-expanded={_isActive ? 'true' : 'false'}
+              aria-expanded={_isActive.toString()}
             >
 
               <div className="accordion__item-btn-inner">
