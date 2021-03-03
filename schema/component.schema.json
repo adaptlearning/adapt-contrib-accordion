@@ -24,7 +24,6 @@
         "instruction": {
           "type": "string",
           "title": "Instruction",
-          "description": "This is the instruction text",
           "default": "",
           "_adapt": {
             "translatable": true
@@ -32,7 +31,7 @@
         },
         "_setCompletionOn": {
           "type": "string",
-          "title": "Set completion on:",
+          "title": "Completion criteria",
           "description": "Whether completion is based on the learner having viewed all the accordion items - or just having viewed the component",
           "default": "allItems",
           "enum": [
@@ -49,8 +48,7 @@
             "properties": {
               "title": {
                 "type": "string",
-                "title": "Item Title",
-                "description": "This is the item title",
+                "title": "Title",
                 "default": "",
                 "_adapt": {
                   "translatable": true
@@ -58,7 +56,7 @@
               },
               "body": {
                 "type": "string",
-                "title": "Item Body",
+                "title": "Body",
                 "description": "This is the item body text that is hidden until the item title is clicked on",
                 "default": "",
                 "_adapt": {
@@ -73,8 +71,8 @@
                 "properties": {
                   "alt": {
                     "type": "string",
-                    "title": "Alt",
-                    "description": "A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank.",
+                    "title": "Alternative text",
+                    "description": "A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank",
                     "default": "",
                     "_adapt": {
                       "translatable": true
@@ -82,7 +80,7 @@
                   },
                   "src": {
                     "type": "string",
-                    "title": "Src",
+                    "title": "Source",
                     "description": "Optional image which will be rendered with the item body text",
                     "default": "",
                     "_backboneForms": {
@@ -103,8 +101,8 @@
               },
               "_classes": {
                 "type": "string",
-                "title": "Classes",
-                "description": "Custom classes that are applied to the accordion item. Supported classes 'align-image-left' and 'align-image-right' are available to align item image to the left or right in desktop view. On smaller screens the item image defaults underneath the item body text. Additional classes can be used but they must be predefined in one of the Less files. Separate multiple classes with a space.",
+                "title": "Custom classes",
+                "description": "Custom classes that are applied to the accordion item. Supported classes 'align-image-left' and 'align-image-right' are available to align item image to the left or right in desktop view. On smaller screens the item image defaults underneath the item body text. Additional classes can be used but they must be predefined in one of the Less files. Separate multiple classes with a space",
                 "default": ""
               }
             }
@@ -112,7 +110,7 @@
         },
         "_shouldCollapseItems": {
           "type": "boolean",
-          "title": "Items should auto-collapse",
+          "title": "Automatically collapse items",
           "description": "If disabled, upon expansion of an accordion item, any previously expanded items will not be collapsed",
           "default": true
         }
