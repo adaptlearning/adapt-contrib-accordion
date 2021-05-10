@@ -69,7 +69,7 @@ export default function Accordion (props) {
                 </div>
                 }
 
-                <templates.graphic {..._graphic}
+                <templates.image {..._graphic}
                   classNamePrefixes={['component__item', 'accordion__item']}
                   attributionClassNamePrefixes={['component', 'accordion']}
                 />
