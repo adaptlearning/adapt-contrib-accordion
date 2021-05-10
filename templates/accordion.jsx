@@ -1,17 +1,19 @@
-import Adapt from 'core/js/adapt';
-import { compile, classes, templates, html } from 'core/js/reactHelpers';
+import React from 'react';
+import { html, classes, compile, templates } from 'core/js/reactHelpers';
 
-export default function (model, view) {
-  const data = model.toJSON();
-  data._globals = Adapt.course.get('_globals');
+export default function Accordion (props) {
+  const {
+    _id,
+    onClick
+  } = props;
   return (
     <div className="component__inner accordion__inner">
 
-      {templates.component(model, view)}
+      <templates.header {...props} />
 
       <div className="component__widget accordion__widget">
 
-        {data._items.map(({ _graphic, _classes, title, body, _index, _isVisited, _isActive }, index) =>
+        {props._items.map(({ _graphic, _classes, title, body, _index, _isVisited, _isActive }, index) =>
 
           <div
             className={classes([
@@ -24,14 +26,14 @@ export default function (model, view) {
           >
 
             <button
-              id={`${data._id}-${index}-accordion-button`}
+              id={`${_id}-${index}-accordion-button`}
               className={classes([
                 'accordion__item-btn',
                 'js-toggle-item',
                 _isVisited && 'is-visited',
                 _isActive ? 'is-open is-selected' : 'is-closed'
               ])}
-              onClick={view.onClick.bind(view)}
+              onClick={onClick}
               aria-expanded={_isActive.toString()}
             >
 
@@ -54,7 +56,7 @@ export default function (model, view) {
             <div
               className="accordion__item-content"
               role="region"
-              aria-labelledby={`${data._id}-${index}-accordion-button`}
+              aria-labelledby={`${_id}-${index}-accordion-button`}
             >
 
               <div className="accordion__item-content-inner">
@@ -67,29 +69,10 @@ export default function (model, view) {
                 </div>
                 }
 
-                {_graphic.src &&
-                <div className={classes([
-                  'accordion__item-image-container',
-                  _graphic.attribution && 'has-attribution'
-                ])}>
-
-                  <img
-                    className="accordion__item-image"
-                    src={_graphic.src}
-                    aria-label={Adapt.a11y.normalize(_graphic.alt)}
-                    aria-hidden={!_graphic.alt}
-                  />
-
-                  {_graphic.attribution &&
-                  <div className="component__attribution accordion__attribution">
-                    <div className="component__attribution-inner accordion__attribution-inner">
-                      {html(_graphic.attribution)}
-                    </div>
-                  </div>
-                  }
-
-                </div>
-                }
+                <templates.graphic {..._graphic}
+                  classNamePrefixes={['component__item', 'accordion__item']}
+                  attributionClassNamePrefixes={['component', 'accordion']}
+                />
 
               </div>
             </div>

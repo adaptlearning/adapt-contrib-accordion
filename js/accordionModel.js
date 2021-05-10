@@ -9,6 +9,11 @@ export default class AccordionModel extends ItemsComponentModel {
     });
   }
 
+  checkIfResetOnRevisit() {
+    this.resetActiveItems();
+    super.checkIfResetOnRevisit();
+  }
+
   toggleItemsState(index) {
     const item = this.getItem(index);
     const previousActiveItem = this.getActiveItem();
