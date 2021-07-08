@@ -42,7 +42,7 @@ guide the learner’s interaction with the component.
 
 **\_shouldCollapseItems** (boolean): Used to control the auto-collapse of other expanded Accordion items whenever an item is clicked/expanded. Defaulted to 'true'
 
-**\_shouldExpandFirstItem** (boolean): Used to control the if the first item will expanded by default. Defaulted to 'false'
+**\_shouldExpandFirstItem** (boolean): Used to control if the first item will expanded by default. Defaulted to 'false'
 
 **\_setCompletionOn** (string): Determines when the component registers as complete. Acceptable values are `"allItems"` and `"inview"`. `"allItems"` (the default) requires the learner to view every single accordion item; `"inview"` requires only that the component has been viewed (i.e. passed completely through the browser viewport).
 
