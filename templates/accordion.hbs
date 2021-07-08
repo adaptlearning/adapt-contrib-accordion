@@ -7,7 +7,7 @@
     {{#each _items}}
     <div class="accordion__item{{#if _graphic.src}} has-image{{/if}}{{#if _classes}} {{_classes}}{{/if}}" data-index="{{_index}}">
 
-      <button id="{{../_id}}-{{@index}}-accordion-button" class="accordion__item-btn js-toggle-item is-closed{{#if _isVisited}} is-visited{{/if}}" aria-expanded="false">
+      <button id="{{../_id}}-{{@index}}-accordion-button" class="accordion__item-btn js-toggle-item {{#if _isActive}}is-selected is-open{{else}}is-closed{{/if}}{{#if _isVisited}} is-visited{{/if}}" aria-expanded="false">
         <div class="accordion__item-btn-inner">
 
           <div class="accordion__item-icon">
@@ -23,7 +23,7 @@
         </div>
       </button>
 
-      <div class="accordion__item-content" role="region" aria-labelledby="{{../_id}}-{{@index}}-accordion-button">
+      <div class="accordion__item-content" role="region" aria-labelledby="{{../_id}}-{{@index}}-accordion-button" {{#if _isActive}}style="display: block;"{{/if}}>
         <div class="accordion__item-content-inner">
 
           {{#if body}}
