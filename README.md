@@ -42,6 +42,8 @@ guide the learner’s interaction with the component.
 
 **\_shouldCollapseItems** (boolean): Used to control the auto-collapse of other expanded Accordion items whenever an item is clicked/expanded. Defaulted to 'true'
 
+**\_shouldExpandFirstItem** (boolean): Used to control if the first item will expanded by default. Defaulted to 'false'
+
 **\_setCompletionOn** (string): Determines when the component registers as complete. Acceptable values are `"allItems"` and `"inview"`. `"allItems"` (the default) requires the learner to view every single accordion item; `"inview"` requires only that the component has been viewed (i.e. passed completely through the browser viewport).
 
 **\_items** (array): Multiple items may be created. Each _item_ represents one element of the accordion and contains values for **title**, **body**, **\_graphic**, and **\_classes**.
@@ -69,7 +71,7 @@ No known limitations.
 
 ----------------------------
 
-**Version number:**  5.2.1   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
+**Version number:**  5.2.2   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
 **Framework versions:** 5.5+  
 **Author / maintainer:** Adapt Core Team  
 **Accessibility support:** WAI AA  

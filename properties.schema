@@ -124,6 +124,15 @@
       "inputType": "Checkbox",
       "validators": [],
       "help": "If disabled, upon expansion of an accordion item, any previously expanded items will not be collapsed"
+    },
+    "_shouldExpandFirstItem": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "title": "First item should be expanded",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "If enabled, the first item will be expanded by default"
     }
   }
 }
