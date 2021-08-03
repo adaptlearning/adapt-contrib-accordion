@@ -113,6 +113,11 @@
           "title": "Automatically collapse items",
           "description": "If disabled, upon expansion of an accordion item, any previously expanded items will not be collapsed",
           "default": true
+        },
+        "_shouldExpandFirstItem": {
+          "type": "boolean",
+          "title": "Expand first item by default",
+          "default": false
         }
       }
     }
