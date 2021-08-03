@@ -5,6 +5,7 @@
   "homepage": "https://github.com/adaptlearning/adapt-contrib-accordion",
   "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
   "component" : "accordion",
+  "targetAttribute": "_accordion",
   "displayName" : "Accordion",
   "description": "An accordion component that displays clickable titles, which reveal display text",
   "main": "/js/adapt-contrib-accordion.js",
