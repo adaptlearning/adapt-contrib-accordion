@@ -24,7 +24,7 @@ class AccordionModel extends ItemsComponentModel {
 
   checkExpandFirstItem() {
     if (!this.get('_shouldExpandFirstItem')) return;
-    this.setActiveItem(0);
+    this.toggleItemsState(0);
   }
 
 }
