@@ -1,13 +1,19 @@
 import ItemsComponentModel from 'core/js/models/itemsComponentModel';
 
-class AccordionModel extends ItemsComponentModel {
+export default class AccordionModel extends ItemsComponentModel {
 
   defaults() {
     return ItemsComponentModel.resultExtend('defaults', {
       _shouldCollapseItems: true,
       _shouldExpandFirstItem: false,
       _toggleSpeed: 200
-    }, this);
+    });
+  }
+
+  checkIfResetOnRevisit() {
+    this.resetActiveItems();
+    super.checkIfResetOnRevisit();
+    this.checkExpandFirstItem();
   }
 
   toggleItemsState(index) {
@@ -17,9 +23,8 @@ class AccordionModel extends ItemsComponentModel {
     item.toggleActive();
     item.toggleVisited(true);
 
-    if (previousActiveItem && this.get('_shouldCollapseItems')) {
-      previousActiveItem.toggleActive(false);
-    }
+    if (!previousActiveItem || !this.get('_shouldCollapseItems')) return;
+    previousActiveItem.toggleActive(false);
   }
 
   checkExpandFirstItem() {
@@ -28,5 +33,3 @@ class AccordionModel extends ItemsComponentModel {
   }
 
 }
-
-export default AccordionModel;
