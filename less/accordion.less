@@ -1,34 +1,36 @@
 .accordion {
   overflow-anchor: none;
+}
 
-  &__item-btn {
+.accordion-item {
+  &__btn {
     width: 100%;
   }
 
-  &__item-content {
+  &__content {
     display: none;
   }
 
   // Item icon states
   // --------------------------------------------------
-  &__item-btn.is-closed .icon {
+  &__btn.is-closed .icon {
     .icon-plus;
   }
 
-  &__item-btn.is-open .icon {
+  &__btn.is-open .icon {
     .icon-minus;
   }
 
   // Set up margin between body and image elements
   // Turn off margin when image is left / right aligned on desktop
   // --------------------------------------------------
-  &__item.has-image &__item-body {
+  &.has-image &__body {
     margin-bottom: @item-padding;
   }
 
   @media (min-width: @device-width-medium) {
-    &__item.has-image.align-image-left &__item-body,
-    &__item.has-image.align-image-right &__item-body {
+    &.has-image.align-image-left &__body,
+    &.has-image.align-image-right &__body {
       margin-bottom: 0;
     }
   }
@@ -38,27 +40,27 @@
   // Defaults to underneath on smaller screens
   // --------------------------------------------------
   @media (min-width: @device-width-medium) {
-    &__item.align-image-left &__item-content-inner,
-    &__item.align-image-right &__item-content-inner {
+    &.align-image-left &__content-inner,
+    &.align-image-right &__content-inner {
       display: flex;
       align-items: flex-start;
     }
 
-    &__item.align-image-left &__item-body,
-    &__item.align-image-right &__item-body {
+    &.align-image-left &__body,
+    &.align-image-right &__body {
       width: 60%;
     }
 
-    &__item.align-image-left &__item-image-container,
-    &__item.align-image-right &__item-image-container {
+    &.align-image-left &__image-container,
+    &.align-image-right &__image-container {
       width: 40%;
     }
 
-    &__item.align-image-left &__item-content-inner {
+    &.align-image-left &__content-inner {
       flex-direction: row-reverse;
     }
 
-    &__item.align-image-left &__item-image-container {
+    &.align-image-left &__image-container {
       margin-right: @item-padding;
 
       .dir-rtl & {
@@ -67,11 +69,11 @@
       }
     }
 
-    &__item.align-image-right &__item-content-inner {
+    &.align-image-right &__content-inner {
       flex-direction: row;
     }
 
-    &__item.align-image-right &__item-image-container {
+    &.align-image-right &__image-container {
       margin-left: @item-padding;
 
       .dir-rtl & {

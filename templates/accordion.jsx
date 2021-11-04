@@ -17,7 +17,8 @@ export default function Accordion (props) {
 
           <div
             className={classes([
-              'accordion__item',
+              'accordion-item',
+              'js-accordion-item',
               _graphic.src && 'has-image',
               _classes
             ])}
@@ -28,7 +29,7 @@ export default function Accordion (props) {
             <button
               id={`${_id}-${index}-accordion-button`}
               className={classes([
-                'accordion__item-btn',
+                'accordion-item__btn',
                 'js-toggle-item',
                 _isVisited && 'is-visited',
                 _isActive ? 'is-open is-selected' : 'is-closed'
@@ -37,14 +38,14 @@ export default function Accordion (props) {
               aria-expanded={_isActive.toString()}
             >
 
-              <div className="accordion__item-btn-inner">
+              <div className="accordion-item__btn-inner">
 
-                <div className="accordion__item-icon">
+                <div className="accordion-item__icon">
                   <div className="icon"></div>
                 </div>
 
-                <div className="accordion__item-title">
-                  <div className="accordion__item-title-inner">
+                <div className="accordion-item__title">
+                  <div className="accordion-item__title-inner">
                     {html(compile(title))}
                   </div>
                 </div>
@@ -54,23 +55,23 @@ export default function Accordion (props) {
             </button>
 
             <div
-              className="accordion__item-content"
+              className="accordion-item__content js-accordion-item-content"
               role="region"
               aria-labelledby={`${_id}-${index}-accordion-button`}
             >
 
-              <div className="accordion__item-content-inner">
+              <div className="accordion-item__content-inner">
 
                 {body &&
-                <div className="accordion__item-body">
-                  <div className="accordion__item-body-inner">
+                <div className="accordion-item__body">
+                  <div className="accordion-item__body-inner">
                     {html(compile(body))}
                   </div>
                 </div>
                 }
 
                 <templates.image {..._graphic}
-                  classNamePrefixes={['component__item', 'accordion__item']}
+                  classNamePrefixes={['component-item', 'accordion-item']}
                   attributionClassNamePrefixes={['component', 'accordion']}
                 />
 

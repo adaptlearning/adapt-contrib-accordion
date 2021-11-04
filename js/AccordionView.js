@@ -9,7 +9,7 @@ class AccordionView extends ComponentView {
 
   postRender() {
     // If an item is active add display: block; to start jquery animate state
-    this.getItemElement(this.model.getActiveItem())?.find('.accordion__item-content')?.css('display', 'block');
+    this.getItemElement(this.model.getActiveItem())?.find('.js-accordion-item-content')?.css('display', 'block');
     this.setReadyStatus();
     if (this.model.get('_setCompletionOn') !== 'inview') return;
     this.setupInviewCompletion();
@@ -25,7 +25,7 @@ class AccordionView extends ComponentView {
 
   toggleItem(item, shouldExpand) {
     const $item = this.getItemElement(item);
-    const $body = $item.children('.accordion__item-content').stop(true, true);
+    const $body = $item.children('.js-accordion-item-content').stop(true, true);
     if (!shouldExpand) {
       $body.slideUp(this.model.get('_toggleSpeed'));
       return;
@@ -36,7 +36,7 @@ class AccordionView extends ComponentView {
   getItemElement(item) {
     if (!item) return;
     const index = item.get('_index');
-    return this.$('.accordion__item').filter(`[data-index="${index}"]`);
+    return this.$('.js-accordion-item').filter(`[data-index="${index}"]`);
   }
 
 }
