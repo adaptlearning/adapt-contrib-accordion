@@ -1,5 +1,5 @@
 import React from 'react';
-import { html, classes, compile, templates } from 'core/js/reactHelpers';
+import { classes, compile, templates } from 'core/js/reactHelpers';
 
 export default function Accordion (props) {
   const {
@@ -45,8 +45,7 @@ export default function Accordion (props) {
                 </div>
 
                 <div className="accordion-item__title">
-                  <div className="accordion-item__title-inner">
-                    {html(compile(title))}
+                  <div className="accordion-item__title-inner" dangerouslySetInnerHTML={{ __html: compile(title) }}>
                   </div>
                 </div>
 
@@ -64,8 +63,7 @@ export default function Accordion (props) {
 
                 {body &&
                 <div className="accordion-item__body">
-                  <div className="accordion-item__body-inner">
-                    {html(compile(body))}
+                  <div className="accordion-item__body-inner" dangerouslySetInnerHTML={{ __html: compile(body) }}>
                   </div>
                 </div>
                 }
