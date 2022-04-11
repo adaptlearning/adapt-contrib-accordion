@@ -1,8 +1,10 @@
+import Adapt from 'core/js/adapt';
 import React from 'react';
 import a11y from 'core/js/a11y';
-import { html, classes, compile, templates } from 'core/js/reactHelpers';
+import { classes, compile, templates } from 'core/js/reactHelpers';
 
 export default function Accordion (props) {
+  const { complete, incomplete } = Adapt.course.get('_globals')?._accessibility?._ariaLabels;
   const inc = ariaLevel => _.isNumber(ariaLevel) ? ariaLevel + 1 : ariaLevel;
   const {
     _id,
@@ -46,12 +48,12 @@ export default function Accordion (props) {
                 <div className="accordion-item__btn-inner">
 
                   <div className="accordion-item__icon">
-                    <div className="icon"></div>
+                    <div className="icon" aria-hidden="true"></div>
                   </div>
 
                   <div className="accordion-item__title">
-                    <div className="accordion-item__title-inner">
-                      {html(compile(title))}
+                    <span className="aria-label">{`${_isVisited ? complete : incomplete} ${compile(title)}`}</span>
+                    <div className="accordion-item__title-inner" aria-hidden="true" dangerouslySetInnerHTML={{ __html: compile(title) }}>
                     </div>
                   </div>
 
@@ -71,8 +73,7 @@ export default function Accordion (props) {
 
                 {body &&
                 <div className="accordion-item__body">
-                  <div className="accordion-item__body-inner">
-                    {html(compile(body))}
+                  <div className="accordion-item__body-inner" dangerouslySetInnerHTML={{ __html: compile(body) }}>
                   </div>
                 </div>
                 }
