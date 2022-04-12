@@ -5,12 +5,12 @@ import { classes, compile, templates } from 'core/js/reactHelpers';
 
 export default function Accordion (props) {
   const { complete, incomplete } = Adapt.course.get('_globals')?._accessibility?._ariaLabels;
-  const itemAriaLevel = _.isNumber(ariaLevel) ? ariaLevel + 1 : ariaLevel;
   const {
     _id,
     _ariaLevel,
     onClick
   } = props;
+  const itemAriaLevel = _.isNumber(_ariaLevel) ? _ariaLevel + 1 : _ariaLevel;
   return (
     <div className="component__inner accordion__inner">
 
