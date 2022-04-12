@@ -5,7 +5,7 @@ import { classes, compile, templates } from 'core/js/reactHelpers';
 
 export default function Accordion (props) {
   const { complete, incomplete } = Adapt.course.get('_globals')?._accessibility?._ariaLabels;
-  const inc = ariaLevel => _.isNumber(ariaLevel) ? ariaLevel + 1 : ariaLevel;
+  const itemAriaLevel = _.isNumber(ariaLevel) ? ariaLevel + 1 : ariaLevel;
   const {
     _id,
     _ariaLevel,
@@ -31,7 +31,7 @@ export default function Accordion (props) {
             data-index={_index}
           >
 
-            <div role="heading" aria-level={a11y.ariaLevel('componentItem', inc(_ariaLevel))} >
+            <div role="heading" aria-level={a11y.ariaLevel('componentItem', itemAriaLevel)} >
               <button
                 id={`${_id}-${index}-accordion-button`}
                 className={classes([
