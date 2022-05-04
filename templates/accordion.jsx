@@ -1,11 +1,16 @@
+import Adapt from 'core/js/adapt';
 import React from 'react';
+import a11y from 'core/js/a11y';
 import { classes, compile, templates } from 'core/js/reactHelpers';
 
 export default function Accordion (props) {
+  const { complete, incomplete } = Adapt.course.get('_globals')?._accessibility?._ariaLabels;
   const {
     _id,
+    _ariaLevel,
     onClick
   } = props;
+  const itemAriaLevel = _.isNumber(_ariaLevel) ? _ariaLevel + 1 : _ariaLevel;
   return (
     <div className="component__inner accordion__inner">
 
@@ -26,34 +31,39 @@ export default function Accordion (props) {
             data-index={_index}
           >
 
-            <button
-              id={`${_id}-${index}-accordion-button`}
-              className={classes([
-                'accordion-item__btn',
-                'js-toggle-item',
-                _isVisited && 'is-visited',
-                _isActive ? 'is-open is-selected' : 'is-closed'
-              ])}
-              onClick={onClick}
-              aria-expanded={_isActive.toString()}
-            >
+            <div role="heading" aria-level={a11y.ariaLevel('componentItem', itemAriaLevel)} >
+              <button
+                id={`${_id}-${index}-accordion-button`}
+                className={classes([
+                  'accordion-item__btn',
+                  'js-toggle-item',
+                  _isVisited && 'is-visited',
+                  _isActive ? 'is-open is-selected' : 'is-closed'
+                ])}
+                onClick={onClick}
+                aria-expanded={_isActive.toString()}
+                aria-controls={`${_id}-${index}-accordion-button-panel`}
+              >
 
-              <div className="accordion-item__btn-inner">
+                <div className="accordion-item__btn-inner">
 
-                <div className="accordion-item__icon">
-                  <div className="icon"></div>
-                </div>
-
-                <div className="accordion-item__title">
-                  <div className="accordion-item__title-inner" dangerouslySetInnerHTML={{ __html: compile(title) }}>
+                  <div className="accordion-item__icon">
+                    <div className="icon" aria-hidden="true"></div>
                   </div>
+
+                  <div className="accordion-item__title">
+                    <span className="aria-label">{`${_isVisited ? complete : incomplete} ${compile(title)}`}</span>
+                    <div className="accordion-item__title-inner" aria-hidden="true" dangerouslySetInnerHTML={{ __html: compile(title) }}>
+                    </div>
+                  </div>
+
                 </div>
 
-              </div>
-
-            </button>
+              </button>
+            </div>
 
             <div
+              id={`${_id}-${index}-accordion-button-panel`}
               className="accordion-item__content js-accordion-item-content"
               role="region"
               aria-labelledby={`${_id}-${index}-accordion-button`}

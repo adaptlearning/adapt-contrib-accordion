@@ -16,7 +16,7 @@ class AccordionView extends ComponentView {
   }
 
   onClick(event) {
-    this.model.toggleItemsState($(event.currentTarget).parent().data('index'));
+    this.model.toggleItemsState($(event.currentTarget).parents('.js-accordion-item').data('index'));
   }
 
   onItemsActiveChange(item, isActive) {
