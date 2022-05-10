@@ -24,7 +24,7 @@ export default function Accordion (props) {
             className={classes([
               'accordion-item',
               'js-accordion-item',
-              _graphic.src && 'has-image',
+              _graphic?.src && 'has-image',
               _classes
             ])}
             key={_index}
