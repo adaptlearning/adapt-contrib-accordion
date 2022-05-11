@@ -1,6 +1,6 @@
 {
   "name": "adapt-contrib-accordion",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "framework": ">=5.19.1",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-accordion",
   "bugs": "https://github.com/adaptlearning/adapt-contrib-accordion/issues",
