@@ -45,19 +45,19 @@ export default function Accordion (props) {
                 aria-controls={`${_id}-${index}-accordion-button-panel`}
               >
 
-                <div className="accordion-item__btn-inner">
+                <span className="accordion-item__btn-inner">
 
-                  <div className="accordion-item__icon">
-                    <div className="icon" aria-hidden="true"></div>
-                  </div>
+                  <span className="accordion-item__icon">
+                    <span className="icon" aria-hidden="true"></span>
+                  </span>
 
-                  <div className="accordion-item__title">
+                  <span className="accordion-item__title">
                     <span className="aria-label">{`${_isVisited ? complete : incomplete} ${compile(title)}`}</span>
-                    <div className="accordion-item__title-inner" aria-hidden="true" dangerouslySetInnerHTML={{ __html: compile(title) }}>
-                    </div>
-                  </div>
+                    <span className="accordion-item__title-inner" aria-hidden="true" dangerouslySetInnerHTML={{ __html: compile(title) }}>
+                    </span>
+                  </span>
 
-                </div>
+                </span>
 
               </button>
             </div>
