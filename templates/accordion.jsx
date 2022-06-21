@@ -18,7 +18,7 @@ export default function Accordion (props) {
 
       <div className="component__widget accordion__widget">
 
-        {props._items.map(({ _graphic, _classes, title, body, _index, _isVisited, _isActive }, index) =>
+        {props._items.map(({ _graphic, _classes, title, body, _index, _isVisited, _isActive, _ariaLevel }, index) =>
 
           <div
             className={classes([
@@ -31,7 +31,7 @@ export default function Accordion (props) {
             data-index={_index}
           >
 
-            <div role="heading" aria-level={a11y.ariaLevel({ id: _id, level: 'componentItem', override: itemAriaLevel })} >
+            <div role="heading" aria-level={a11y.ariaLevel({ id: _id, level: 'componentItem', override: _ariaLevel ?? itemAriaLevel })} >
               <button
                 id={`${_id}-${index}-accordion-button`}
                 className={classes([
