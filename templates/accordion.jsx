@@ -52,7 +52,7 @@ export default function Accordion (props) {
                   </span>
 
                   <span className="accordion-item__title">
-                    <span className="aria-label">{`${compile(title)} ${_isVisited && '(' + visited + ')'}`}</span>
+                    <span className="aria-label">{`${compile(title)} ${_isVisited ? '(' + visited + ')' : ''}`}</span>
                     <span className="accordion-item__title-inner" aria-hidden="true" dangerouslySetInnerHTML={{ __html: compile(title) }}>
                     </span>
                   </span>
