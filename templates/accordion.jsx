@@ -4,7 +4,7 @@ import a11y from 'core/js/a11y';
 import { classes, compile, templates } from 'core/js/reactHelpers';
 
 export default function Accordion (props) {
-  const visited = Adapt.course.get('_globals')?._accessibility?._ariaLabels.visited;
+  const { complete, incomplete } = Adapt.course.get('_globals')?._accessibility?._ariaLabels;
   const {
     _id,
     _ariaLevel,
@@ -52,7 +52,7 @@ export default function Accordion (props) {
                   </span>
 
                   <span className="accordion-item__title">
-                    <span className="aria-label">{`${compile(title)} ${_isVisited ? '(' + visited + ')' : ''}`}</span>
+                    <span className="aria-label">{`${_isVisited ? complete : incomplete}. ${compile(title)}`}</span>
                     <span className="accordion-item__title-inner" aria-hidden="true" dangerouslySetInnerHTML={{ __html: compile(title) }}>
                     </span>
                   </span>
