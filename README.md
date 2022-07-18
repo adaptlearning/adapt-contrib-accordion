@@ -71,8 +71,8 @@ No known limitations.
 
 ----------------------------
 
-**Version number:**  7.0.1   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>
-**Framework versions:** 5.19.1+
+**Version number:**  7.1.0   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>
+**Framework versions:** 5.20.1+
 **Author / maintainer:** Adapt Core Team
 **Accessibility support:** WAI AA
 **RTL support:** Yes
