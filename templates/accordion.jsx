@@ -18,13 +18,16 @@ export default function Accordion (props) {
 
       <div className="component__widget accordion__widget">
 
-        {props._items.map(({ _graphic, _classes, title, body, _index, _isVisited, _isActive, _ariaLevel }, index) =>
+        {props._items.map(({ _graphic, _imageAlignment, _classes, title, body, _index, _isVisited, _isActive, _ariaLevel }, index) =>
 
           <div
             className={classes([
               'accordion-item',
               'js-accordion-item',
               _graphic?.src && 'has-image',
+               _graphic?.src && _imageAlignment === 'full' && 'align-image-full',
+               _graphic?.src && _imageAlignment === 'left' && 'align-image-left',
+               _graphic?.src && _imageAlignment === 'right' && 'align-image-right',
               _classes
             ])}
             key={_index}
