@@ -25,9 +25,7 @@ export default function Accordion (props) {
               'accordion-item',
               'js-accordion-item',
               _graphic?.src && 'has-image',
-               _graphic?.src && _imageAlignment === 'full' && 'align-image-full',
-               _graphic?.src && _imageAlignment === 'left' && 'align-image-left',
-               _graphic?.src && _imageAlignment === 'right' && 'align-image-right',
+              _graphic?.src && _imageAlignment && `align-image-${_imageAlignment}`,
               _classes
             ])}
             key={_index}
