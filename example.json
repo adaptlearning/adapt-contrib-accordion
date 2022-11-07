@@ -16,18 +16,19 @@
         "_items": [
             {
               "title": "Heading 1",
-              "body": "This is display text 1.",
+              "body": "This is display text 1 with a full width image.",
+              "_imageAlignment": "full",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
                   "alt": "",
                   "attribution": "Copyright © 2019"
               },
-              "_comment": "Supported classes = 'align-image-left' | 'align-image-right'. Additional classes can be used but they must be predefined in one of the Less files",
-              "_classes": "align-image-left"
+              "_classes": ""
             },
             {
               "title": "Heading 2",
-              "body": "This is display text 2.",
+              "body": "This is display text 2 with a single width left aligned image.",
+              "_imageAlignment": "left",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
                   "alt": "",
@@ -37,9 +38,21 @@
             },
             {
               "title": "Heading 3",
-              "body": "This is display text 3.",
+              "body": "This is display text 3 with a single width right aligned image.",
+              "_imageAlignment": "right",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
+                  "alt": "",
+                  "attribution": ""
+              },
+              "_classes": ""
+            },
+            {
+              "title": "Heading 4",
+              "body": "This is display text 4 with no image.",
+              "_imageAlignment": "",
+              "_graphic": {
+                  "src": "",
                   "alt": "",
                   "attribution": ""
               },

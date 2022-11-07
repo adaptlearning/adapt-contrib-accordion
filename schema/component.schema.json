@@ -64,6 +64,18 @@
                 },
                 "_backboneForms": "TextArea"
               },
+              "_imageAlignment": {
+                "type": "string",
+                "title": "Image alignment",
+                "description": "Defines the alignment of the item image. Full: Image spans the entire width of the container below the text area. Left: Image aligned to the left of the text area. Right: Image aligned to the right of the text area. The default alignment is `full`. For smaller screens the alignment defaults to `full`.",
+                "default": "full",
+                "enum": [
+                  "full",
+                  "left",
+                  "right"
+                ],
+                "_backboneForms": "Select"
+              },
               "_graphic": {
                 "type": "object",
                 "title": "Graphic",

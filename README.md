@@ -52,6 +52,8 @@ guide the learner’s interaction with the component.
 
 >**body** (string): This content will be displayed when the learner opens this accordion element. It may contain HTML.
 
+>**\_imageAlignment** (string): Defines the alignment of the item image. Full: Image spans the entire width of the container below the text area. Left: Image aligned to the left of the text area. Right: Image aligned to the right of the text area. The default alignment is `full`. For smaller screens the alignment defaults to `full`.
+
 >**\_graphic** (object): An optional image which is displayed below the item body when the learner opens this accordion element. It contains values for **src**, **alt**, and **attribution**.
 
 >>**src** (string): File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/c-45-1.jpg*).
@@ -60,7 +62,7 @@ guide the learner’s interaction with the component.
 
 >>**attribution** (string): Optional text to be displayed as an [attribution](https://wiki.creativecommons.org/Best_practices_for_attribution). By default it is displayed over the bottom of the image. Adjust positioning by modifying CSS. Text can contain HTML tags, e.g., `Copyright © 2015 by <b>Lukasz 'Severiaan' Grela</b>`.
 
->**\_classes** (string): An optional class that will be applied to the Accordion Item. Supported classes are `"align-image-left"` and `"align-image-right"` which aligns the item image to the left or right in desktop view. On smaller screens the item image defaults underneath the item body text. Additional classes can be used but they must be predefined in one of the Less files. Separate multiple classes with a space.
+>**\_classes** (string): An optional class that will be applied to the Accordion Item. Additional classes can be used but they must be predefined in one of the Less files. Separate multiple classes with a space.
 
 ### Accessibility
 + **Accordion** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within the **globals** object in [*properties.schema*](https://github.com/adaptlearning/adapt-contrib-accordion/blob/master/properties.schema).

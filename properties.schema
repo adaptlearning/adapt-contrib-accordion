@@ -71,6 +71,14 @@
             "help": "This is the item body text that is hidden until the item title is clicked on",
             "translatable": true
           },
+          "_imageAlignment": {
+            "type": "string",
+            "required": false,
+            "default": "full",
+            "inputType": {"type":"Select", "options":["full","left","right"]},
+            "title": "Image alignment",
+            "help": "Defines the alignment of the item image. Full: Image spans the entire width of the container below the text area. Left: Image aligned to the left of the text area. Right: Image aligned to the right of the text area. The default alignment is `full`. For smaller screens the alignment defaults to `full`."
+          },
           "_graphic": {
             "type": "object",
             "required": false,
