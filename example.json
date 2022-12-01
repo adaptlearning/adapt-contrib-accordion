@@ -8,7 +8,7 @@
         "title": "Accordion",
         "displayTitle": "Accordion Title",
         "body": "This is optional body text.",
-        "instruction": "Select the headings below to reveal the text.",
+        "instruction": "Select the headings to find out more.",
         "_shouldCollapseItems": true,
         "_shouldExpandFirstItem": false,
         "_comment": "setCompletionOn = inview | allItems",
