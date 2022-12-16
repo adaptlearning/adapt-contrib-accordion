@@ -24,7 +24,7 @@
     "instruction": {
       "type": "string",
       "required": false,
-      "default": "",
+      "default": "Select the headings to find out more.",
       "inputType": "Text",
       "validators": [],
       "help": "This is the instruction text",
