@@ -52,8 +52,8 @@ export default function Accordion (props) {
 
                   <span className="accordion-item__btn-inner">
 
-                    <span className="accordion-item__icon">
-                      <span className="icon" aria-hidden="true"></span>
+                    <span className="accordion-item__icon" aria-hidden="true">
+                      <span className="icon"></span>
                     </span>
 
                     <span className="accordion-item__title">
