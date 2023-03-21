@@ -12,16 +12,23 @@
           "type": "object",
           "default": {},
           "properties": {
-            "_accordion": {
+            "_components": {
               "type": "object",
               "default": {},
               "properties": {
-                "ariaRegion": {
-                  "type": "string",
-                  "title": "ARIA region",
-                  "default": "List of expandable sections. Select each button to expand the content.",
-                  "_adapt": {
-                    "translatable": true
+                "_accordion": {
+                  "type": "object",
+                  "title": "Accordion",
+                  "default": {},
+                  "properties": {
+                    "ariaRegion": {
+                      "type": "string",
+                      "title": "ARIA region",
+                      "default": "List of expandable sections. Select each button to expand the content.",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    }
                   }
                 }
               }
