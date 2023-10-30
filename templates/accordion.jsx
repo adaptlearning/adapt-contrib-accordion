@@ -7,10 +7,8 @@ export default function Accordion (props) {
   const visited = Adapt.course.get('_globals')?._accessibility?._ariaLabels.visited;
   const {
     _id,
-    _ariaLevel,
     onClick
   } = props;
-  const itemAriaLevel = _.isNumber(_ariaLevel) && _ariaLevel !== 0 ? _ariaLevel + 1 : _ariaLevel;
   return (
     <div className="component__inner accordion__inner">
 
@@ -18,7 +16,7 @@ export default function Accordion (props) {
 
       <div className="component__widget accordion__widget">
 
-        {props._items.map(({ _graphic, _imageAlignment, _classes, title, body, _index, _isVisited, _isActive, _ariaLevel }, index) => {
+        {props._items.map(({ _graphic, _imageAlignment, _classes, title, body, _index, _isVisited, _isActive }, index) => {
 
           const ariaLabel = `${_isVisited ? visited + '. ' : ''}${compile(title)}`;
 
@@ -36,7 +34,7 @@ export default function Accordion (props) {
               data-index={_index}
             >
 
-              <div role="heading" aria-level={a11y.ariaLevel({ id: _id, level: 'componentItem', override: _ariaLevel ?? itemAriaLevel })} >
+              <div role="heading" aria-level={a11y.ariaLevel({ id: _id, level: 'componentItem' })} >
                 <button
                   id={`${_id}-${index}-accordion-button`}
                   className={classes([
