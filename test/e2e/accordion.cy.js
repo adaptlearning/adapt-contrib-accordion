@@ -1,13 +1,13 @@
 describe('Accordion', function () {
   function loopThroughAccordion(accordionComponent) {
-    const itemsCount = Object.keys(accordionComponent._items).length
-    cy.get('.accordion-item').should('have.length', itemsCount)
-    for (let i = 0; i < itemsCount; i++) {
-      const bodyWithoutHtml = accordionComponent._items[i].body.replace(/<[^>]*>/g, '')
-      cy.get('.accordion-item').eq(i).within(() => {
+    const items = accordionComponent._items
+    cy.get('.accordion-item').should('have.length', items.length)
+    items.forEach((item, index) =>  {
+      const bodyWithoutHtml = item.body.replace(/<[^>]*>/g, '')
+      cy.get('.accordion-item').eq(index).within(() => {
         cy.get('.accordion-item__btn.is-visited').should('not.exist')
         cy.get('.accordion-item__body-inner').should('not.be.visible')
-        cy.get('.accordion-item__title').should('contain', accordionComponent._items[i].title).click()
+        cy.get('.accordion-item__title').should('contain', item.title).click()
         cy.get('.accordion-item__btn.is-visited').should('exist')
         cy.get('.accordion-item__body-inner')
           .should('be.visible')
