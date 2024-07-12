@@ -10,7 +10,8 @@ describe('Accordion', function () {
       cy.get('.accordion-item').eq(index).within(() => {
         cy.get('.accordion-item__btn.is-visited').should('not.exist');
         cy.get('.accordion-item__body-inner').should('not.be.visible');
-        cy.get('.accordion-item__title').should('contain', item.title).click();
+        cy.get('.accordion-item__title').should('contain', item.title);
+        cy.get('.accordion-item__title').as('btn').click();
         cy.get('.accordion-item__btn.is-visited').should('exist');
         cy.get('.accordion-item__body-inner')
           .should('be.visible')
