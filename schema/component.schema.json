@@ -137,7 +137,7 @@
           "title": "Expand first item by default",
           "default": false
         },
-        "_hasVerticalLayout": {
+        "_isCenterAligned": {
           "type": "boolean",
           "title": "Enable item button vertical layout",
           "description": "If enabled, the layout of the item button child elements will be stacked on top of one another centrally.",

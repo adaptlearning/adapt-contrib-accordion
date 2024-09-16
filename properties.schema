@@ -151,7 +151,7 @@
       "validators": [],
       "help": "If enabled, the first item will be expanded by default"
     },
-    "_shouldCollapseItems": {
+    "_isCenterAligned": {
       "type": "boolean",
       "required": false,
       "default": false,

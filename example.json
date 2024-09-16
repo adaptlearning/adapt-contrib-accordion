@@ -13,7 +13,7 @@
         "_shouldExpandFirstItem": false,
         "_comment": "setCompletionOn = inview | allItems",
         "_setCompletionOn": "allItems",
-        "_hasVerticalLayout": false,
+        "_isCenterAligned": false,
         "_items": [
             {
               "title": "Heading 1",

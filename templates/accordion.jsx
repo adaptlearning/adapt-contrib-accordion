@@ -8,7 +8,7 @@ export default function Accordion (props) {
   const {
     _id,
     onClick,
-    _hasVerticalLayout
+    _isCenterAligned
   } = props;
   return (
     <div className="component__inner accordion__inner">
@@ -29,7 +29,7 @@ export default function Accordion (props) {
                 'js-accordion-item',
                 _graphic?.src && 'has-image',
                 _graphic?.src && _imageAlignment && `align-image-${_imageAlignment}`,
-                _hasVerticalLayout && 'is-vertical',
+                _isCenterAligned && 'is-vertical',
                 _classes
               ])}
               key={_index}

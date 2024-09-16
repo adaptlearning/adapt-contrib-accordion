@@ -46,7 +46,7 @@ guide the learner’s interaction with the component.
 
 **\_setCompletionOn** (string): Determines when the component registers as complete. Acceptable values are `"allItems"` and `"inview"`. `"allItems"` (the default) requires the learner to view every single accordion item; `"inview"` requires only that the component has been viewed (i.e. passed completely through the browser viewport).
 
-**\_hasVerticalLayout** (boolean): If enabled, the layout of the item button child elements will be stacked on top of one another centrally. Acceptable values are `true` and `false`. The default value is `false`.
+**\_isCenterAligned** (boolean): If enabled, the layout of the item button child elements will be stacked on top of one another centrally. Acceptable values are `true` and `false`. The default value is `false`.
 
 **\_items** (array): Multiple items may be created. Each _item_ represents one element of the accordion and contains values for **title**, **body**, **\_graphic**, and **\_classes**.
 
