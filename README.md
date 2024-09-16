@@ -46,11 +46,15 @@ guide the learner’s interaction with the component.
 
 **\_setCompletionOn** (string): Determines when the component registers as complete. Acceptable values are `"allItems"` and `"inview"`. `"allItems"` (the default) requires the learner to view every single accordion item; `"inview"` requires only that the component has been viewed (i.e. passed completely through the browser viewport).
 
+**\_hasVerticalLayout** (boolean): If enabled, the layout of the item button child elements will be stacked on top of one another centrally. Acceptable values are `true` and `false`. The default value is `false`.
+
 **\_items** (array): Multiple items may be created. Each _item_ represents one element of the accordion and contains values for **title**, **body**, **\_graphic**, and **\_classes**.
 
 >**title** (string): This text is displayed as the element's header. It is displayed at all times, even when the **body** has been collapsed.
 
 >**body** (string): This content will be displayed when the learner opens this accordion element. It may contain HTML.
+
+>**\_titleIcon** (string): CSS class name to be applied to the accordion title icon.
 
 >**\_imageAlignment** (string): Defines the alignment of the item image. Full: Image spans the entire width of the container below the text area. Left: Image aligned to the left of the text area. Right: Image aligned to the right of the text area. The default alignment is `full`. For smaller screens the alignment defaults to `full`.
 
