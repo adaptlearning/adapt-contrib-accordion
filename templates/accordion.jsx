@@ -29,7 +29,7 @@ export default function Accordion (props) {
                 'js-accordion-item',
                 _graphic?.src && 'has-image',
                 _graphic?.src && _imageAlignment && `align-image-${_imageAlignment}`,
-                _isCenterAligned && 'is-vertical',
+                _isCenterAligned && 'is-center-aligned',
                 _classes
               ])}
               key={_index}
