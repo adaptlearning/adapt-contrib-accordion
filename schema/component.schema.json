@@ -64,6 +64,12 @@
                 },
                 "_backboneForms": "TextArea"
               },
+              "_titleIcon": {
+                "type": "string",
+                "title": "Title icon",
+                "description": "CSS class name to be applied to the accordion title icon.",
+                "default": ""
+              },
               "_imageAlignment": {
                 "type": "string",
                 "title": "Image alignment",
@@ -129,6 +135,12 @@
         "_shouldExpandFirstItem": {
           "type": "boolean",
           "title": "Expand first item by default",
+          "default": false
+        },
+        "_hasVerticalLayout": {
+          "type": "boolean",
+          "title": "Enable item button vertical layout",
+          "description": "If enabled, the layout of the item button child elements will be stacked on top of one another centrally.",
           "default": false
         }
       }

@@ -71,6 +71,15 @@
             "help": "This is the item body text that is hidden until the item title is clicked on",
             "translatable": true
           },
+          "_titleIcon": {
+            "type": "string",
+            "required": false,
+            "default": "",
+            "title": "Title icon",
+            "inputType": "Text",
+            "validators": [],
+            "help": "CSS class name to be applied to the accordion title icon."
+          },
           "_imageAlignment": {
             "type": "string",
             "required": false,
@@ -141,6 +150,15 @@
       "inputType": "Checkbox",
       "validators": [],
       "help": "If enabled, the first item will be expanded by default"
+    },
+    "_shouldCollapseItems": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "title": "Enable item button vertical layout",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "If enabled, the layout of the item button child elements will be stacked on top of one another centrally."
     }
   }
 }
