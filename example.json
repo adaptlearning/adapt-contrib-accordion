@@ -13,10 +13,12 @@
         "_shouldExpandFirstItem": false,
         "_comment": "setCompletionOn = inview | allItems",
         "_setCompletionOn": "allItems",
+        "_isCenterAligned": false,
         "_items": [
             {
               "title": "Heading 1",
               "body": "This is display text 1 with a full width image.",
+              "_titleIcon": "",
               "_imageAlignment": "full",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
@@ -28,6 +30,7 @@
             {
               "title": "Heading 2",
               "body": "This is display text 2 with a single width left aligned image.",
+              "_titleIcon": "",
               "_imageAlignment": "left",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
@@ -39,6 +42,7 @@
             {
               "title": "Heading 3",
               "body": "This is display text 3 with a single width right aligned image.",
+              "_titleIcon": "",
               "_imageAlignment": "right",
               "_graphic": {
                   "src": "course/en/images/example.jpg",
@@ -50,6 +54,7 @@
             {
               "title": "Heading 4",
               "body": "This is display text 4 with no image.",
+              "_titleIcon": "",
               "_imageAlignment": "",
               "_graphic": {
                   "src": "",

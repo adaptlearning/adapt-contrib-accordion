@@ -13,12 +13,30 @@
 
   // Item icon states
   // --------------------------------------------------
-  &__btn.is-closed .icon {
+  &__btn.is-closed &__icon .icon {
     .icon-plus;
   }
 
-  &__btn.is-visited .icon {
+  &__btn.is-visited &__icon .icon {
     .icon-tick;
+  }
+
+  // vertical items
+  &.is-center-aligned &__btn {
+    text-align: center;
+  }
+
+  &.is-center-aligned &__title-icon,
+  &.is-center-aligned &__title {
+    display: block;
+  }
+
+  &.is-center-aligned &__icon {
+    display: block;
+  }
+
+  &.is-center-aligned &__content {
+    text-align: center;
   }
 
   // Set up margin between body and image elements

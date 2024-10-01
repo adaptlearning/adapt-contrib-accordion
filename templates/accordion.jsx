@@ -7,7 +7,8 @@ export default function Accordion (props) {
   const visited = Adapt.course.get('_globals')?._accessibility?._ariaLabels.visited;
   const {
     _id,
-    onClick
+    onClick,
+    _isCenterAligned
   } = props;
   return (
     <div className="component__inner accordion__inner">
@@ -16,7 +17,7 @@ export default function Accordion (props) {
 
       <div className="component__widget accordion__widget">
 
-        {props._items.map(({ _graphic, _imageAlignment, _classes, title, body, _index, _isVisited, _isActive }, index) => {
+        {props._items.map(({ _graphic, _imageAlignment, _classes, title, body, _titleIcon, _index, _isVisited, _isActive }, index) => {
 
           const ariaLabel = `${_isVisited ? visited + '. ' : ''}${compile(title)}`;
 
@@ -28,18 +29,23 @@ export default function Accordion (props) {
                 'js-accordion-item',
                 _graphic?.src && 'has-image',
                 _graphic?.src && _imageAlignment && `align-image-${_imageAlignment}`,
+                _isCenterAligned && 'is-center-aligned',
                 _classes
               ])}
               key={_index}
               data-index={_index}
             >
 
-              <div role="heading" aria-level={a11y.ariaLevel({ id: _id, level: 'componentItem' })} >
+              <div
+                role="heading"
+                aria-level={a11y.ariaLevel({ id: _id, level: 'componentItem' })}
+              >
                 <button
                   id={`${_id}-${index}-accordion-button`}
                   className={classes([
                     'accordion-item__btn',
                     'js-toggle-item',
+                    _titleIcon && 'has-title-icon',
                     _isVisited && 'is-visited',
                     _isActive ? 'is-open is-selected' : 'is-closed'
                   ])}
@@ -50,14 +56,35 @@ export default function Accordion (props) {
 
                   <span className="accordion-item__btn-inner">
 
-                    <span className="accordion-item__icon">
-                      <span className="icon" aria-hidden="true"></span>
-                    </span>
+                    {_titleIcon &&
+                      <span className="accordion-item__title-icon">
+                        <span
+                          className={classes([
+                            'icon',
+                            _titleIcon
+                          ])}
+                          aria-hidden="true"
+                        />
+                      </span>
+                    }
 
                     <span className="accordion-item__title">
-                      <span className="aria-label" dangerouslySetInnerHTML={{ __html: compile(ariaLabel) }}></span>
-                      <span className="accordion-item__title-inner" aria-hidden="true" dangerouslySetInnerHTML={{ __html: compile(title) }}>
-                      </span>
+                      <span
+                        className="aria-label"
+                        dangerouslySetInnerHTML={{ __html: compile(ariaLabel) }}
+                      />
+                      <span
+                        className="accordion-item__title-inner"
+                        aria-hidden="true"
+                        dangerouslySetInnerHTML={{ __html: compile(title) }}
+                      />
+                    </span>
+
+                    <span className="accordion-item__icon">
+                      <span
+                        className="icon"
+                        aria-hidden="true"
+                      />
                     </span>
 
                   </span>
@@ -76,8 +103,10 @@ export default function Accordion (props) {
 
                   {body &&
                   <div className="accordion-item__body">
-                    <div className="accordion-item__body-inner" dangerouslySetInnerHTML={{ __html: compile(body) }}>
-                    </div>
+                    <div
+                      className="accordion-item__body-inner"
+                      dangerouslySetInnerHTML={{ __html: compile(body) }}
+                    />
                   </div>
                   }
 
@@ -90,7 +119,7 @@ export default function Accordion (props) {
               </div>
 
             </div>
-          )
+          );
         })}
 
       </div>
