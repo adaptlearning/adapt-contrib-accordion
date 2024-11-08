@@ -98,7 +98,6 @@
                   },
                   "src": {
                     "type": "string",
-                    "isObjectId": true,
                     "title": "Source",
                     "description": "Optional image which will be rendered with the item body text",
                     "_backboneForms": {
