@@ -10,6 +10,9 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
     if (accordions) return true;
   });
 
+  /**
+   * * Add JSON field to component and set attribute.
+   */
   mutateContent('adapt-contrib-accordion - update accordion._supportedLayout attribute to full-width', async () => {
     accordions.forEach(accordion => {
       /**
@@ -39,6 +42,9 @@ describe('adapt-contrib-accordion - v5.0.0 > v5.3.0', async () => {
     if (accordions) return true;
   });
 
+  /**
+   * * Add JSON field to component and set attribute.
+   */
   mutateContent('adapt-contrib-accordion - add accordion._shouldExpandFirstItem', async () => {
     accordions.forEach(accordion => {
       accordion._shouldExpandFirstItem = false;

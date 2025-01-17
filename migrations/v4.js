@@ -10,6 +10,9 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
     if (accordions) return true;
   });
 
+  /**
+   * * Add JSON field to component and set attribute.
+   */
   mutateContent('adapt-contrib-accordion - add accordion._setCompletionOn', async () => {
     accordions.forEach(accordion => {
       accordion._setCompletionOn = 'allItems';

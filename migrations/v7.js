@@ -10,6 +10,9 @@ describe('adapt-contrib-accordion - v5.3.0 > v7.0.0', async () => {
     if (accordions) return true;
   });
 
+  /**
+   * * Add JSON field to component and set attribute.
+   */
   mutateContent('adapt-contrib-accordion - add accordion._items._imageAlignment', async () => {
     accordions.forEach(accordion => {
       accordion._items.forEach(item => {
@@ -42,6 +45,9 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.7.0', async () => {
     if (accordions) return true;
   });
 
+  /**
+   * * Add field to each item in a JSON array and set attribute.
+   */
   mutateContent('adapt-contrib-accordion - add accordion._items._imageAlignment', async () => {
     accordions.forEach(accordion => {
       accordion._items.forEach(item => {
@@ -61,6 +67,9 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.7.0', async () => {
     return true;
   });
 
+  /**
+   * * Add JSON field to component and set attribute.
+   */
   mutateContent('adapt-contrib-accordion - add accordion._isCenterAligned', async () => {
     accordions.forEach(accordion => {
       accordion._isCenterAligned = false;
@@ -74,6 +83,9 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.7.0', async () => {
     return true;
   });
 
+  /**
+   * * Add field to each item in a JSON array and set blank.
+   */
   mutateContent('adapt-contrib-accordion - add accordion._items._titleIcon', async () => {
     accordions.forEach(accordion => {
       accordion._items.forEach(item => {
