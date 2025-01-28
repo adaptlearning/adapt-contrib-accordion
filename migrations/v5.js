@@ -1,13 +1,33 @@
 import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
 
+let course, courseAccordionGlobals, accordions;
+
 describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
-  let accordions;
 
   whereFromPlugin('adapt-contrib-accordion - from v4.0.0', { name: 'adapt-contrib-accordion', version: '<=5.0.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
     if (accordions) return true;
+  });
+
+  /**
+   * * Adjust a current attribute value.
+   */
+  mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
+    course = content.find(({ _type }) => _type === 'course');
+    courseAccordionGlobals = course._globals._components._accordion ?? {};
+
+    if (courseAccordionGlobals) {
+      if (courseAccordionGlobals.ariaRegion === 'Accordion. Select each button to expand the content.') courseAccordionGlobals.ariaRegion = 'List of expandable sections. Select each button to expand the content.';
+    }
+    return true;
+  });
+
+  checkContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
+    const isValid = courseAccordionGlobals.ariaRegion === 'List of expandable sections. Select each button to expand the content.';
+    if (!isValid) throw new Error('Narrative globals ariaRegion attribute not modified.');
+    return true;
   });
 
   /**
