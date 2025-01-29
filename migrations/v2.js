@@ -1,8 +1,5 @@
 import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
 
-/**
- * ? Should we be adding changes to course aria attributes? - https://github.com/adaptlearning/adapt-contrib-accordion/commit/6dca48baf740d7117ab987378ce4270c8580395b
- */
 describe('adapt-contrib-accordion - v1.0.0 > v2.0.0', async () => {
   let course, courseAccordionGlobals, accordions;
 
