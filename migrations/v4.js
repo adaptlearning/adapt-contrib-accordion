@@ -1,30 +1,50 @@
-// import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
 
-// describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
-//   let accordions;
+let course, courseAccordionGlobals, accordions;
 
-//   whereFromPlugin('adapt-contrib-accordion - from v2.1.0', { name: 'adapt-contrib-accordion', version: '<=4.0.0' });
+describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
 
-//   whereContent('adapt-contrib-accordion - where accordion', async content => {
-//     accordions = content.filter(({ _component }) => _component === 'accordion');
-//     if (accordions) return true;
-//   });
+  whereFromPlugin('adapt-contrib-accordion - from v2.1.0', { name: 'adapt-contrib-accordion', version: '<=4.0.0' });
 
-//   /**
-//    * * Add JSON field to component and set attribute.
-//    */
-//   mutateContent('adapt-contrib-accordion - add accordion._setCompletionOn', async () => {
-//     accordions.forEach(accordion => {
-//       accordion._setCompletionOn = 'allItems';
-//     });
-//     return true;
-//   });
+  whereContent('adapt-contrib-accordion - where accordion', async content => {
+    accordions = content.filter(({ _component }) => _component === 'accordion');
+    if (accordions) return true;
+  });
 
-//   checkContent('adapt-contrib-accordion - check accordion._setCompletionOn atrribute', async () => {
-//     const isValid = accordions.every(({ _setCompletionOn }) => _setCompletionOn !== undefined);
-//     if (!isValid) throw new Error('adapt-contrib-accordion - _setCompletionOn not added to every instance of accordion');
-//     return true;
-//   });
+  /**
+    * * Adjust an attribute value within course globals.
+    */
+  mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
+    course = content.find(({ _type }) => _type === 'course');
+    courseAccordionGlobals = course._globals._components._accordion ?? {};
 
-//   updatePlugin('adapt-contrib-accordion - update to v2.0.0', { name: 'adapt-contrib-accordion', version: '2.0.0', framework: '2.0.0' });
-// });
+    if (courseAccordionGlobals) {
+      if (courseAccordionGlobals.ariaRegion === 'This component is an accordion comprised of collapsible content panels containing display text. Select the item titles to toggle the visibility of these content panels.') courseAccordionGlobals.ariaRegion = 'Accordion. Select each button to expand the content.';
+    }
+    return true;
+  });
+
+  checkContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
+    const isValid = courseAccordionGlobals.ariaRegion === 'Accordion. Select each button to expand the content.';
+    if (!isValid) throw new Error('Accordion globals ariaRegion attribute not modified.');
+    return true;
+  });
+
+  /**
+   * * Add JSON field to component and set attribute.
+   */
+  mutateContent('adapt-contrib-accordion - add accordion._setCompletionOn and set', async () => {
+    accordions.forEach(accordion => {
+      accordion._setCompletionOn = 'allItems';
+    });
+    return true;
+  });
+
+  checkContent('adapt-contrib-accordion - check accordion._setCompletionOn atrribute', async () => {
+    const isValid = accordions.every(({ _setCompletionOn }) => _setCompletionOn === 'allItems');
+    if (!isValid) throw new Error('adapt-contrib-accordion - _setCompletionOn not added to every instance of accordion and set to "allItems"');
+    return true;
+  });
+
+  updatePlugin('adapt-contrib-accordion - update to v4.0.0', { name: 'adapt-contrib-accordion', version: '4.0.0', framework: '>=2' });
+});

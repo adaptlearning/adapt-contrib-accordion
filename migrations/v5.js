@@ -12,7 +12,7 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
   });
 
   /**
-   * * Adjust a current attribute value.
+   * * Adjust an attribute value.
    */
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     course = content.find(({ _type }) => _type === 'course');
@@ -26,7 +26,7 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
 
   checkContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     const isValid = courseAccordionGlobals.ariaRegion === 'List of expandable sections. Select each button to expand the content.';
-    if (!isValid) throw new Error('Narrative globals ariaRegion attribute not modified.');
+    if (!isValid) throw new Error('Accordion globals ariaRegion attribute not modified.');
     return true;
   });
 
@@ -78,5 +78,5 @@ describe('adapt-contrib-accordion - v5.0.0 > v5.3.0', async () => {
     return true;
   });
 
-  updatePlugin('adapt-contrib-accordion - update to v2.0.4', { name: 'adapt-contrib-accordion', version: '2.0.4', framework: '>=5' });
+  updatePlugin('adapt-contrib-accordion - update to v5.3.0', { name: 'adapt-contrib-accordion', version: '5.3.0', framework: '>=5' });
 });
