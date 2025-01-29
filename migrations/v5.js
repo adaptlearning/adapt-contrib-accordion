@@ -8,44 +8,45 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions) return true;
+    if (accordions.length > 0) return true;
   });
 
   /**
-   * * Adjust an attribute value.
+    * * Adjust an attribute value within course globals.
    */
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     course = content.find(({ _type }) => _type === 'course');
-    courseAccordionGlobals = course._globals._components._accordion ?? {};
+    courseAccordionGlobals = course._globals?._components?._accordion || {};
 
     if (courseAccordionGlobals) {
-      if (courseAccordionGlobals.ariaRegion === 'Accordion. Select each button to expand the content.') courseAccordionGlobals.ariaRegion = 'List of expandable sections. Select each button to expand the content.';
+      if (courseAccordionGlobals.ariaRegion === 'Accordion. Select each button to expand the content.') {
+        courseAccordionGlobals.ariaRegion = 'List of expandable sections. Select each button to expand the content.';
+      }
     }
     return true;
   });
 
   checkContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     const isValid = courseAccordionGlobals.ariaRegion === 'List of expandable sections. Select each button to expand the content.';
-    if (!isValid) throw new Error('Accordion globals ariaRegion attribute not modified.');
+    if (!isValid) throw new Error('adapt-contrib-accordion - globals ariaRegion attribute not modified.');
     return true;
   });
 
   /**
    * * Add JSON field to component and set attribute.
    */
-  mutateContent('adapt-contrib-accordion - update accordion._supportedLayout attribute to full-width', async () => {
+  mutateContent('adapt-contrib-accordion - update accordion._supportedLayout attribute to full-width if current isn\'t a supported value.', async () => {
     accordions.forEach(accordion => {
-      /**
-      * ? Would this potentially break the layout of any course being migrated?
-      */
-      accordion._supportedLayout = 'full-width';
+      if (accordion._supportedLayout !== 'full-width' || accordion._supportedLayout !== 'half-width' || accordion._supportedLayout !== 'both') {
+        accordion._supportedLayout = 'full-width';
+      }
     });
     return true;
   });
 
-  checkContent('adapt-contrib-accordion - check accordion._supportedLayout atrribute is now full-width', async () => {
-    const isValid = accordions.every(({ _supportedLayout }) => _supportedLayout === 'full-width');
-    if (!isValid) throw new Error('adapt-contrib-accordion - _supportedLayout is not set to "full-width" for every instance');
+  checkContent('adapt-contrib-accordion - check accordion._supportedLayout attribute is now full-width', async () => {
+    const isValid = accordions.every(({ _supportedLayout }) => _supportedLayout === 'full-width' || _supportedLayout === 'half-width' || _supportedLayout === 'both');
+    if (!isValid) throw new Error('adapt-contrib-accordion - _supportedLayout attribute has not been modified to a supported value.');
     return true;
   });
 
@@ -59,7 +60,7 @@ describe('adapt-contrib-accordion - v5.0.0 > v5.3.0', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions) return true;
+    if (accordions.length > 0) return true;
   });
 
   /**

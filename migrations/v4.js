@@ -8,7 +8,7 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions) return true;
+    if (accordions.length > 0) return true;
   });
 
   /**
@@ -16,10 +16,13 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
     */
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     course = content.find(({ _type }) => _type === 'course');
-    courseAccordionGlobals = course._globals._components._accordion ?? {};
+    courseAccordionGlobals = course._globals._components._accordion || {};
 
     if (courseAccordionGlobals) {
-      if (courseAccordionGlobals.ariaRegion === 'This component is an accordion comprised of collapsible content panels containing display text. Select the item titles to toggle the visibility of these content panels.') courseAccordionGlobals.ariaRegion = 'Accordion. Select each button to expand the content.';
+      if (courseAccordionGlobals.ariaRegion ===
+        'This component is an accordion comprised of collapsible content panels containing display text. Select the item titles to toggle the visibility of these content panels.') {
+        courseAccordionGlobals.ariaRegion = 'Accordion. Select each button to expand the content.';
+      }
     }
     return true;
   });
@@ -33,14 +36,13 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
   /**
    * * Add JSON field to component and set attribute.
    */
-  mutateContent('adapt-contrib-accordion - add accordion._setCompletionOn and set', async () => {
+  mutateContent('adapt-contrib-accordion - add accordion._setCompletionOn and set attribute', async () => {
     accordions.forEach(accordion => {
       accordion._setCompletionOn = 'allItems';
     });
-    return true;
   });
 
-  checkContent('adapt-contrib-accordion - check accordion._setCompletionOn atrribute', async () => {
+  checkContent('adapt-contrib-accordion - check accordion._setCompletionOn attribute', async () => {
     const isValid = accordions.every(({ _setCompletionOn }) => _setCompletionOn === 'allItems');
     if (!isValid) throw new Error('adapt-contrib-accordion - _setCompletionOn not added to every instance of accordion and set to "allItems"');
     return true;
