@@ -63,7 +63,7 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
     return true;
   });
 
-  updatePlugin('adapt-contrib-accordion - update to v7.4.0', { name: 'adapt-contrib-accordion', version: '7.4.0', framework: '>=5' });
+  updatePlugin('adapt-contrib-accordion - update to v7.4.0', { name: 'adapt-contrib-accordion', version: '7.4.0', framework: '>5.20.1' });
 });
 
 describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
