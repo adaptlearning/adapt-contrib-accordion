@@ -103,7 +103,7 @@ if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._
     return true;
   });
 
-  updatePlugin('adapt-contrib-accordion - update to v2.0.0', { name: 'adapt-contrib-accordion', version: '2.0.0', framework: '>=2' });
+  updatePlugin('adapt-contrib-accordion - update to v2.0.0', { name: 'adapt-contrib-accordion', version: '2.0.0', framework: '>=2.0.0' });
 });
 
 describe('adapt-contrib-accordion - v2.0.0 > v2.0.4', async () => {
@@ -138,7 +138,7 @@ describe('adapt-contrib-accordion - v2.0.0 > v2.0.4', async () => {
     return true;
   });
 
-  updatePlugin('adapt-contrib-accordion - update to v2.0.4', { name: 'adapt-contrib-accordion', version: '2.0.4', framework: '>=2' });
+  updatePlugin('adapt-contrib-accordion - update to v2.0.4', { name: 'adapt-contrib-accordion', version: '2.0.4', framework: '>=2.0.0' });
 });
 
 describe('adapt-contrib-accordion - v2.0.4 > v2.0.5', async () => {
@@ -148,7 +148,7 @@ describe('adapt-contrib-accordion - v2.0.4 > v2.0.5', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions) return true;
+    if (accordions.length > 0) return true;
   });
 
   /**
@@ -167,7 +167,7 @@ describe('adapt-contrib-accordion - v2.0.4 > v2.0.5', async () => {
     return true;
   });
 
-  updatePlugin('adapt-contrib-accordion - update to v2.0.5', { name: 'adapt-contrib-accordion', version: '2.0.5', framework: '>=2' });
+  updatePlugin('adapt-contrib-accordion - update to v2.0.5', { name: 'adapt-contrib-accordion', version: '2.0.5', framework: '>=2.0.0' });
 });
 
 describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
@@ -202,5 +202,5 @@ describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
     return true;
   });
 
-  updatePlugin('adapt-contrib-accordion - update to v2.1.0', { name: 'adapt-contrib-accordion', version: '2.1.0', framework: '>=2' });
+  updatePlugin('adapt-contrib-accordion - update to v2.1.0', { name: 'adapt-contrib-accordion', version: '2.1.0', framework: '>=2.0.0' });
 });

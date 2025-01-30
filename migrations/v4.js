@@ -4,7 +4,7 @@ let course, courseAccordionGlobals, accordions;
 
 describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
 
-  whereFromPlugin('adapt-contrib-accordion - from v2.1.0', { name: 'adapt-contrib-accordion', version: '<=4.0.0' });
+  whereFromPlugin('adapt-contrib-accordion - from v2.1.0', { name: 'adapt-contrib-accordion', version: '<4.0.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
@@ -48,5 +48,5 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
     return true;
   });
 
-  updatePlugin('adapt-contrib-accordion - update to v4.0.0', { name: 'adapt-contrib-accordion', version: '4.0.0', framework: '>=2' });
+  updatePlugin('adapt-contrib-accordion - update to v4.0.0', { name: 'adapt-contrib-accordion', version: '4.0.0', framework: '>=3.3.0' });
 });
