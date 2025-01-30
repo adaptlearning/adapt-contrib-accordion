@@ -94,7 +94,6 @@ describe('adapt-contrib-accordion - v1.0.0 > v2.0.0', async () => {
     course = content.find(({ _type }) => _type === 'course');
     if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._components._accordion', {});
     courseAccordionGlobals = course._globals._components._accordion;
-
     courseAccordionGlobals.ariaRegion = 'This component is an accordion comprised of collapsible content panels containing display text. Select the item titles to toggle the visibility of these content panels.';
     return true;
   });
