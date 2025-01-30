@@ -113,7 +113,7 @@ describe('adapt-contrib-accordion - v2.0.0 > v2.0.4', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions) return true;
+    if (accordions.length) return true
   });
 
   /**
