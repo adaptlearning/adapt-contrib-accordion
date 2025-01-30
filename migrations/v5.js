@@ -1,4 +1,5 @@
 import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import _ from 'lodash';
 
 let course, courseAccordionGlobals, accordions;
 
@@ -16,7 +17,8 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
    */
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     course = content.find(({ _type }) => _type === 'course');
-    courseAccordionGlobals = course._globals?._components?._accordion || {};
+    if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._components._accordion', {});
+    courseAccordionGlobals = course._globals._components._accordion;
 
     if (courseAccordionGlobals) {
       if (courseAccordionGlobals.ariaRegion === 'Accordion. Select each button to expand the content.') {

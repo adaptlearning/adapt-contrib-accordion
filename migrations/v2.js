@@ -1,4 +1,5 @@
 import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import _ from 'lodash';
 
 describe('adapt-contrib-accordion - v1.0.0 > v2.0.0', async () => {
   let course, courseAccordionGlobals, accordions;
@@ -7,7 +8,7 @@ describe('adapt-contrib-accordion - v1.0.0 > v2.0.0', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions.length) return true
+    if (accordions.length > 0) return true;
   });
 
   /**
@@ -91,8 +92,9 @@ describe('adapt-contrib-accordion - v1.0.0 > v2.0.0', async () => {
     */
   mutateContent('adapt-contrib-accordion - add globals ariaRegion attribute', async (content) => {
     course = content.find(({ _type }) => _type === 'course');
-if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._components._accordion', {});
+    if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._components._accordion', {});
     courseAccordionGlobals = course._globals._components._accordion;
+
     courseAccordionGlobals.ariaRegion = 'This component is an accordion comprised of collapsible content panels containing display text. Select the item titles to toggle the visibility of these content panels.';
     return true;
   });
@@ -113,7 +115,7 @@ describe('adapt-contrib-accordion - v2.0.0 > v2.0.4', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions.length) return true
+    if (accordions.length > 0) return true;
   });
 
   /**
@@ -177,7 +179,7 @@ describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions.length) return true
+    if (accordions.length > 0) return true;
   });
 
   /**
