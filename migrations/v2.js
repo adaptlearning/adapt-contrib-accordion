@@ -172,7 +172,7 @@ describe('adapt-contrib-accordion - v2.0.4 > v2.0.5', async () => {
 describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
   let accordions;
 
-  whereFromPlugin('adapt-contrib-accordion - from v2.1.0', { name: 'adapt-contrib-accordion', version: '<=2.1.0' });
+  whereFromPlugin('adapt-contrib-accordion - from v2.0.5', { name: 'adapt-contrib-accordion', version: '<2.1.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
