@@ -9,7 +9,7 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions.length > 0) return true;
+    return accordions.length;
   });
 
   /**
@@ -62,7 +62,7 @@ describe('adapt-contrib-accordion - v5.0.0 > v5.3.0', async () => {
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = content.filter(({ _component }) => _component === 'accordion');
-    if (accordions.length > 0) return true;
+    return accordions.length;
   });
 
   /**
