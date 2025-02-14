@@ -12,9 +12,6 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
     return accordions.length;
   });
 
-  /**
-    * * Adjust an attribute value within course globals.
-    */
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     course = content.find(({ _type }) => _type === 'course');
     if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._components._accordion', {});
@@ -35,9 +32,6 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
     return true;
   });
 
-  /**
-   * * Add JSON field to component and set attribute.
-   */
   mutateContent('adapt-contrib-accordion - add accordion._setCompletionOn and set attribute', async () => {
     accordions.forEach(accordion => {
       accordion._setCompletionOn = 'allItems';

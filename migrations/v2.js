@@ -10,9 +10,6 @@ describe('adapt-contrib-accordion - v2.0.0 > v2.0.4', async () => {
     return accordions.length;
   });
 
-  /**
-   * * Add field to each item in a JSON array and set blank.
-   */
   mutateContent('adapt-contrib-accordion - add accordion._items._classes attribute', async () => {
     accordions.forEach(accordion => {
       accordion._items.forEach(item => {
@@ -45,9 +42,6 @@ describe('adapt-contrib-accordion - v2.0.4 > v2.0.5', async () => {
     return accordions.length;
   });
 
-  /**
-   * * Add JSON field to component and set attribute.
-   */
   mutateContent('adapt-contrib-accordion - add accordion._shouldCollapseItems attribute', async () => {
     accordions.forEach(accordion => {
       accordion._shouldCollapseItems = true;
@@ -74,9 +68,6 @@ describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
     return accordions.length;
   });
 
-  /**
-   * * Add field to each item in a JSON array and set blank.
-   */
   mutateContent('adapt-contrib-accordion - add accordion._items._graphic.attribution', async () => {
     accordions.forEach(accordion => {
       accordion._items.forEach(item => {

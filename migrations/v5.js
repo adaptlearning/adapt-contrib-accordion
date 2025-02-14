@@ -12,9 +12,6 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
     return accordions.length;
   });
 
-  /**
-    * * Adjust an attribute value within course globals.
-   */
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     course = content.find(({ _type }) => _type === 'course');
     if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._components._accordion', {});
@@ -34,9 +31,6 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
     return true;
   });
 
-  /**
-   * * Add JSON field to component and set attribute.
-   */
   mutateContent('adapt-contrib-accordion - update accordion._supportedLayout attribute to full-width if current isn\'t a supported value.', async () => {
     accordions.forEach(accordion => {
       if (accordion._supportedLayout !== 'full-width' || accordion._supportedLayout !== 'half-width' || accordion._supportedLayout !== 'both') {
@@ -65,9 +59,6 @@ describe('adapt-contrib-accordion - v5.0.0 > v5.3.0', async () => {
     return accordions.length;
   });
 
-  /**
-   * * Add JSON field to component and set attribute.
-   */
   mutateContent('adapt-contrib-accordion - add accordion._shouldExpandFirstItem', async () => {
     accordions.forEach(accordion => {
       accordion._shouldExpandFirstItem = false;
