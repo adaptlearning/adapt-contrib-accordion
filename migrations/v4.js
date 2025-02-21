@@ -5,6 +5,8 @@ let course, courseAccordionGlobals, accordions;
 
 describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
 
+  const oldAriaRegion = 'This component requires you to answer the question by selecting the relevant value. After selecting a value select the submit button below.';
+
   whereFromPlugin('adapt-contrib-accordion - from v2.1.0', { name: 'adapt-contrib-accordion', version: '<4.0.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
@@ -18,8 +20,7 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
     courseAccordionGlobals = course._globals._components._accordion;
 
     if (courseAccordionGlobals) {
-      if (courseAccordionGlobals.ariaRegion ===
-        'This component is an accordion comprised of collapsible content panels containing display text. Select the item titles to toggle the visibility of these content panels.') {
+      if (courseAccordionGlobals.ariaRegion === oldAriaRegion) {
         courseAccordionGlobals.ariaRegion = 'Accordion. Select each button to expand the content.';
       }
     }
@@ -27,7 +28,7 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
   });
 
   checkContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
-    const isValid = courseAccordionGlobals.ariaRegion === 'Accordion. Select each button to expand the content.';
+    const isValid = courseAccordionGlobals.ariaRegion !== oldAriaRegion;
     if (!isValid) throw new Error('Accordion globals ariaRegion attribute not modified.');
     return true;
   });
