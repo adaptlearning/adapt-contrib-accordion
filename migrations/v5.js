@@ -1,4 +1,4 @@
-import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getCourse, getComponents } from 'adapt-migrations';
 import _ from 'lodash';
 
 let course, courseAccordionGlobals, accordions;
@@ -8,12 +8,12 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
   whereFromPlugin('adapt-contrib-accordion - from v4.0.0', { name: 'adapt-contrib-accordion', version: '<5.0.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
-    accordions = content.filter(({ _component }) => _component === 'accordion');
+    accordions = getComponents('accordion');
     return accordions.length;
   });
 
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
-    course = content.find(({ _type }) => _type === 'course');
+    course = getCourse();
     if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._components._accordion', {});
     courseAccordionGlobals = course._globals._components._accordion;
 
@@ -55,7 +55,7 @@ describe('adapt-contrib-accordion - v5.0.0 > v5.3.0', async () => {
   whereFromPlugin('adapt-contrib-accordion - from v5.0.0', { name: 'adapt-contrib-accordion', version: '<5.3.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
-    accordions = content.filter(({ _component }) => _component === 'accordion');
+    accordions = getComponents('accordion');
     return accordions.length;
   });
 

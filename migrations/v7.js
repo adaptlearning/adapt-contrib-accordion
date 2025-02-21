@@ -1,4 +1,4 @@
-import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getComponents } from 'adapt-migrations';
 
 describe('adapt-contrib-accordion - v5.3.0 > v7.3.0', async () => {
   let accordions;
@@ -6,7 +6,7 @@ describe('adapt-contrib-accordion - v5.3.0 > v7.3.0', async () => {
   whereFromPlugin('adapt-contrib-accordion - from v5.3.0', { name: 'adapt-contrib-accordion', version: '<7.3.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
-    accordions = content.filter(({ _component }) => _component === 'accordion');
+    accordions = getComponents('accordion');
     return accordions.length;
   });
 
@@ -38,7 +38,7 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
   whereFromPlugin('adapt-contrib-accordion - from v7.3.0', { name: 'adapt-contrib-accordion', version: '<7.4.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
-    accordions = content.filter(({ _component }) => _component === 'accordion');
+    accordions = getComponents('accordion');
     return accordions.length;
   });
 
@@ -66,7 +66,7 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
   whereFromPlugin('adapt-contrib-accordion - from v7.4.0', { name: 'adapt-contrib-accordion', version: '<7.7.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
-    accordions = content.filter(({ _component }) => _component === 'accordion');
+    accordions = getComponents('accordion');
     return accordions.length;
   });
 

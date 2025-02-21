@@ -1,21 +1,21 @@
-import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getCourse, getComponents } from 'adapt-migrations';
 import _ from 'lodash';
 
-let course, courseAccordionGlobals, accordions;
-
 describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
+
+  let course, courseAccordionGlobals, accordions;
 
   const oldAriaRegion = 'This component requires you to answer the question by selecting the relevant value. After selecting a value select the submit button below.';
 
   whereFromPlugin('adapt-contrib-accordion - from v2.1.0', { name: 'adapt-contrib-accordion', version: '<4.0.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
-    accordions = content.filter(({ _component }) => _component === 'accordion');
+    accordions = getComponents('accordion');
     return accordions.length;
   });
 
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
-    course = content.find(({ _type }) => _type === 'course');
+    course = getCourse();
     if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._components._accordion', {});
     courseAccordionGlobals = course._globals._components._accordion;
 
