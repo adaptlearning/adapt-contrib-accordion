@@ -1,9 +1,10 @@
-import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getComponents } from 'adapt-migrations';
+import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getComponents, testStopWhere, testSuccessWhere } from 'adapt-migrations';
+import _ from 'lodash';
 
-describe('adapt-contrib-accordion - v2.0.0 > v2.0.4', async () => {
+describe('adapt-contrib-accordion - v2.0.3 > v2.0.4', async () => {
   let accordions;
 
-  whereFromPlugin('adapt-contrib-accordion - from v2.0.0', { name: 'adapt-contrib-accordion', version: '<2.0.4' });
+  whereFromPlugin('adapt-contrib-accordion - from v2.0.3', { name: 'adapt-contrib-accordion', version: '>=2.0.0 <2.0.4' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = getComponents('accordion');
@@ -30,6 +31,23 @@ describe('adapt-contrib-accordion - v2.0.0 > v2.0.4', async () => {
   });
 
   updatePlugin('adapt-contrib-accordion - update to v2.0.4', { name: 'adapt-contrib-accordion', version: '2.0.4', framework: '>=2.0.0' });
+
+  testSuccessWhere('correct version with accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.3' }],
+    content: [
+      { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
+      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] }
+    ]
+  });
+
+  testStopWhere('no accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.3' }],
+    content: [{ _component: 'other' }]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.4' }]
+  });
 });
 
 describe('adapt-contrib-accordion - v2.0.4 > v2.0.5', async () => {
@@ -56,6 +74,23 @@ describe('adapt-contrib-accordion - v2.0.4 > v2.0.5', async () => {
   });
 
   updatePlugin('adapt-contrib-accordion - update to v2.0.5', { name: 'adapt-contrib-accordion', version: '2.0.5', framework: '>=2.0.0' });
+
+  testSuccessWhere('correct version with accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.4' }],
+    content: [
+      { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
+      { _id: 'c-105', _component: 'accordion' }
+    ]
+  });
+
+  testStopWhere('no accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.4' }],
+    content: [{ _component: 'other' }]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.5' }]
+  });
 });
 
 describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
@@ -71,7 +106,7 @@ describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
   mutateContent('adapt-contrib-accordion - add accordion._items._graphic.attribution', async () => {
     accordions.forEach(accordion => {
       accordion._items.forEach(item => {
-        item._graphic.attribution = '';
+        _.set(item, '_graphic.attribution', '');
       });
     });
     return true;
@@ -88,4 +123,21 @@ describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
   });
 
   updatePlugin('adapt-contrib-accordion - update to v2.1.0', { name: 'adapt-contrib-accordion', version: '2.1.0', framework: '>=2.0.0' });
+
+  testSuccessWhere('correct version with accordion components with/without _graphic', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.5' }],
+    content: [
+      { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1', _graphic: {} }] },
+      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] }
+    ]
+  });
+
+  testStopWhere('no accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.5' }],
+    content: [{ _component: 'other' }]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.1.0' }]
+  });
 });

@@ -1,4 +1,5 @@
-import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getComponents } from 'adapt-migrations';
+import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getComponents, testStopWhere, testSuccessWhere } from 'adapt-migrations';
+import _ from 'lodash';
 
 describe('adapt-contrib-accordion - v5.3.0 > v7.3.0', async () => {
   let accordions;
@@ -30,10 +31,28 @@ describe('adapt-contrib-accordion - v5.3.0 > v7.3.0', async () => {
   });
 
   updatePlugin('adapt-contrib-accordion - update to v7.3.0', { name: 'adapt-contrib-accordion', version: '7.3.0', framework: '>=5.20.1' });
+
+  testSuccessWhere('correct version with accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '5.3.0' }],
+    content: [
+      { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
+      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] }
+    ]
+  });
+
+  testStopWhere('no accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '5.3.0' }],
+    content: [{ _component: 'other' }]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.0.0' }]
+  });
 });
 
 describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
   let accordions;
+  const initialMobileInstruction = 'Select the headings below to reveal the text.';
 
   whereFromPlugin('adapt-contrib-accordion - from v7.3.0', { name: 'adapt-contrib-accordion', version: '<7.4.0' });
 
@@ -44,7 +63,8 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
 
   mutateContent('adapt-contrib-accordion  - update default mobileInstruction text', async () => {
     accordions.forEach(accordion => {
-      if (accordion.mobileInstruction === 'Select the headings below to reveal the text.' || '') {
+      if (!_.has(accordion, 'mobileInstruction')) _.set(accordion, 'mobileInstruction', initialMobileInstruction);
+      if (accordion.mobileInstruction === initialMobileInstruction || '') {
         accordion.mobileInstruction = 'Select the headings to find out more.';
       }
     });
@@ -52,12 +72,30 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
   });
 
   checkContent('adapt-contrib-accordion - check mobileInstruction attribute', async () => {
-    const isInvalid = accordions.some(({ mobileInstruction }) => mobileInstruction === 'Select the headings to find out more.');
+    const isInvalid = accordions.find(({ mobileInstruction }) => mobileInstruction === initialMobileInstruction);
     if (isInvalid) throw new Error('adapt-contrib-accordion - mobileInstruction attribute not modified');
     return true;
   });
 
   updatePlugin('adapt-contrib-accordion - update to v7.4.0', { name: 'adapt-contrib-accordion', version: '7.4.0', framework: '>5.20.1' });
+
+  testSuccessWhere('correct version with accordion components with default/custom/no mobileInstruction', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.3.0' }],
+    content: [
+      { _id: 'c-100', _component: 'accordion', mobileInstruction: 'Select the headings below to reveal the text.' },
+      { _id: 'c-105', _component: 'accordion', mobileInstruction: 'Custome mobileInstruction' },
+      { _id: 'c-105', _component: 'accordion' }
+    ]
+  });
+
+  testStopWhere('no accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.3.0' }],
+    content: [{ _component: 'other' }]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.4.0' }]
+  });
 });
 
 describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
@@ -79,6 +117,13 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
     return true;
   });
 
+  mutateContent('adapt-contrib-accordion - add accordion._isCenterAligned', async () => {
+    accordions.forEach(accordion => {
+      accordion._isCenterAligned = false;
+    });
+    return true;
+  });
+
   checkContent('adapt-contrib-accordion - check accordion._items._titleIcon attribute', async () => {
     const isValid = accordions.every(accordion =>
       accordion._items.every(item =>
@@ -89,13 +134,6 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
     return true;
   });
 
-  mutateContent('adapt-contrib-accordion - add accordion._isCenterAligned', async () => {
-    accordions.forEach(accordion => {
-      accordion._isCenterAligned = false;
-    });
-    return true;
-  });
-
   checkContent('adapt-contrib-accordion - check accordion._isCenterAligned attribute', async () => {
     const isValid = accordions.every(({ _isCenterAligned }) => _isCenterAligned === false);
     if (!isValid) throw new Error('adapt-contrib-accordion - _isCenterAligned not added to every instance of accordion');
@@ -103,4 +141,21 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
   });
 
   updatePlugin('adapt-contrib-accordion - update to v7.7.0', { name: 'adapt-contrib-accordion', version: '7.7.0', framework: '>=5.20.1' });
+
+  testSuccessWhere('correct version with accordion components with various number of _items', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.4.0' }],
+    content: [
+      { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }, { title: 'item 2' }] },
+      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] }
+    ]
+  });
+
+  testStopWhere('no accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.4.0' }],
+    content: [{ _component: 'other' }]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.7.0' }]
+  });
 });
