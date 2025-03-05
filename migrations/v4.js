@@ -2,9 +2,9 @@ import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, u
 import _ from 'lodash';
 
 describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
-
   let course, courseAccordionGlobals, accordions;
   const oldAriaRegion = 'This component requires you to answer the question by selecting the relevant value. After selecting a value select the submit button below.';
+  const newAriaRegion = 'Accordion. Select each button to expand the content.';
 
   whereFromPlugin('adapt-contrib-accordion - from v2.1.0', { name: 'adapt-contrib-accordion', version: '<4.0.0' });
 
@@ -15,10 +15,10 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
 
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     course = getCourse();
-    if (!_.has(course, '_globals._components._accordion')) _.set(course, '_globals._components._accordion', { ariaRegion: oldAriaRegion });
+    if (!_.has(course, '_globals._components._accordion.ariaRegion')) _.set(course, '_globals._components._accordion.ariaRegion', { ariaRegion: newAriaRegion });
     courseAccordionGlobals = course._globals._components._accordion;
     if (courseAccordionGlobals.ariaRegion === oldAriaRegion) {
-      courseAccordionGlobals.ariaRegion = 'Accordion. Select each button to expand the content.';
+      courseAccordionGlobals.ariaRegion = newAriaRegion;
     }
     return true;
   });
@@ -53,7 +53,7 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
     ]
   });
 
-  testSuccessWhere('correct version with accordion components and course globals', {
+  testSuccessWhere('correct version with accordion components and empty globals', {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.1.0' }],
     content: [
       { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },

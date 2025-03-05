@@ -52,7 +52,7 @@ describe('adapt-contrib-accordion - v5.3.0 > v7.3.0', async () => {
 
 describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
   let accordions;
-  const initialMobileInstruction = 'Select the headings below to reveal the text.';
+  const originalMobileInstruction = 'Select the headings below to reveal the text.';
 
   whereFromPlugin('adapt-contrib-accordion - from v7.3.0', { name: 'adapt-contrib-accordion', version: '<7.4.0' });
 
@@ -63,8 +63,8 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
 
   mutateContent('adapt-contrib-accordion  - update default mobileInstruction text', async () => {
     accordions.forEach(accordion => {
-      if (!_.has(accordion, 'mobileInstruction')) _.set(accordion, 'mobileInstruction', initialMobileInstruction);
-      if (accordion.mobileInstruction === initialMobileInstruction || '') {
+      if (!_.has(accordion, 'mobileInstruction')) _.set(accordion, 'mobileInstruction', originalMobileInstruction);
+      if (accordion.mobileInstruction === originalMobileInstruction || '') {
         accordion.mobileInstruction = 'Select the headings to find out more.';
       }
     });
@@ -72,7 +72,7 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
   });
 
   checkContent('adapt-contrib-accordion - check mobileInstruction attribute', async () => {
-    const isInvalid = accordions.find(({ mobileInstruction }) => mobileInstruction === initialMobileInstruction);
+    const isInvalid = accordions.find(({ mobileInstruction }) => mobileInstruction === originalMobileInstruction);
     if (isInvalid) throw new Error('adapt-contrib-accordion - mobileInstruction attribute not modified');
     return true;
   });
@@ -82,9 +82,9 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
   testSuccessWhere('correct version with accordion components with default/custom/no mobileInstruction', {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.3.0' }],
     content: [
-      { _id: 'c-100', _component: 'accordion', mobileInstruction: 'Select the headings below to reveal the text.' },
-      { _id: 'c-105', _component: 'accordion', mobileInstruction: 'Custome mobileInstruction' },
-      { _id: 'c-105', _component: 'accordion' }
+      { _id: 'c-100', _component: 'accordion', mobileInstruction: originalMobileInstruction },
+      { _id: 'c-105', _component: 'accordion', mobileInstruction: 'Custom mobileInstruction' },
+      { _id: 'c-110', _component: 'accordion' }
     ]
   });
 

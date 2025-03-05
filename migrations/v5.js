@@ -55,7 +55,7 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
     ]
   });
 
-  testSuccessWhere('correct version with accordion components and course globals', {
+  testSuccessWhere('correct version with accordion components and empty globals', {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.1.0' }],
     content: [
       { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
@@ -112,8 +112,7 @@ describe('adapt-contrib-accordion - v5.0.0 > v5.3.0', async () => {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '5.0.0' }],
     content: [
       { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
-      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] },
-      { _type: 'course' }
+      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] }
     ]
   });
 
