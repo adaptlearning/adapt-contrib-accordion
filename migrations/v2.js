@@ -23,7 +23,7 @@ describe('adapt-contrib-accordion - v2.0.3 > v2.0.4', async () => {
   checkContent('adapt-contrib-accordion - check accordion._items._classes attribute', async () => {
     const isValid = accordions.every(accordion =>
       accordion._items.every(item =>
-        item && item._classes !== undefined
+        _.has(item, '_classes')
       )
     );
     if (!isValid) throw new Error('adapt-contrib-accordion - _classes not added to every instance of accordion._items');
@@ -115,7 +115,7 @@ describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
   checkContent('adapt-contrib-accordion - check accordion._items._graphic.attribution atrribute', async () => {
     const isValid = accordions.every(accordion =>
       accordion._items.every(item =>
-        item._graphic && item._graphic.attribution !== undefined
+        _.has(item, '_graphic.attribution')
       )
     );
     if (!isValid) throw new Error('adapt-contrib-accordion - _graphic.attribution not added to every instance of accordion._items');

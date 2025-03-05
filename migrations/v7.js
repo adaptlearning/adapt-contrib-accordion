@@ -124,7 +124,7 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
 
   checkContent('adapt-contrib-accordion - check accordion._items._titleIcon attribute', async () => {
     const isValid = accordions.every(accordion =>
-      accordion._items.every(item => item?._titleIcon !== undefined)
+      accordion._items.every(item => _.has(item, '_titleIcon'))
     );
     if (!isValid) throw new Error('adapt-contrib-accordion - _titleIcon not added to every instance of accordion._items');
     return true;
