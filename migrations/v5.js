@@ -55,8 +55,8 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
   testSuccessWhere('correct version with accordion components and empty course', {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.1.0' }],
     content: [
-      { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
-      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] },
+      { _id: 'c-100', _component: 'accordion', _supportedLayout: 'incorrect _supportedLayout', _items: [{ title: 'item 1' }] },
+      { _id: 'c-105', _component: 'accordion', _supportedLayout: 'full-width', _items: [{ title: 'item 1' }] },
       { _type: 'course' }
     ]
   });
