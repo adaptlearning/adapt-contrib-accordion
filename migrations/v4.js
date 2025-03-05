@@ -15,7 +15,9 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
 
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     course = getCourse();
-    if (!_.has(course, '_globals._components._accordion.ariaRegion')) _.set(course, '_globals._components._accordion.ariaRegion', { ariaRegion: newAriaRegion });
+    if (!_.has(course, '_globals._components._accordion.ariaRegion')) {
+      _.set(course, '_globals._components._accordion.ariaRegion', newAriaRegion);
+    }
     courseAccordionGlobals = course._globals._components._accordion;
     if (courseAccordionGlobals.ariaRegion === oldAriaRegion) {
       courseAccordionGlobals.ariaRegion = newAriaRegion;

@@ -5,6 +5,11 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
   let course, courseAccordionGlobals, accordions;
   const originalAriaRegion = 'Accordion. Select each button to expand the content.';
   const newAriaRegion = 'List of expandable sections. Select each button to expand the content.';
+  const supportedLayouts = [
+    'full-width',
+    'half-width',
+    'both'
+  ];
 
   whereFromPlugin('adapt-contrib-accordion - from v4.0.0', { name: 'adapt-contrib-accordion', version: '<5.0.0' });
 
@@ -15,7 +20,9 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
 
   mutateContent('adapt-contrib-accordion - modify globals ariaRegion attribute', async (content) => {
     course = getCourse();
-    if (!_.has(course, '_globals._components._accordion.ariaRegion')) _.set(course, '_globals._components._accordion', { ariaRegion: originalAriaRegion });
+    if (!_.has(course, '_globals._components._accordion.ariaRegion')) {
+      _.set(course, '_globals._components._accordion.ariaRegion', newAriaRegion);
+    };
     courseAccordionGlobals = course._globals._components._accordion;
     if (courseAccordionGlobals.ariaRegion === originalAriaRegion) {
       courseAccordionGlobals.ariaRegion = newAriaRegion;
@@ -25,9 +32,8 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
 
   mutateContent('adapt-contrib-accordion - update accordion._supportedLayout attribute to full-width if current isn\'t a supported value.', async () => {
     accordions.forEach(accordion => {
-      if (accordion._supportedLayout !== 'full-width' || accordion._supportedLayout !== 'half-width' || accordion._supportedLayout !== 'both') {
-        accordion._supportedLayout = 'full-width';
-      }
+      if (supportedLayouts.includes(accordion._supportedLayout)) return;
+      accordion._supportedLayout = 'full-width';
     });
     return true;
   });
@@ -39,7 +45,7 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
   });
 
   checkContent('adapt-contrib-accordion - check accordion._supportedLayout attribute is now full-width', async () => {
-    const isValid = accordions.every(({ _supportedLayout }) => _supportedLayout === 'full-width' || _supportedLayout === 'half-width' || _supportedLayout === 'both');
+    const isValid = accordions.every(({ _supportedLayout }) => supportedLayouts.includes(_supportedLayout));
     if (!isValid) throw new Error('adapt-contrib-accordion - _supportedLayout attribute has not been modified to a supported value.');
     return true;
   });
