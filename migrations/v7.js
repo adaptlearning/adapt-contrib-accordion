@@ -62,9 +62,8 @@ describe('adapt-contrib-accordion - v7.3.0 > v7.4.0', async () => {
   mutateContent('adapt-contrib-accordion  - update default mobileInstruction text', async () => {
     accordions.forEach(accordion => {
       if (!_.has(accordion, 'mobileInstruction')) _.set(accordion, 'mobileInstruction', originalMobileInstruction);
-      if ([originalMobileInstruction, ''].includes(accordion.mobileInstruction)) {
-        accordion.mobileInstruction = 'Select the headings to find out more.';
-      }
+      if (![originalMobileInstruction, ''].includes(accordion.mobileInstruction)) return;
+      accordion.mobileInstruction = 'Select the headings to find out more.';
     });
     return true;
   });
