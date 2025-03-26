@@ -51,6 +51,7 @@ describe('adapt-contrib-accordion - v2.1.0 > v4.0.0', async () => {
     content: [
       { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
       { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] },
+      { _id: 'c-110', _component: 'accordion' },
       { _type: 'course' }
     ]
   });

@@ -34,7 +34,8 @@ describe('adapt-contrib-accordion - v5.3.0 > v7.3.0', async () => {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '5.3.0' }],
     content: [
       { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
-      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] }
+      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] },
+      { _id: 'c-110', _component: 'accordion' }
     ]
   });
 
@@ -141,7 +142,8 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.4.0' }],
     content: [
       { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }, { title: 'item 2' }] },
-      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] }
+      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] },
+      { _id: 'c-110', _component: 'accordion' }
     ]
   });
 

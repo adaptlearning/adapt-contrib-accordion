@@ -57,6 +57,7 @@ describe('adapt-contrib-accordion - v4.0.0 > v5.0.0', async () => {
     content: [
       { _id: 'c-100', _component: 'accordion', _supportedLayout: 'incorrect _supportedLayout', _items: [{ title: 'item 1' }] },
       { _id: 'c-105', _component: 'accordion', _supportedLayout: 'full-width', _items: [{ title: 'item 1' }] },
+      { _id: 'c-110', _component: 'accordion' },
       { _type: 'course' }
     ]
   });
@@ -118,7 +119,8 @@ describe('adapt-contrib-accordion - v5.0.0 > v5.3.0', async () => {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '5.0.0' }],
     content: [
       { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
-      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] }
+      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] },
+      { _id: 'c-110', _component: 'accordion' }
     ]
   });
 

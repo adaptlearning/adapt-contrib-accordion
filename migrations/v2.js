@@ -79,7 +79,8 @@ describe('adapt-contrib-accordion - v2.0.4 > v2.0.5', async () => {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.4' }],
     content: [
       { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1' }] },
-      { _id: 'c-105', _component: 'accordion' }
+      { _id: 'c-105', _component: 'accordion' },
+      { _id: 'c-110', _component: 'accordion' }
     ]
   });
 
@@ -128,7 +129,8 @@ describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '2.0.5' }],
     content: [
       { _id: 'c-100', _component: 'accordion', _items: [{ title: 'item 1', _graphic: {} }] },
-      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] }
+      { _id: 'c-105', _component: 'accordion', _items: [{ title: 'item 1' }] },
+      { _id: 'c-110', _component: 'accordion' }
     ]
   });
 
