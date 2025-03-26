@@ -13,7 +13,7 @@ describe('adapt-contrib-accordion - v2.0.3 > v2.0.4', async () => {
 
   mutateContent('adapt-contrib-accordion - add accordion._items._classes attribute', async () => {
     accordions.forEach(accordion => {
-      accordion._items.forEach(item => {
+      accordion._items?.forEach(item => {
         item._classes = '';
       });
     });
@@ -22,7 +22,7 @@ describe('adapt-contrib-accordion - v2.0.3 > v2.0.4', async () => {
 
   checkContent('adapt-contrib-accordion - check accordion._items._classes attribute', async () => {
     const isValid = accordions.every(accordion =>
-      accordion._items.every(item =>
+      accordion._items?.every(item =>
         _.has(item, '_classes')
       )
     );
@@ -105,7 +105,7 @@ describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
 
   mutateContent('adapt-contrib-accordion - add accordion._items._graphic.attribution', async () => {
     accordions.forEach(accordion => {
-      accordion._items.forEach(item => {
+      accordion._items?.forEach(item => {
         _.set(item, '_graphic.attribution', '');
       });
     });
@@ -114,7 +114,7 @@ describe('adapt-contrib-accordion - v2.0.5 > v2.1.0', async () => {
 
   checkContent('adapt-contrib-accordion - check accordion._items._graphic.attribution atrribute', async () => {
     const isValid = accordions.every(accordion =>
-      accordion._items.every(item =>
+      accordion._items?.every(item =>
         _.has(item, '_graphic.attribution')
       )
     );

@@ -13,7 +13,7 @@ describe('adapt-contrib-accordion - v5.3.0 > v7.3.0', async () => {
 
   mutateContent('adapt-contrib-accordion - add accordion._items._imageAlignment', async () => {
     accordions.forEach(accordion => {
-      accordion._items.forEach(item => {
+      accordion._items?.forEach(item => {
         item._imageAlignment = 'full';
       });
     });
@@ -22,7 +22,7 @@ describe('adapt-contrib-accordion - v5.3.0 > v7.3.0', async () => {
 
   checkContent('adapt-contrib-accordion - check accordion._items._imageAlignment atrribute', async () => {
     const isValid = accordions.every(accordion =>
-      accordion._items.every(item => item?._imageAlignment === 'full')
+      accordion._items?.every(item => item?._imageAlignment === 'full')
     );
     if (!isValid) throw new Error('adapt-contrib-accordion - _imageAlignment not added to every instance of accordion._items');
     return true;
@@ -107,7 +107,7 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
 
   mutateContent('adapt-contrib-accordion - add accordion._items._titleIcon', async () => {
     accordions.forEach(accordion => {
-      accordion._items.forEach(item => {
+      accordion._items?.forEach(item => {
         item._titleIcon = '';
       });
     });
@@ -123,7 +123,7 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
 
   checkContent('adapt-contrib-accordion - check accordion._items._titleIcon attribute', async () => {
     const isValid = accordions.every(accordion =>
-      accordion._items.every(item => _.has(item, '_titleIcon'))
+      accordion._items?.every(item => _.has(item, '_titleIcon'))
     );
     if (!isValid) throw new Error('adapt-contrib-accordion - _titleIcon not added to every instance of accordion._items');
     return true;
