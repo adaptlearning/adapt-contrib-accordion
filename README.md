@@ -48,6 +48,8 @@ guide the learner’s interaction with the component.
 
 **\_isCenterAligned** (boolean): If enabled, the layout of the item button child elements will be stacked on top of one another centrally. Acceptable values are `true` and `false`. The default value is `false`.
 
+**\_iconPosition** (string): Defines which side of the item button the toggle icon is displayed on. Acceptable values are `left` and `right`. The default value is `right`.
+
 **\_items** (array): Multiple items may be created. Each _item_ represents one element of the accordion and contains values for **title**, **body**, **\_graphic**, and **\_classes**.
 
 >**title** (string): This text is displayed as the element's header. It is displayed at all times, even when the **body** has been collapsed.

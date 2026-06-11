@@ -159,6 +159,16 @@
       "inputType": "Checkbox",
       "validators": [],
       "help": "If enabled, the layout of the item button child elements will be stacked on top of one another centrally."
+    },
+    "_iconPosition": {
+      "type": "string",
+      "required": false,
+      "default": "right",
+      "title": "Item button icon position",
+      "enum": ["left", "right"],
+      "inputType": {"type": "Select", "options": ["left", "right"]},
+      "validators": [],
+      "help": "Defines which side of the item button the toggle icon is displayed on."
     }
   }
 }

@@ -8,7 +8,8 @@ export default function Accordion (props) {
   const {
     _id,
     onClick,
-    _isCenterAligned
+    _isCenterAligned,
+    _iconPosition = 'right'
   } = props;
   return (
     <div className="component__inner accordion__inner">
@@ -30,6 +31,7 @@ export default function Accordion (props) {
                 _graphic?.src && 'has-image',
                 _graphic?.src && _imageAlignment && `align-image-${_imageAlignment}`,
                 _isCenterAligned && 'is-center-aligned',
+                `has-icon-${_iconPosition}`,
                 _classes
               ])}
               key={_index}

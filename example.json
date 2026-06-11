@@ -14,6 +14,8 @@
         "_comment": "setCompletionOn = inview | allItems",
         "_setCompletionOn": "allItems",
         "_isCenterAligned": false,
+        "_comment": "iconPosition = left | right",
+        "_iconPosition": "right",
         "_items": [
             {
               "title": "Heading 1",
