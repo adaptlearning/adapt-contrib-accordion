@@ -6,6 +6,7 @@ export default class AccordionModel extends ItemsComponentModel {
     return ItemsComponentModel.resultExtend('defaults', {
       _shouldCollapseItems: true,
       _shouldExpandFirstItem: false,
+      _iconPosition: 'right',
       _toggleSpeed: 200
     });
   }

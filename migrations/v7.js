@@ -156,3 +156,47 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
     fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.7.0' }]
   });
 });
+
+describe('adapt-contrib-accordion - v@@CURRENT_VERSION > v@@RELEASE_VERSION', async () => {
+  let accordions;
+
+  whereFromPlugin('adapt-contrib-accordion - from v@@CURRENT_VERSION', { name: 'adapt-contrib-accordion', version: '<@@RELEASE_VERSION' });
+
+  whereContent('adapt-contrib-accordion - where accordion', async content => {
+    accordions = getComponents('accordion');
+    return accordions.length;
+  });
+
+  mutateContent('adapt-contrib-accordion - add accordion._iconPosition', async () => {
+    accordions.forEach(accordion => {
+      if (_.has(accordion, '_iconPosition')) return;
+      accordion._iconPosition = 'right';
+    });
+    return true;
+  });
+
+  checkContent('adapt-contrib-accordion - check accordion._iconPosition attribute', async () => {
+    const isValid = accordions.every(({ _iconPosition }) => ['left', 'right'].includes(_iconPosition));
+    if (!isValid) throw new Error('adapt-contrib-accordion - _iconPosition not added to every instance of accordion');
+    return true;
+  });
+
+  updatePlugin('adapt-contrib-accordion - update to v@@RELEASE_VERSION', { name: 'adapt-contrib-accordion', version: '@@RELEASE_VERSION', framework: '>=5.20.1' });
+
+  testSuccessWhere('correct version with accordion components with/without _iconPosition', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '@@CURRENT_VERSION' }],
+    content: [
+      { _id: 'c-100', _component: 'accordion' },
+      { _id: 'c-105', _component: 'accordion', _iconPosition: 'left' }
+    ]
+  });
+
+  testStopWhere('no accordion components', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '@@CURRENT_VERSION' }],
+    content: [{ _component: 'other' }]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '@@RELEASE_VERSION' }]
+  });
+});

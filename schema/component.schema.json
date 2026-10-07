@@ -141,6 +141,17 @@
           "title": "Enable item button vertical layout",
           "description": "If enabled, the layout of the item button child elements will be stacked on top of one another centrally.",
           "default": false
+        },
+        "_iconPosition": {
+          "type": "string",
+          "title": "Item button icon position",
+          "description": "Defines which side of the item button the toggle icon is displayed on.",
+          "default": "right",
+          "enum": [
+            "left",
+            "right"
+          ],
+          "_backboneForms": "Select"
         }
       }
     }
