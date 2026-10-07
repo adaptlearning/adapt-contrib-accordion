@@ -157,10 +157,10 @@ describe('adapt-contrib-accordion - v7.4.0 > v7.7.0', async () => {
   });
 });
 
-describe('adapt-contrib-accordion - v@@CURRENT_VERSION > v@@RELEASE_VERSION', async () => {
+describe('adapt-contrib-accordion - v7.9.0 > v7.10.0', async () => {
   let accordions;
 
-  whereFromPlugin('adapt-contrib-accordion - from v@@CURRENT_VERSION', { name: 'adapt-contrib-accordion', version: '<@@RELEASE_VERSION' });
+  whereFromPlugin('adapt-contrib-accordion - from v7.9.0', { name: 'adapt-contrib-accordion', version: '<7.10.0' });
 
   whereContent('adapt-contrib-accordion - where accordion', async content => {
     accordions = getComponents('accordion');
@@ -181,10 +181,10 @@ describe('adapt-contrib-accordion - v@@CURRENT_VERSION > v@@RELEASE_VERSION', as
     return true;
   });
 
-  updatePlugin('adapt-contrib-accordion - update to v@@RELEASE_VERSION', { name: 'adapt-contrib-accordion', version: '@@RELEASE_VERSION', framework: '>=5.20.1' });
+  updatePlugin('adapt-contrib-accordion - update to v7.10.0', { name: 'adapt-contrib-accordion', version: '7.10.0', framework: '>=5.20.1' });
 
   testSuccessWhere('correct version with accordion components with/without _iconPosition', {
-    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '@@CURRENT_VERSION' }],
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.9.0' }],
     content: [
       { _id: 'c-100', _component: 'accordion' },
       { _id: 'c-105', _component: 'accordion', _iconPosition: 'left' }
@@ -192,11 +192,11 @@ describe('adapt-contrib-accordion - v@@CURRENT_VERSION > v@@RELEASE_VERSION', as
   });
 
   testStopWhere('no accordion components', {
-    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '@@CURRENT_VERSION' }],
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.9.0' }],
     content: [{ _component: 'other' }]
   });
 
   testStopWhere('incorrect version', {
-    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '@@RELEASE_VERSION' }]
+    fromPlugins: [{ name: 'adapt-contrib-accordion', version: '7.10.0' }]
   });
 });
